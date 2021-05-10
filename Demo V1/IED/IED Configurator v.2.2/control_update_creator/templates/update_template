@@ -1,0 +1,96 @@
+#include "header.h"
+
+mysqlpp::Connection db_conn;
+
+void setup_db_conn() {
+    //connect to db
+    try {
+        db_conn.set_option(new mysqlpp::SetCharsetNameOption("utf8"));
+        db_conn.connect("panda_sim", "192.168.170.130", "dbuser", "line", 3306);
+    }
+    catch (mysqlpp::Exception e) {
+        printf("Exception, cannot connect to MySQL database\n");
+        std::cout << e.what() << std::endl;
+        db_conn.disconnect();
+        exit(-1);
+    }
+}
+
+void update_objects()
+{
+    printf("****************************************************\n");
+    uint64_t timestamp = Hal_getTimeInMs();
+    
+    Timestamp iecTimestamp;
+    Timestamp_clearFlags(&iecTimestamp);
+    Timestamp_setTimeInMilliseconds(&iecTimestamp, timestamp);
+    Timestamp_setLeapSecondKnown(&iecTimestamp, true);
+
+    float flt;
+    try {
+        const char* querystring = "SELECT value FROM line_loading WHERE name=\"line_loading_0\"";
+        mysqlpp::Query query = db_conn.query(querystring);
+        mysqlpp::StoreQueryResult result = query.store();
+        std::string resultstring = (*(result.begin()))[0].c_str();
+        flt = std::stof(resultstring);
+    }
+    catch (mysqlpp::Exception e) {
+        printf("Exception when querying database\n");
+        std::cout << e.what() << std::endl;
+        exit(-1);
+    }
+    
+    IedServer_lockDataModel(iedServer);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO1_AnIn1_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO1_AnIn1_mag_f, flt);
+    float f = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO1_AnIn1_mag_f);
+    printf("GGIO1_AnIn1_mag_f (line_loading) = %f\n", f);
+
+    try {
+        const char* querystring = "SELECT value FROM line_load_percent WHERE name=\"line_load_percent_0\"";
+        mysqlpp::Query query = db_conn.query(querystring);
+        mysqlpp::StoreQueryResult result = query.store();
+        std::string resultstring = (*(result.begin()))[0].c_str();
+        flt = std::stof(resultstring);
+    }
+    catch (mysqlpp::Exception e) {
+        printf("Exception when querying database\n");
+        std::cout << e.what() << std::endl;
+        exit(-1);
+    }
+
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO2_AnIn1_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO2_AnIn1_mag_f, flt);
+    f = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO2_AnIn1_mag_f);
+    printf("GGIO2_AnIn1_mag_f (line_load_percent) = %f\n", f);
+
+    try {
+        const char* querystring = "SELECT value FROM line_cb WHERE name=\"line_cb_0\"";
+        mysqlpp::Query query = db_conn.query(querystring);
+        mysqlpp::StoreQueryResult result = query.store();
+        std::string resultstring = (*(result.begin()))[0].c_str();
+        flt = std::stof(resultstring);
+    }
+    catch (mysqlpp::Exception e) {
+        printf("Exception when querying database\n");
+        std::cout << e.what() << std::endl;
+        exit(-1);
+    }
+
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO3_SPC1_t, &iecTimestamp);
+    IedServer_updateBooleanAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO3_SPC1_stVal, flt);
+    f = IedServer_getBooleanAttributeValue(
+            iedServer, IEDMODEL_LogicalDevice_GGIO3_SPC1_stVal);
+    printf("GGIO3_SPC1_stVal (line_cb) = %f\n", f);
+
+
+    IedServer_unlockDataModel(iedServer);
+}

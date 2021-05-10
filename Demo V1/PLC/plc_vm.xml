@@ -1,0 +1,665 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
+  <fileHeader companyName="未知" productName="未命名" productVersion="1" creationDateTime="2020-04-08T00:09:48"/>
+  <contentHeader name="未命名" modificationDateTime="2020-10-02T14:55:35">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="10" y="10"/>
+      </fbd>
+      <ld>
+        <scaling x="10" y="10"/>
+      </ld>
+      <sfc>
+        <scaling x="10" y="10"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes/>
+    <pous>
+      <pou name="program0" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="DelayTime">
+              <type>
+                <TIME/>
+              </type>
+              <initialValue>
+                <simpleValue value="T#5s"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[每轮时间，T#5s=延时5秒]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="Bad">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="false"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[异常]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="Good">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="true"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[正常]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="Closed">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="true"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[是否要关闭，T=是|F=否]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="Open">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="false"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[是否要打开，T=是|F=否]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="CriticalFMValue">
+              <type>
+                <REAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="0.5"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[频率差值]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="CriticalRange">
+              <type>
+                <REAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="49.9"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[频率阈值]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="CriticalTemp">
+              <type>
+                <REAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="50.0"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[温度阈值]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="CriticalLoadingValue">
+              <type>
+                <REAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="100.0"/>
+              </initialValue>
+              <documentation>
+                <xhtml:p><![CDATA[负载阈值]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="fm">
+              <type>
+                <REAL/>
+              </type>
+              <initialValue>
+                <simpleValue value="50.0"/>
+              </initialValue>
+            </variable>
+            <variable name="TON0">
+              <type>
+                <derived name="TON"/>
+              </type>
+            </variable>
+            <variable name="WaitStatus">
+              <type>
+                <BOOL/>
+              </type>
+              <initialValue>
+                <simpleValue value="true"/>
+              </initialValue>
+            </variable>
+            <variable name="pass_code">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+          <localVars>
+            <variable name="line_cb_0" address="%QX00.0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_1" address="%QX00.1">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_2" address="%QX00.2">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_3" address="%QX00.3">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_4" address="%QX00.4">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_5" address="%QX00.5">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_6" address="%QX00.6">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_7" address="%QX00.7">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_8" address="%QX00.8">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_9" address="%QX00.9">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_10" address="%QX00.10">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_11" address="%QX00.11">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_12" address="%QX00.12">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_13" address="%QX00.13">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_14" address="%QX00.14">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_15" address="%QX00.15">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_16" address="%QX00.16">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_cb_17" address="%QX00.17">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="relay_0" address="%QX00.100">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="relay_1" address="%QX00.101">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="relay_2" address="%QX00.102">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="relay_3" address="%QX00.103">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="line_loading_0" address="%MD0">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_1" address="%MD1">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_2" address="%MD2">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_3" address="%MD3">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_4" address="%MD4">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_5" address="%MD5">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_6" address="%MD6">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_7" address="%MD7">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_8" address="%MD8">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_9" address="%MD9">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_10" address="%MD10">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_11" address="%MD11">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_12" address="%MD12">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_13" address="%MD13">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_14" address="%MD14">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_15" address="%MD15">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_16" address="%MD16">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_loading_17" address="%MD17">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_0" address="%MD400">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_1" address="%MD401">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_2" address="%MD402">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_3" address="%MD403">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_4" address="%MD404">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_5" address="%MD405">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_6" address="%MD406">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_7" address="%MD407">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_8" address="%MD408">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_9" address="%MD409">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_10" address="%MD410">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_11" address="%MD411">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_12" address="%MD412">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_13" address="%MD413">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_14" address="%MD414">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_15" address="%MD415">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_16" address="%MD416">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="line_load_percent_17" address="%MD417">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_0" address="%MD100">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_1" address="%MD101">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_2" address="%MD102">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_3" address="%MD103">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_4" address="%MD104">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_5" address="%MD105">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_6" address="%MD106">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_7" address="%MD107">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_8" address="%MD108">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="loads_9" address="%MD109">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="transformer_temp_0" address="%QX00.50">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="transformer_temp_1" address="%QX00.51">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="fm_0" address="%MD300">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="fm_1" address="%MD301">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="fm_2" address="%MD302">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="fm_3" address="%MD303">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="fm_show" address="%MD304">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[(* Auto-transfer *)
+IF line_cb_0 = Open THEN
+  IF relay_0 = Good THEN
+  line_cb_16 := Closed;
+  END_IF;
+END_IF;
+
+IF line_cb_1 = Open THEN
+  IF relay_1 = Good THEN
+    line_cb_16 := Closed;
+  END_IF;
+END_IF;
+
+
+
+(*Transformer Overheating Protection *)
+IF transformer_temp_0 = Bad THEN
+  line_cb_4 := Open;
+  line_cb_5 := Open;
+END_IF;
+
+IF transformer_temp_1 = Bad THEN
+  line_cb_12 := Open;
+  line_cb_13 := Open;
+END_IF;
+
+IF line_cb_5 = Open THEN
+  line_cb_4 := Open;
+END_IF;
+
+IF line_cb_13 = Open THEN
+  line_cb_12 := Open;
+END_IF;
+
+(*Relay Isolation*
+IF relay_2 = Bad THEN
+  line_cb_5 := Open;
+  line_cb_17 := Open;
+END_IF;
+
+IF relay_3 = Bad THEN
+  line_cb_13 := Open;
+  line_cb_17 := Open;
+END_IF;
+*)
+
+
+
+(*Overcurrent Protection*)
+IF line_load_percent_0 >= CriticalLoadingValue THEN
+    line_cb_0 := Open;
+END_IF;
+
+IF line_load_percent_1 >= CriticalLoadingValue THEN
+    line_cb_1 := Open;
+END_IF;
+
+IF line_load_percent_2 >= CriticalLoadingValue THEN
+    line_cb_2 := Open;
+END_IF;
+
+IF line_load_percent_3 >= CriticalLoadingValue THEN
+    line_cb_3 := Open;
+END_IF;
+
+IF line_load_percent_4 >= CriticalLoadingValue THEN
+    line_cb_4 := Open;
+END_IF;
+
+IF line_load_percent_5 >= CriticalLoadingValue THEN
+    line_cb_5 := Open;
+END_IF;
+
+IF line_load_percent_6 >= CriticalLoadingValue THEN
+    line_cb_6 := Open;
+END_IF;
+
+IF line_load_percent_7 >= CriticalLoadingValue THEN
+    line_cb_7 := Open;
+END_IF;
+
+IF line_load_percent_8 >= CriticalLoadingValue THEN
+    line_cb_8 := Open;
+END_IF;
+
+IF line_load_percent_9 >= CriticalLoadingValue THEN
+    line_cb_9 := Open;
+END_IF;
+
+IF line_load_percent_10 >= CriticalLoadingValue THEN
+    line_cb_10 := Open;
+END_IF;
+
+IF line_load_percent_11 >= CriticalLoadingValue THEN
+    line_cb_11 := Open;
+END_IF;
+
+IF line_load_percent_12 >= CriticalLoadingValue THEN
+    line_cb_12 := Open;
+END_IF;
+
+IF line_load_percent_13 >= CriticalLoadingValue THEN
+    line_cb_13 := Open;
+END_IF;
+
+IF line_load_percent_14 >= CriticalLoadingValue THEN
+    line_cb_14 := Open;
+END_IF;
+
+IF line_load_percent_15 >= CriticalLoadingValue THEN
+    line_cb_15 := Open;
+END_IF;
+
+IF line_load_percent_16 >= CriticalLoadingValue THEN
+    line_cb_16 := Open;
+END_IF;
+
+IF line_load_percent_17 >= CriticalLoadingValue THEN
+    line_cb_17 := Open;
+END_IF;]]></xhtml:p>
+          </ST>
+        </body>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="Config0">
+        <resource name="Res0">
+          <task name="task0" priority="0" interval="T#20ms">
+            <pouInstance name="instance0" typeName="program0"/>
+          </task>
+        </resource>
+      </configuration>
+    </configurations>
+  </instances>
+</project>
