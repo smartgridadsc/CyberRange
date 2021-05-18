@@ -1,0 +1,318 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unordered_map>
+#include <string>
+
+#include <iostream>
+
+#include "hal_thread.h"
+#include "iec61850_server.h"
+#include "pugixml.hpp"
+#include "static_model.h"
+
+#include <pthread.h>
+#include <signal.h>
+#include <time.h>
+#include <mysql++.h>
+
+bool running = true;
+int interval = 1000;
+std::unordered_map<std::string, std::string> mapping;
+
+extern IedModel iedModel;
+IedServer iedServer = NULL;
+
+mysqlpp::Connection db_conn;
+
+void sigint_handler(int signalId) { running = false; }
+
+void updateFunction()
+{
+    printf("****************************************************\n");
+    uint64_t timestamp = Hal_getTimeInMs();
+    
+    Timestamp iecTimestamp;
+    Timestamp_clearFlags(&iecTimestamp);
+    Timestamp_setTimeInMilliseconds(&iecTimestamp, timestamp);
+    Timestamp_setLeapSecondKnown(&iecTimestamp, true);
+
+    IedServer_lockDataModel(iedServer);
+
+    mysqlpp::StoreQueryResult result;
+    try {
+        const char* querystring = "SELECT value FROM loads ORDER BY LENGTH(name),name";
+        mysqlpp::Query query = db_conn.query(querystring);
+        result = query.store();
+    }
+    catch (mysqlpp::Exception e) {
+        printf("Exception when querying database\n");
+        std::cout << e.what() << std::endl;
+        exit(-1);
+    }
+
+    std::cout << "Result size =[" << result.size() << "]\n";
+    std::string resultstring = ((result.at(0)))[0].c_str();
+    float flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU0_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU0_TotW_mag_f, flt);
+    float read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU0_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_0) = %f\n", read);
+
+    resultstring = ((result.at(1)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU1_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU1_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU1_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_1) = %f\n", read);
+
+    resultstring = ((result.at(2)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU2_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU2_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU2_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_2) = %f\n", read);
+
+    resultstring = ((result.at(3)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU3_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU3_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU3_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_3) = %f\n", read);
+
+    resultstring = ((result.at(4)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU4_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU4_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU4_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_4) = %f\n", read);
+
+    resultstring = ((result.at(5)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU5_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU5_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU5_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_5) = %f\n", read);
+
+    resultstring = ((result.at(6)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU6_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU6_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU6_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_6) = %f\n", read);
+
+    resultstring = ((result.at(7)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU7_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU7_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU7_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_7) = %f\n", read);
+
+    resultstring = ((result.at(8)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU8_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU8_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU8_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_8) = %f\n", read);
+
+    resultstring = ((result.at(9)))[0].c_str();
+    flt = std::stof(resultstring);
+    IedServer_updateTimestampAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU9_TotW_t, &iecTimestamp);
+    IedServer_updateFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU9_TotW_mag_f, flt);
+    read = IedServer_getFloatAttributeValue(
+            iedServer, IEDMODEL_MEAS_MMXU9_TotW_mag_f);
+    printf("MMXU0_TotW_mag_f (loads_9) = %f\n", read);
+
+    IedServer_unlockDataModel(iedServer);
+}
+
+void run_ied()
+{
+    iedServer = IedServer_create(&iedModel);
+
+    // Map objects to addresses (maybe map during compilation time)
+    // report sending
+
+    IedServer_setWriteAccessPolicy(iedServer, IEC61850_FC_ALL, ACCESS_POLICY_ALLOW);
+
+    //IedServer_setControlHandler(iedServer, IEDMODEL_LogicalDevice_GGIO3_SPC1, (ControlHandler)controlHandlerForBinaryOutput, IEDMODEL_LogicalDevice_GGIO3_SPC1);
+
+    //connect to db
+    try {
+        db_conn.set_option(new mysqlpp::SetCharsetNameOption("utf8"));
+        db_conn.connect("panda_sim", "192.168.170.130", "dbuser", "line", 3306);
+    }
+    catch (mysqlpp::Exception e) {
+        printf("Exception, cannot connect to MySQL database\n");
+        std::cout << e.what() << std::endl;
+        db_conn.disconnect();
+        exit(-1);
+    }
+    
+    // start server
+    IedServer_start(iedServer, 102);
+
+    if (!IedServer_isRunning(iedServer)) {
+        printf("Starting IEC61850 Server failed! (Ensure sudo permissions)\n");
+        IedServer_destroy(iedServer);
+        exit(-1);
+    }
+
+    // Continuously update
+    struct timespec timer_start;
+    clock_gettime(CLOCK_MONOTONIC, &timer_start);
+
+    signal(SIGINT, sigint_handler);
+
+    while (running) {
+        updateFunction();
+        Thread_sleep(interval);
+    }
+
+    // clean up
+    printf("Stopping server...");
+    IedServer_stop(iedServer);
+    IedServer_destroy(iedServer);
+}
+
+void getVarAddrMapping(pugi::xml_node parent, std::string pathstring)
+{
+    if (parent.child("Private")) {
+        for (pugi::xml_node priv_node = parent.child("Private"); priv_node; priv_node = priv_node.next_sibling("Private")) {
+            std::string newpathstring = pathstring + "." + priv_node.attribute("name").value();
+            getVarAddrMapping(priv_node, newpathstring);
+        }
+    }
+    else if (parent.child("Property")) {
+        for (pugi::xml_node prop_node = parent.child("Property"); prop_node; prop_node = prop_node.next_sibling("Property")) {
+            std::string prop_name = prop_node.attribute("Name").value();
+            std::string prop_value = prop_node.attribute("Value").value();
+            if (prop_name.compare("sMonitoringVar") == 0 && !prop_value.empty()) {
+                mapping[pathstring] = prop_value;
+            }
+        }
+    }
+}
+
+int get_mapping(char *filename)
+{
+    pugi::xml_document sclfile;
+    pugi::xml_parse_result result = sclfile.load_file(filename);
+
+    if (result.status == pugi::status_file_not_found) {
+        std::cout << "Failed to open SCL file " << filename << "!\n";
+        return 1;
+    }
+    else if (result.status == pugi::status_io_error) {
+        std::cout << "Failed to read SCL file " << filename << "!\n";
+        return 1;
+    }
+    else if (result.status != pugi::status_ok) {
+        std::cout << "Error parsing SCL file " << filename << ": " << result.status << "!\n";
+        return 1;
+    }
+    else {
+        std::cout << "Parsing SCL file " << filename << "\n";
+    }
+
+    pugi::xml_node dtt = sclfile.child("SCL").child("DataTypeTemplates");
+
+    pugi::xml_node ied = sclfile.child("SCL").child("IED");
+    std::string ied_name = ied.attribute("name").value();
+
+    pugi::xml_node ld = ied.child("AccessPoint").child("Server").child("LDevice");
+    std::string ld_name = ld.attribute("inst").value();
+
+    std::unordered_map<std::string, std::string> lntype_lninst_mapping;
+    
+    //Get map of ln type -> ln instance
+    for (pugi::xml_node ln_node = ld.child("LN"); ln_node; ln_node = ln_node.next_sibling("LN")) {
+        std::string ln_type = ln_node.attribute("lnType").value();
+        std::string ln_class = ln_node.attribute("lnClass").value();
+        std::string ln_inst = ln_node.attribute("inst").value();
+
+        lntype_lninst_mapping[ln_type] = ln_class + ln_inst;
+    }
+
+    std::unordered_map<std::string, std::string> do_ln_mapping;
+
+    //Get map of do_type -> (ln_name + do_name)
+    for (pugi::xml_node ln_node = dtt.child("LNodeType"); ln_node; ln_node = ln_node.next_sibling("LNodeType")) {
+        std::string ln_type = ln_node.attribute("id").value();
+
+        for (pugi::xml_node do_node = ln_node.child("DO"); do_node; do_node = do_node.next_sibling("DO")) {
+            pugi::xml_attribute do_name = do_node.attribute("name");
+            pugi::xml_attribute do_type = do_node.attribute("type");
+            std::string do_namestring = do_name.value();
+
+            do_ln_mapping[do_type.value()] = ied_name + ld_name + "/" + lntype_lninst_mapping[ln_type] + "." + do_namestring;
+        }
+    }
+
+    //Path to get var names: dtt > dotype > da > private [ > private]* > property (sMonitoringVar/scontrolVar)
+    for (pugi::xml_node do_node = dtt.child("DOType"); do_node; do_node = do_node.next_sibling("DOType")) {
+        pugi::xml_attribute do_name = do_node.attribute("id");
+        std::string do_namestring = do_name.value();
+
+        for (pugi::xml_node da_node = do_node.child("DA"); da_node; da_node = da_node.next_sibling("DA")) {
+            std::string pathstring = do_ln_mapping[do_namestring];
+            getVarAddrMapping(da_node, pathstring);
+        }
+    }
+
+    return 0;
+}
+
+int main(int argc, char **argv)
+{
+    if (argc == 3) {
+        interval = std::stoi(argv[2]);
+    }
+    else if (argc == 2) {
+        //do nothing
+    }
+    else {
+        printf("Invalid usage (argc = %d)\n", argc);
+    }
+
+    if (get_mapping(argv[1])) {
+        printf("Failed to get mapping\n");
+    }
+    
+
+    for (auto it: mapping) {
+        printf("%s %s\n", it.first.c_str(), it.second.c_str());
+    }
+
+    run_ied();
+
+    return 0;
+}

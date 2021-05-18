@@ -1,0 +1,60 @@
+#include "header.h"
+
+/*
+    This files contains the callback functions to be applied
+*/
+
+static ControlHandlerResult controlHandlerForBinaryOutput(ControlAction action, void *parameter, MmsValue *value, bool test)
+{
+    if (test)
+        return CONTROL_RESULT_FAILED;
+
+    ClientConnection clientCon = ControlAction_getClientConnection(action);
+
+    if (MmsValue_getType(value) == MMS_BOOLEAN) {
+        printf("received binary control command: ");
+        printf("    from: %s\n", ClientConnection_getPeerAddress(clientCon));
+        printf("    ctlNum: %i\n", ControlAction_getCtlNum(action));
+
+        if (MmsValue_getBoolean(value))
+            printf("    val: on\n");
+        else
+            printf("    val: off\n");
+    }
+    else
+        return CONTROL_RESULT_FAILED;
+
+    uint64_t timeStamp = Hal_getTimeInMs();
+    if (parameter == IEDMODEL_LogicalDevice_GGIO3_SPC1) {
+        IedServer_updateUTCTimeAttributeValue(
+                iedServer, IEDMODEL_LogicalDevice_GGIO3_SPC1_t, timeStamp);
+        printf("    Wrote timestamp\n");
+        IedServer_updateAttributeValue(
+                iedServer, IEDMODEL_LogicalDevice_GGIO3_SPC1_stVal, value);
+        printf("    Wrote stval\n");
+
+        // write to database
+        std::string querystring;
+        if (MmsValue_getBoolean(value))
+            querystring = "UPDATE line_cb SET value=1 WHERE name=\"line_cb_0\"";  
+        else
+            querystring = "UPDATE line_cb SET value=0 WHERE name=\"line_cb_0\"";
+        std::cout << querystring << std::endl;
+        try {
+            mysqlpp::Query query = db_conn.query(querystring);
+            query.exec();
+        }
+        catch (mysqlpp::Exception e) {
+            printf("Exception when writing to database\n");
+            std::cout << e.what() << std::endl;
+        }
+    }
+    else
+        return CONTROL_RESULT_FAILED;
+
+    return CONTROL_RESULT_OK;
+}
+
+void set_control_handler() {
+    IedServer_setControlHandler(iedServer, IEDMODEL_LogicalDevice_GGIO3_SPC1, (ControlHandler)controlHandlerForBinaryOutput, IEDMODEL_LogicalDevice_GGIO3_SPC1);
+}
