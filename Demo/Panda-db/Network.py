@@ -5,6 +5,7 @@ import json
 import pandapower as pp
 import random
 import time
+import copy
 
 import Constants
 #from Logger import Logger
@@ -60,6 +61,12 @@ class Network():
         #self.set_plc_data_from_plc(self.PLC_DATA)
         self.extra_config_list = []
 
+        #wenshei
+        #determine if actuator status taken from db or extra_config
+        self.actuator_status = [] #whether to take next value from extra_config
+        self.prev_act_val = []
+
+
 
     def set_round(self, round):
         self.round = round
@@ -68,9 +75,10 @@ class Network():
     # PLC_DATA - PLC DATA to be saved in the net
     # Updates the actuators' status in the net
     def set_plc_data_from_plc(self, plc_data):
-        print("setting actuators from PLC to net")
-        print(plc_data)
+        #print("setting actuators from PLC to net")
+        #print(plc_data)
         self.actuators = plc_data['actuator']
+        #print("ZZZZZZZZZZZZZZZZZZ: " + str(len(self.actuators)))
         for i in range(len(self.actuators)):
             self.net.switch["closed"][i] = self.actuators[i]
         
@@ -82,7 +90,7 @@ class Network():
 
     def set_plc_data_from_plc_round(self, plc_data, round):
 
-        extra_config = self.extra_config_list[round];
+        extra_config = self.extra_config_list[round]
         #print("####################### Extra config ##################")
         #print(plc_data["actuator"])
         #print(len(extra_config["CBR"]))
@@ -98,10 +106,15 @@ class Network():
         # actuator status for the simulation comes from extra_config!
         # actuator status in DB is used for IEDs' reporting purpose.
         keys = list(extra_config["CBR"].keys())
+        #numTrans = len(self.net_list[0]["trafo"])
+        #self.actuators = []
         for i in range(len(extra_config["CBR"])):
             plc_data["actuator"][i] = extra_config["CBR"][keys[i]][0]
+            #plc_data["actuator"][i] = 1
+            #self.actuators.append(1)
         #print(plc_data["actuator"])
         self.actuators = plc_data['actuator']
+        #print("ZZZZZZZZZZZZZZZZZZ2: " + str(len(self.actuators)))
 
 
     # Get the PLC data that will be sent to the PLC
@@ -117,8 +130,8 @@ class Network():
             sensor_lst[line_id] = line_value
 
         line_load_percent_lst = [0] * len(self.line_load_percent.keys())
-        print("get_data_for_plc")
-        print(self.line_load_percent)
+        #print("get_data_for_plc")
+        #print(self.line_load_percent)
         for line_id, line_value in self.line_load_percent.items():
             print(f"loadpercentage[{line_id}]: {line_value}")
             line_load_percent_lst[line_id] = line_value 
@@ -132,9 +145,9 @@ class Network():
             'fm': self.frequency_meters,
             'line_load_percent': line_load_percent_lst
         }
-        print("############## PLC DATA FOR THIS ROUND ################")
-        print(plc_data_from_this_round)
-        print("############## PLC DATA FOR THIS ROUND ################")
+        #print("############## PLC DATA FOR THIS ROUND ################")
+        #print(plc_data_from_this_round)
+        #print("############## PLC DATA FOR THIS ROUND ################")
 
         # for attack if it's attack mode
         if Constants.IS_ATTACK_MODE:
@@ -166,11 +179,13 @@ class Network():
         config_parser = ConfigParser(Constants.EXTRA_CONFIG_PATH)
         extra_config = config_parser.gen_json()
         self.extra_config_list = GenNetwork.parse_time_series(extra_config)
+        #print("XXXXXXXXXXXXXXXXXXXXX")
+        #print(self.extra_config_list)
 
         #net_list = []
         for extConfig in self.extra_config_list:
             self.net_list.append(GenNetwork(Constants.SSD_PATH, extConfig).net)
-            print("Network created")
+            #print("Network created")
 
         #self.write_to_file_list();
 
@@ -266,7 +281,7 @@ class Network():
             transformer_id = pp.create_transformer(self.net, hv_bus=settings["hv_bus_id"], lv_bus=settings["lv_bus_id"], 
                                                    std_type=network_topology["transformer_std_type"])
             self.transformers.append(transformer_id)
-            print("TRAFO ID: " + str(transformer_id) + "hv=" + str(settings["hv_bus_id"]) + "lv=" + str(lv_bus=settings["lv_bus_id"]))
+            #print("TRAFO ID: " + str(transformer_id) + "hv=" + str(settings["hv_bus_id"]) + "lv=" + str(lv_bus=settings["lv_bus_id"]))
 
 
         # +--------------------------
@@ -377,13 +392,13 @@ class Network():
         # Check with loads id needs to be zero
         zero_value_load_ids = []
         for line_id, line_value in self.sensors.items():
-            print(str(line_value))
+            #print(str(line_value))
             # check if load should be zero (check cb)
             # If the cb for load is open, set the load data to zero
             if line_value == 0 and line_id in Constants.NETWORK_TOPOLOGY["linecb_load_mapping"]:  
                     related_load_id = Constants.NETWORK_TOPOLOGY["linecb_load_mapping"][line_id]
                     zero_value_load_ids.append(related_load_id)
-                    print(f"setting load[{related_load_id}] to zero")
+                    #print(f"setting load[{related_load_id}] to zero")
             
         for load in range(Constants.NETWORK_TOPOLOGY["num_of_loads"]):
             if not self.has_power_flow(load):
@@ -466,17 +481,17 @@ class Network():
         if index >= len(self.extra_config_list):
             index = len(self.extra_config_list) - 1
         try:
-            print("XXXXXXXXXXXXXX ")
-            print(self.net_list[index]["line"])
+            #print("XXXXXXXXXXXXXX ")
+            #print(self.net_list[index]["line"])
             #print("XXXXXXXXXXXXXX " + str(self.net_list[index]["bus"]))
             pp.runpp(net=self.net_list[index], init="results")
             #pp.runpp(net=self.net)
             #pp.runpp(net=self.net_list[1], init="results")
-            print("***resbus***\n", self.net_list[index].res_bus)
-            print("***resline***\n", self.net_list[index].res_line)
+            #print("***resbus***\n", self.net_list[index].res_bus)
+            #print("***resline***\n", self.net_list[index].res_line)
         except pp.powerflow.LoadflowNotConverged:
             #logger.log("WARN_ERROR", "IMPORTANT: Pandapower Calculation Failed! Simulation ended!")
-            printt("IMPORTANT: Pandapower Calculation Failed! Simulation ended!")
+            print("IMPORTANT: Pandapower Calculation Failed! Simulation ended!")
 
     # State Monitoring 1
     # Checks the loading percent of lines and output the state to Web UI
@@ -615,7 +630,7 @@ class Network():
 
         # Update Relay (checking the line load percent value against threshold and then update relay status)
         # [todo] in the future, this relay related logic should be implemented on IED side, as one of protection function.
-        print(self.line_load_percent)
+        #print(self.line_load_percent)
         for relay_id, line_id in Constants.NETWORK_TOPOLOGY["relay_line_mapping"].items():
             #print(relay_id)
             #print(line_id)
@@ -641,7 +656,7 @@ class Network():
 
         # Update transformer temperature
         # [TODO] not tested becuse EPIC model does not have transformer.
-        print(len(self.transformer_temperature))
+        #print(len(self.transformer_temperature))
         for i in range(len(self.transformer_temperature)):
             ppnet = self.net_list[round]
             if len(ppnet["trafo"]) >= len(self.transformer_temperature):
@@ -757,7 +772,7 @@ class Network():
         pp.from_json(
             filename = Constants.NETWORK_TMP_PATH + "." + str(round +1)
         )
-        print("############ CASE FILE READ ############")
+        #print("############ CASE FILE READ ############")
 
     def print(self):
         print(self.net.res_line)
@@ -784,10 +799,33 @@ class Network():
             "trafo": self.net_list[round].trafo,
             "net": self.net_list[round]
         }
-        print(net_result)
+        #print(net_result)
         return net_result
 
+    #wenshei
+    def set_act_result(self, results):
+        self.prev_act_val = copy.deepcopy(results)
+        if len(self.actuator_status) == 0:
+            for i in range(len(self.prev_act_val)):
+                self.actuator_status.append(0)
 
+    # Checks if actuator status is different from prev round.
+    # If different, it means control command was issued and
+    # actuator should take its value from DB instead of 
+    # extra_config for subsequent rounds
+    def update_from_db_for_round(self, db_act, round):
+        prev_act = self.prev_act_val
+        act_status = self.actuator_status
+        
+        if (len(prev_act) != len(db_act)) or (len(act_status) != len(db_act)):
+            print("ERROR, Fail to compare prev and db actuator values")
+    
+        for i in range(len(act_status)):
+            if (db_act[i] != prev_act[i]): #control command issued
+                act_status[i] = 1
+            if (act_status[i] == 1): #take act value from DB
+                self.net_list[round].switch["closed"][i] = bool(db_act[i])
+                self.actuators[i] = db_act[i]
 
 
 # Test network

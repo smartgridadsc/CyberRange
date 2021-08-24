@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 import time
+import copy
 #import random
 #import json
 #import logging
@@ -19,7 +20,7 @@ logger = Logger()
 class Simulator():
     def __init__(self, initial_data):
         #print("####### printing initial_data #########")
-        print(initial_data)
+        #print(initial_data)
 
         self.network = Network(
             Constants.NETWORK["FILE_PATH"],
@@ -54,7 +55,7 @@ class Simulator():
         # +--------------------------
         # | 2. Read data from PLC
         # +--------------------------
-        print(f"**************NET BEFORE ROUND {round_count}**************")
+        #print(f"**************NET BEFORE ROUND {round_count}**************")
         logger.log("INFO", f"Reading PLC Data...")
         data_to_read_config = [
             { "name": "Actuator", "index": "actuator", "point": "line_cb" }
@@ -63,11 +64,20 @@ class Simulator():
         #read data of previous round from DB.
         PLC_DATA, READ_STATUS = self.sensor.read_db_data(data_to_read_config)
         logger.log("INFO", f"Update Actuator")
+
+        #wenshei
+        #update from db to cb in network
+        db_act_data = copy.deepcopy(PLC_DATA['actuator'])
+
         #set the data from DB to Network class.
         self.network.set_plc_data_from_plc_round(PLC_DATA, round_count)
         #self.network.set_plc_data_from_plc(PLC_DATA)
-        print(f"**************BEFORE ROUND {round_count}**************")
+        #print(f"**************BEFORE ROUND {round_count}**************")
 
+        #wenshei
+        #update from db to cb in network
+        if round_count != 0:
+            self.network.update_from_db_for_round(db_act_data, round_count)   
 
         # +--------------------------
         # | 3. Run the network
@@ -97,6 +107,9 @@ class Simulator():
         #self.sensor.write_plc_data(Constants.DATAPOINT_CONFIG, PLC_DATA)
         self.sensor.write_db_data(Constants.DATAPOINT_CONFIG, PLC_DATA)
 
+        #wenshei
+        self.network.set_act_result(PLC_DATA["actuator"])
+
 
         # +--------------------------
         # | 5. End of Round
@@ -105,7 +118,6 @@ class Simulator():
         run_time = round(stop_time - start_time, 2)
         logger.log("INFO", f"Use {run_time}s")
         logger.log("INFO", f"------ Round {round_count} Finished ------")
-
 
 if __name__ == "__main__":
     logger.log("INFO", "Start Simulator...")
