@@ -1,0 +1,554 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Wed Sep 22 09:27:07 2021
+
+# Variables
+
+# 'override' directive
+GNUMAKEFLAGS := 
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+PAPERSIZE = a4
+# environment
+DESKTOP_SESSION = ubuntu
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# makefile (from 'Makefile', line 6)
+DEPENDENCIES := dependencies.mk
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+IM_CONFIG_PHASE = 1
+# makefile (from 'dependencies.mk', line 17)
+INCLUDES = -I$(LIBIEC_HOME)/config -I$(LIBIEC_HOME)/hal/inc -I$(LIBIEC_HOME)/src/common/inc -I$(LIBIEC_HOME)/src/mms/inc -I$(LIBIEC_HOME)/src/mms/inc_private -I$(LIBIEC_HOME)/src/mms/asn1 -I$(LIBIEC_HOME)/src/iec61850/inc -I$(LIBIEC_HOME)/src/iec61850/inc_private -I$(LIBIEC_HOME)/src/goose -I$(LIBIEC_HOME)/src/sampled_values -I$(LIBIEC_HOME)/src/logging -I$(LIBIEC_HOME)/src/tls -I/usr/include/mysql++ -I/usr/include/mysql -I$(IED_HOME) -I$(IED_HOME)/ProtectionLogics -I$(IED_HOME)/CommModules
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /run/user/1001/gdm/Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /home/wenshei/VIRTUAL_IED_FILES
+# makefile (from 'Makefile', line 3)
+SHELL := /bin/bash
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/share/code/code
+# environment
+JOURNAL_STREAM = 8:51300
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# makefile (from '/home/wenshei/VIRTUAL_IED_FILES/libs/libiec61850/make/stack_includes.mk', line 1)
+MAKEFILE_LIST :=  Makefile dependencies.mk /home/wenshei/VIRTUAL_IED_FILES/libs/libiec61850/make/stack_includes.mk
+# makefile (from 'Makefile', line 14)
+MODEL_SRC := static_model.c
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# environment
+USERNAME = wenshei
+# makefile (from 'dependencies.mk', line 9)
+MODELGEN = $(LIBIEC_HOME)/tools/model_generator/genmodel.jar
+# environment
+MAKELEVEL := 0
+# environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# makefile (from 'dependencies.mk', line 8)
+LIBIEC = $(LIBIEC_HOME)/build/libiec61850.a
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1001/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'Makefile', line 18)
+OBJS :=  /home/wenshei/VIRTUAL_IED_FILES/build/Utils.o  /home/wenshei/VIRTUAL_IED_FILES/build/DatabaseConn.o  /home/wenshei/VIRTUAL_IED_FILES/build/Parser.o  /home/wenshei/VIRTUAL_IED_FILES/build/main.o
+# environment
+MANAGERPID = 1781
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+LC_NAME = en_SG.UTF-8
+# environment
+VSCODE_CWD = /home/wenshei
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/wenshei/.local/bin:/home/wenshei/bin:/home/wenshei/bin:/home/wenshei/.local/bin:/home/wenshei/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/1001/gnupg/S.gpg-agent:0:1
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# environment
+SESSION_MANAGER = local/asus-GL502VMK:@/tmp/.ICE-unix/2007,unix/asus-GL502VMK:/tmp/.ICE-unix/2007
+# environment
+XDG_RUNTIME_DIR = /run/user/1001
+# makefile (from 'dependencies.mk', line 25)
+ICDFILE = config_files/ied0scl.icd
+# makefile (from 'dependencies.mk', line 7)
+LIBIEC_HOME = $(IED_HOME)/$(LIBS_DIR)/libiec61850
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=506a873d-8355-4ded-83e7-5572bf10c4d5&iid=506a873d-8355-4ded-83e7-5572bf10c4d5&sid=506a873d-8355-4ded-83e7-5572bf10c4d5","uploadToServer":true}
+# environment
+INVOCATION_ID = c59d6fb4f6674a2599bb581bc213412a
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1001/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 103983
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/wenshei/VIRTUAL_IED_FILES
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 1963
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /home/wenshei
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CODE_CACHE_PATH = /home/wenshei/.config/Code/CachedData/3866c3553be8b268c8a7f8c0482c0c0177aa8bfa
+# environment
+LOGNAME = wenshei
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+LC_TIME = en_SG.UTF-8
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# makefile (from 'Makefile', line 17)
+SRCS := Utils.cpp DatabaseConn.cpp Parser.cpp main.cpp
+# environment
+SHLVL = 0
+# makefile (from 'dependencies.mk', line 2)
+IED_HOME = $(shell pwd)
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# makefile (from 'Makefile', line 5)
+BUILD_DIR := /home/wenshei/VIRTUAL_IED_FILES/build
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1001/vscode-ipc-90f80748-b0af-484f-bcbe-23158772b079.sock
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = wenshei
+# environment
+LC_MONETARY = en_SG.UTF-8
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = en_SG.UTF-8
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /run/user/1001/vscode-2879203e-1.59.1-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+BREAKPAD_DUMP_LOCATION = /home/wenshei/.config/Code/exthost Crash Reports
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile (from 'Makefile', line 15)
+MODEL_OBJ := /home/wenshei/VIRTUAL_IED_FILES/build/static_model.o
+# environment
+GDK_BACKEND = x11
+# environment
+LC_PAPER = en_SG.UTF-8
+# makefile (from 'Makefile', line 47)
+ALL_OBJS := /home/wenshei/VIRTUAL_IED_FILES/build/PTOC50.o /home/wenshei/VIRTUAL_IED_FILES/build/MMS.o /home/wenshei/VIRTUAL_IED_FILES/build/static_model.o /home/wenshei/VIRTUAL_IED_FILES/build/DatabaseConn.o /home/wenshei/VIRTUAL_IED_FILES/build/main.o /home/wenshei/VIRTUAL_IED_FILES/build/R_GOOSE.o /home/wenshei/VIRTUAL_IED_FILES/build/R_SV.o /home/wenshei/VIRTUAL_IED_FILES/build/Utils.o /home/wenshei/VIRTUAL_IED_FILES/build/Parser.o
+# environment
+QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
+# 'override' directive
+.SHELLSTATUS := 0
+# default
+MAKEFILES := 
+# environment
+LC_NUMERIC = en_SG.UTF-8
+# environment
+VSCODE_BROWSER_CODE_LOADING = bypassHeatCheck
+# automatic
+<F = $(notdir $<)
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+LC_MEASUREMENT = en_SG.UTF-8
+# environment
+LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# makefile (from 'dependencies.mk', line 22)
+FLAGS := -w -pthread 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+LC_IDENTIFICATION = en_SG.UTF-8
+# default
+.RECIPEPREFIX := 
+# makefile (from 'Makefile', line 2)
+EXE := VIRTUAL_IED
+# environment
+LC_ADDRESS = en_SG.UTF-8
+# makefile (from 'dependencies.mk', line 5)
+LIBS_DIR = libs
+# makefile (from 'Makefile', line 12)
+SUBDIRS := CommModules ProtectionLogics
+# environment
+LANG = C
+# environment
+VSCODE_PID = 103983
+# variable set hash-table stats:
+# Load=130/1024=13%, Rehash=0, Collisions=40/314=13%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2067, inode 9773060): 23 files, no impossibilities.
+# /home/wenshei/VIRTUAL_IED_FILES/build (device 2067, inode 9773604): 11 files, no impossibilities.
+
+# 34 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+/home/wenshei/VIRTUAL_IED_FILES/build/%.o: %.cpp
+#  recipe to execute (from 'Makefile', line 41):
+	@echo "Building $@"
+	@$(CXX) $(FLAGS) $(INCLUDES) -o $@ -c $< 
+
+# 1 implicit rules, 0 (0.0%) terminal.
+ 
+
+# Files
+
+ProtectionLogics:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 45):
+	@$(MAKE) -C $@
+
+# Not a target:
+dependencies.mk:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-20 12:18:59.640517883
+#  File has been updated.
+#  Successfully updated.
+
+all: /home/wenshei/VIRTUAL_IED_FILES/build thisdir CommModules ProtectionLogics VIRTUAL_IED
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/90=0%
+
+# Not a target:
+/home/wenshei/VIRTUAL_IED_FILES/build/Parser.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: all thisdir CommModules ProtectionLogics clean check-all checks
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+CommModules:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 45):
+	@$(MAKE) -C $@
+
+thisdir: /home/wenshei/VIRTUAL_IED_FILES/build/Utils.o /home/wenshei/VIRTUAL_IED_FILES/build/DatabaseConn.o /home/wenshei/VIRTUAL_IED_FILES/build/Parser.o /home/wenshei/VIRTUAL_IED_FILES/build/main.o /home/wenshei/VIRTUAL_IED_FILES/build/static_model.o
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/90=0%
+
+/home/wenshei/VIRTUAL_IED_FILES/build/static_model.o: static_model.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 37):
+	@echo "Building $@"
+	@$(CXX) $(FLAGS) $(INCLUDES) -o $@ -c $< 
+
+# Not a target:
+/home/wenshei/VIRTUAL_IED_FILES/build/MMS.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-21 14:54:43.010876507
+#  File has been updated.
+#  Successfully updated.
+
+VIRTUAL_IED: /home/wenshei/VIRTUAL_IED_FILES/build/PTOC50.o /home/wenshei/VIRTUAL_IED_FILES/build/MMS.o /home/wenshei/VIRTUAL_IED_FILES/build/static_model.o /home/wenshei/VIRTUAL_IED_FILES/build/DatabaseConn.o /home/wenshei/VIRTUAL_IED_FILES/build/main.o /home/wenshei/VIRTUAL_IED_FILES/build/R_GOOSE.o /home/wenshei/VIRTUAL_IED_FILES/build/R_SV.o /home/wenshei/VIRTUAL_IED_FILES/build/Utils.o /home/wenshei/VIRTUAL_IED_FILES/build/Parser.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 50):
+	@echo "Building final executable $@"
+	@$(CXX) -o $@ $(FLAGS) $(ALL_OBJS) $(LIBIEC)
+	@echo ""
+	@echo "Build Complete!"
+
+# Not a target:
+config_files/ied0scl.icd:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+/home/wenshei/VIRTUAL_IED_FILES/build/Utils.o: Utils.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Utils'
+#  Last modified 2021-09-21 14:54:31.295163164
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 41):
+	@echo "Building $@"
+	@$(CXX) $(FLAGS) $(INCLUDES) -o $@ -c $< 
+
+static_model.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/home/wenshei/VIRTUAL_IED_FILES/build/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/home/wenshei/VIRTUAL_IED_FILES/libs/libiec61850/make/stack_includes.mk:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-20 11:14:40.146107735
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+DatabaseConn.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-22 09:26:14.089
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+/home/wenshei/VIRTUAL_IED_FILES/build:
+#  Implicit rule search has not been done.
+#  Last modified 2021-09-21 14:54:33.751102472
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 27):
+	@echo "Creating build dir..."
+	@mkdir -p $@
+
+static_model.c: config_files/ied0scl.icd
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 31):
+	@echo "Generating $@ ..."
+	java -jar $(MODELGEN) $(ICDFILE)
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 58):
+	rm -f $(EXE)
+	rm -f $(BUILD_DIR)/*
+
+# Not a target:
+/home/wenshei/VIRTUAL_IED_FILES/build/PTOC50.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+checks:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 64):
+	@echo "Output directory:"
+	@echo $(BUILD_DIR)
+	@echo "--------------------------------------------"
+	@echo "SRCS:"
+	@echo $(SRCS)
+	@echo $(MODEL_SRC)
+	@echo "--------------------------------------------"
+	@echo "OBJS"
+	@echo $(OBJS)
+	@echo $(MODEL_OBJ)
+	@echo "--------------------------------------------"
+	@echo "INCLUDES"
+	@echo $(INCLUDES)
+	@echo "--------------------------------------------"
+
+# Not a target:
+/home/wenshei/VIRTUAL_IED_FILES/build/R_SV.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Utils.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-09-15 15:38:46.296612527
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+/home/wenshei/VIRTUAL_IED_FILES/build/R_GOOSE.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# 'override' directive
+/home/wenshei/VIRTUAL_IED_FILES/build/DatabaseConn.o: .SHELLSTATUS := 0
+/home/wenshei/VIRTUAL_IED_FILES/build/DatabaseConn.o: DatabaseConn.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'DatabaseConn'
+#  Last modified 2021-09-21 14:54:31.483158509
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := /home/wenshei/VIRTUAL_IED_FILES/build/DatabaseConn.o
+# automatic
+# % := 
+# automatic
+# * := DatabaseConn
+# automatic
+# + := DatabaseConn.cpp
+# automatic
+# | := 
+# automatic
+# < := DatabaseConn.cpp
+# automatic
+# ^ := DatabaseConn.cpp
+# automatic
+# ? := DatabaseConn.cpp
+# variable set hash-table stats:
+# Load=9/32=28%, Rehash=0, Collisions=31/116=27%
+#  recipe to execute (from 'Makefile', line 41):
+	@echo "Building $@"
+	@$(CXX) $(FLAGS) $(INCLUDES) -o $@ -c $< 
+
+check-all: checks
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=29/1024=3%, Rehash=0, Collisions=3/86=3%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 58 / storage = 1052 B / avg = 18 B
+# current buf: size = 8162 B / used = 1052 B / count = 58 / avg = 18 B
+
+# strcache performance: lookups = 111 / hit rate = 47%
+# hash-table stats:
+# Load=58/8192=1%, Rehash=0, Collisions=2/111=2%
+# Finished Make data base on Wed Sep 22 09:27:07 2021
+
+ 
