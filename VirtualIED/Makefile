@@ -36,7 +36,7 @@ thisdir: $(OBJS) $(MODEL_OBJ)
 $(MODEL_OBJ): $(MODEL_SRC)
 	@echo "Building $@"
 	@$(CXX) $(FLAGS) $(INCLUDES) -o $@ -c $< 
-
+	
 $(BUILD_DIR)/%.o: %.cpp
 	@echo "Building $@"
 	@$(CXX) $(FLAGS) $(INCLUDES) -o $@ -c $< 
@@ -48,6 +48,8 @@ ALL_OBJS := $(wildcard $(BUILD_DIR)/*.o)
 
 $(EXE): $(ALL_OBJS)
 	@echo "Building final executable $@"
+	@echo "Flags contains $(FLAGS)"
+	@echo "CXX is $(CXX)"
 	@$(CXX) -o $@ $(FLAGS) $(ALL_OBJS) $(LIBIEC)
 	@echo ""
 	@echo "Build Complete!"

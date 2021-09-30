@@ -1,25 +1,35 @@
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+
+#include <fstream>
+
 #include "Parser.h"
 #include "Utils.h"
 
-#include "ProtectionLogics/PTOC50.h"
-#include "ProtectionLogics/PTOV59.h"
-#include "ProtectionLogics/PTUV27.h"
-#include "ProtectionLogics/PTTR.h"
-#include "ProtectionLogics/PresSV.h"
-#include "ProtectionLogics/power_meas.h"
+#include "Lists.h"
+#include "Constants.h"
+#include "PTOC50.h"
+#include "PTOV59.h"
+#include "PTUV27.h"
+#include "PTTR.h"
+#include "PresSV.h"
+#include "Power_meas.h"
+
 #include "CommModules/MMS.h"
 #include "CommModules/R_GOOSE.h"
 #include "CommModules/R_SV.h"
 
 using namespace std;
 
-list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::string thresholds_filename) {
-    list<LogicFunction *> logicList;
- 
-    std::ifstream ifs_cp(cpmapping_filename);
-    json jf_cp = json::parse(ifs_cp);
 
-    for (auto& el:jf_cp["CPMapping"].items())
+list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::string thresholds_filename) {
+list<LogicFunction *> logicList;
+
+
+std::ifstream ifs_cp(cpmapping_filename);
+json jf_cp = json::parse(ifs_cp);
+
+for (auto& el:jf_cp["CPMapping"].items())
     {
         string temp_cyber = el.value()["Cyber"];
 
@@ -41,19 +51,13 @@ list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::
         else if (temp_cyber.find(real_power_Cyber) != std::string::npos)
         {
             real_power_phy_list.push_back(el.value()["Physical"]);
-            Real_power *real_power = new Real_power(real_power_phy_list);
-            logicList.push_back(real_power);
-            LOG(INFO, "Real Power added\n");
         }
 
         else if (temp_cyber.find(reactive_power_Cyber) != std::string::npos)
         {
             reactive_power_phy_list.push_back(el.value()["Physical"]);
-            Reactive_power *reactive_power = new Reactive_power(reactive_power_phy_list);
-            logicList.push_back(reactive_power);
-            LOG(INFO, "Reactive Power added\n")
         }
-
+        
         else if (temp_cyber.find(PTTR_Cyber) != std::string::npos)
         {
                 PTTR_cyber_list.push_back(temp_cyber);
@@ -63,6 +67,10 @@ list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::
         {
                 PresSV_cyber_list.push_back(temp_cyber);
         }
+
+            Power_meas *power_meas = new Power_meas(real_power_phy_list,reactive_power_phy_list);
+            logicList.push_back(power_meas);
+            LOG(INFO, "Real Power added\n");
     }
 
     for (auto v:real_power_phy_list)
@@ -147,19 +155,10 @@ list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::
         {
           PTOC50_Thres_list.push_back(stod(el.value()["Threshold"].get<string>()));
         }
-        PTOC50 *ptoc50 = new PTOC50(PTOC_phy_list,PTOC50_Thres_list,CB_list);
+        PTOC50 *ptoc50 = new PTOC50(PTOC_phy_list, PTOC50_Thres_list, CB_list);
         logicList.push_back(ptoc50);
-        //logicList.push_back(new PTOC50());
-    	LOG(INFO, "PTOC50 added\n");
+        LOG(INFO, "PTOC50 added\n");
     }
-
-    /*if (jf_t.contains("PTOC51"))
-    {
-        for (auto& el : jf_t["PTOC51"].items())
-        {
-            PTOC51_currentNom_list.push_back(stod(el.value()["CurrentNominal"].get<string>()));
-        }
-    }*/
 
     if (jf_t.contains("PTOV59"))
     {
@@ -185,7 +184,7 @@ list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::
                 PTOV59_trip_period_list.push_back(stod(inner_el.value().get<string>()));
             }
         }
-        PTOV59 *ptov59 = new PTOV59(PTV_phy_list,PTOV59_alarm_limit_list,PTOV59_alarm_period_list,PTOV59_trip_limit_list,PTOV59_trip_period_list,PTOV59_alarm_store_time, PTOV59_trip_store_time);
+        PTOV59 *ptov59 = new PTOV59(PTV_phy_list,PTOV59_alarm_limit_list,PTOV59_alarm_period_list,PTOV59_alarm_store_time,PTOV59_trip_limit_list,PTOV59_trip_period_list, PTOV59_trip_store_time,CB_list);
         logicList.push_back(ptov59);
         LOG(INFO, "PTOV59 added\n");
     }
@@ -214,7 +213,7 @@ list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::
                 PTUV27_trip_period_list.push_back(stod(inner_el.value().get<string>()));
             }
         }
-        PTUV27 *ptuv27 = new PTUV27(PTV_phy_list,PTUV27_alarm_limit_list,PTUV27_alarm_period_list,PTUV27_trip_limit_list,PTUV27_trip_period_list,PTUV27_alarm_store_time, PTUV27_trip_store_time);
+        PTUV27 *ptuv27 = new PTUV27(PTV_phy_list,PTUV27_alarm_limit_list,PTUV27_alarm_period_list,PTUV27_trip_limit_list,PTUV27_trip_period_list,PTUV27_alarm_store_time, PTUV27_trip_store_time,CB_list);
         logicList.push_back(ptuv27);
         LOG(INFO, "PTUV27 added\n");
     }
@@ -225,7 +224,7 @@ list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::
         {
             PTTR_limit_list.push_back(stod(el.value()["Limit"].get<string>()));
         }
-        PTTR *pttr = new PTTR(PTTR_phy_list,PTTR_limit_list,CB_list);
+        PTTR *pttr = new PTTR(PTTR_phy_list,CB_list,PTTR_limit_list);
         logicList.push_back(pttr);
         LOG(INFO, "PTTR added\n");
     }
@@ -236,22 +235,22 @@ list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::
         {
             PresSV_limit_list.push_back(stod(el.value()["Limit"].get<string>()));
         }
-        PresSV *pressv = new PresSV(PresSV_phy_list,PresSV_limit_list,CB_list);
+        PresSV *pressv = new PresSV(PresSV_phy_list,CB_list,PresSV_limit_list);
         logicList.push_back(pressv);
         LOG(INFO, "PresSV added\n");
     }
     return logicList;
 }
 
-list<CommModule*> Parser::parse_comm_config() {
-    list<CommModule*> commList;
+// list<CommModule*> Parser::parse_comm_config() {
+//     list<CommModule*> commList;
 
-    commList.push_back(new MMSModule());
-    LOG(INFO, "MMS added\n"); 
-    commList.push_back(new R_GOOSEModule());
-    LOG(INFO, "R_GOOSE added\n"); 
-    commList.push_back(new R_SVModule());
-    LOG(INFO, "R_SV added\n"); 
+//     commList.push_back(new MMSModule());
+//     LOG(INFO, "MMS added\n"); 
+//     commList.push_back(new R_GOOSEModule());
+//     LOG(INFO, "R_GOOSE added\n"); 
+//     commList.push_back(new R_SVModule());
+//     LOG(INFO, "R_SV added\n"); 
 
-    return commList;
-}
+//     return commList;
+//}

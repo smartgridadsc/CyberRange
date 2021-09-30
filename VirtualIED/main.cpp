@@ -6,8 +6,8 @@
 #include "DatabaseConn.h"
 #include "Parser.h"
 #include "Utils.h"
-#include "LogicFunction.h"
-#include "CommModule.h"
+#include "ProtectionLogics/LogicFunction.h"
+#include "CommModules/CommModule.h"
 
 #define BINARY_NAME "./VIRTUAL_IED"
 
@@ -24,9 +24,9 @@ static void startThread_LogicFunction(LogicFunction &logic) {
     logic.start();
 }
 
-static void startThread_CommModule(CommModule &comm) {
+/*static void startThread_CommModule(CommModule &comm) {
     comm.start();
-}
+} */
 
 // prints general usage help 
 static void print_usage() {
@@ -56,17 +56,18 @@ int main(int argc, char ** argv) {
     }
 
     //initialize database connection
-    DatabaseConn db_conn(string(argv[1]));
+    DatabaseConn db_conn(argv[1]);
 
     list<LogicFunction*> logicList = Parser::parse_config(string(argv[2]), string(argv[3]));
-    list<CommModule*> commList = Parser::parse_comm_config();
+    //list<CommModule*> commList = Parser::parse_comm_config();
 
     for (LogicFunction *logic : logicList) {
         //pass db_conn
+        logic->set_db_conn(&db_conn);
     }
-    for (CommModule *comm : commList) {
+    /*for (CommModule *comm : commList) {
         //pass db_conn
-    } 
+    } */
 
     list<thread> threads;
 
@@ -74,9 +75,9 @@ int main(int argc, char ** argv) {
     for (LogicFunction *logic : logicList) {
         threads.push_back(thread(startThread_LogicFunction, ref(*logic)));
     }
-    for (CommModule *comm : commList) {
+    /*for (CommModule *comm : commList) {
         threads.push_back(thread(startThread_CommModule, ref(*comm)));
-    } 
+    } */
 
     signal(SIGINT, sigint_handler);
 

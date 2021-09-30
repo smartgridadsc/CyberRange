@@ -1,14 +1,16 @@
-#ifndef DATABASE_CONN_H
-#define DATABASE_CONN_H
+#ifndef DatabaseConn_H
+#define DatabaseConn_H
 
 #include <string>
+#include <mysql++.h>
+
 
 class DatabaseConn {
 public:
-    DatabaseConn(std::string config_filename); //args: user pasword databasename host portnum
+    DatabaseConn(std::string config_filename);
     bool connect();
 
-    Mysqlpp::Connection db_conn;
+    mysqlpp::Connection conn;
 
 private:
     std::string username;
@@ -18,4 +20,4 @@ private:
     std::string port_num;
 };
 
-#endif //DATABASE_CONN_H
+#endif
