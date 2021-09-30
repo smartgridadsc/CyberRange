@@ -3,17 +3,21 @@
 
 #include <string>
 
-#include "../DatabaseConn.h"
+#include "DatabaseConn.h"
+#include "Lists.h"
 
 extern bool ied_running;
 
 class LogicFunction {
 public:
+    LogicFunction() {
+        db_conn = NULL;
+    }
     virtual void start() = 0;
     void set_db_conn(DatabaseConn *_db_conn) {
         db_conn = _db_conn;
     }
-private:
+protected:
     DatabaseConn *db_conn;
 };
 
