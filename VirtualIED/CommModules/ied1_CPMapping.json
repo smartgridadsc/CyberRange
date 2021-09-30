@@ -1,0 +1,89 @@
+{
+    "CPMapping": [
+        {
+            "Physical": "line_cb.line_cb_0_1.value",
+            "Cyber": "IED1.XCBR1.Pos.stVal"
+        },
+        {
+            "Physical": "line_cb.line_cb_0_2.value",
+            "Cyber": "IED1.XCBR2.Pos.stVal"
+        },
+        {
+            "Physical": "load_current.load_0_phsA_1.value",
+            "Cyber": "IED1.MMXU1.A.phsA.cVal"
+        },
+        {
+            "Physical": "load_current.load_0_phsB_1.value",
+            "Cyber": "IED1.MMXU1.A.phsB.cVal"
+        },
+        {
+            "Physical": "load_current.load_0_phsC_1.value",
+            "Cyber": "IED1.MMXU1.A.phsC.cVal"
+        },
+        {
+            "Physical": "load_current.load_0_phsA_2.value",
+            "Cyber": "IED1.MMXU2.A.phsA.cVal"
+        },
+        {
+            "Physical": "load_current.load_0_phsB_2.value",
+            "Cyber": "IED1.MMXU2.A.phsB.cVal"
+        },
+        {
+            "Physical": "load_current.load_0_phsC_2.value",
+            "Cyber": "IED1.MMXU2.A.phsC.cVal"
+        },
+	{
+            "Physical": "load_voltage.load_0_phsA_1.value",
+            "Cyber": "IED1.MMXU1.PhV.phsA.cVal"
+        },
+        {
+            "Physical": "load_voltage.load_0_phsB_1.value",
+            "Cyber": "IED1.MMXU1.PhV.phsB.cVal"
+        },
+        {
+            "Physical": "load_voltage.load_0_phsC_1.value",
+            "Cyber": "IED1.MMXU1.PhV.phsC.cVal"
+        },
+{
+            "Physical": "load_voltage.load_0_phsA_2.value",
+            "Cyber": "IED1.MMXU2.PhV.phsA.cVal"
+        },
+        {
+            "Physical": "load_voltage.load_0_phsB_2.value",
+            "Cyber": "IED1.MMXU2.PhV.phsB.cVal"
+        },
+        {
+            "Physical": "load_voltage.load_0_phsC_2.value",
+            "Cyber": "IED1.MMXU2.PhV.phsC.cVal"
+        },
+        {
+            "Physical": "load_real_power.load_0_real_power.value",
+            "Cyber": "IED1.MMXU.TotW.mag"
+        },
+        {
+            "Physical": "load_reactive_power.load_0_reactive_power.value",
+            "Cyber": "IED1.MMXU.TotVA.mag"
+        },
+        {
+            "Physical": "Load1.Power.apparent",
+            "Cyber": "IED1.MMXU.TotVAr.mag"
+        },
+        {
+            "Physical": "transformer_temp.transformer_temp_0_1.value",
+            "Cyber": "IED1.STMP1.Tmp.mag.i"
+        },
+        {
+            "Physical": "transformer_temp.transformer_temp_0_2.value",
+            "Cyber": "IED1.STMP2.Tmp.mag.i"
+        },
+	{
+            "Physical": "transformer_pressure.transformer_pressure_0_1.value",
+            "Cyber": "IED1.TPRS1.PresSv.instMag.i"
+        },
+	{
+            "Physical": "transformer_pressure.transformer_pressure_0_2.value",
+            "Cyber": "IED1.TPRS2.PresSv.instMag.i"
+        }
+
+    ]
+}

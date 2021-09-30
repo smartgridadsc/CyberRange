@@ -1,0 +1,101 @@
+{
+    "@name": "ied1",
+    "PTOC50": [
+        {
+            "@instance": "1",
+            "Threshold": "50"
+        },
+        {
+            "@instance": "2",
+            "Threshold": "100"
+        }
+    ],
+    "PTOC51": [
+        {
+            "@instance": "1",
+            "CurrentNominal": "100"
+        },
+        {
+            "@instance": "2",
+            "CurrentNominal": "88"
+        }
+    ],
+    "PTOV59": [
+        {
+            "@instance": "1",
+            "AlarmThreshold": {
+                "Limit_p.u.": "1.1",
+                "Period_s": "10"
+            },
+            "TripThreshold": {
+                "Limit_p.u.": "1.2",
+                "Period_s": "2"
+            }
+        },
+        {
+            "@instance": "2",
+            "AlarmThreshold": {
+                "Limit_p.u.": "1.1",
+                "Period_s": "10"
+            },
+            "TripThreshold": {
+                "Limit_p.u.": "1.2",
+                "Period_s": "2"
+            }
+        }
+    ],
+    "PTUV27": [
+        {
+            "@instance": "1",
+            "AlarmThreshold": {
+                "Limit_p.u.": "0.8",
+                "Period_s": "10"
+            },
+            "TripThreshold": {
+                "Limit_p.u.": "0.7",
+                "Period_s": "2"
+            }
+        },
+        {
+            "@instance": "2",
+            "AlarmThreshold": {
+                "Limit_p.u.": "0.8",
+                "Period_s": "10"
+            },
+            "TripThreshold": {
+                "Limit_p.u.": "0.7",
+                "Period_s": "2"
+            }
+        }
+    ],
+    "PDOP32": [
+        {
+            "@instance": "1",
+            "Threshold_p.u.": "0.1"
+        },
+        {
+            "@instance": "2",
+            "Threshold_p.u.": "0.2"
+        }
+    ],
+    "PTTR": [
+        {
+            "@instance": "1",
+	    "Limit": "50"
+        },
+        {
+            "@instance": "2",
+	    "Limit": "50"
+        }
+    ],
+    "PresSV": [
+        {
+            "@instance": "1",
+	    "Limit": "50"
+        },
+        {
+            "@instance": "2",
+	    "Limit": "50"
+        }
+    ]
+}
