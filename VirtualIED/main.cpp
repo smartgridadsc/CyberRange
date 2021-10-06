@@ -56,14 +56,13 @@ int main(int argc, char ** argv) {
     }
 
     //initialize database connection
-    DatabaseConn db_conn(argv[1]);
 
     list<LogicFunction*> logicList = Parser::parse_config(string(argv[2]), string(argv[3]));
     //list<CommModule*> commList = Parser::parse_comm_config();
 
     for (LogicFunction *logic : logicList) {
         //pass db_conn
-        logic->set_db_conn(&db_conn);
+        logic->set_db_conn(string(argv[1]));
     }
     /*for (CommModule *comm : commList) {
         //pass db_conn

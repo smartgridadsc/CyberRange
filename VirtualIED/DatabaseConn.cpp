@@ -24,6 +24,8 @@ DatabaseConn::DatabaseConn(string config_filename) {
     db_name = db_file[7];
     hostname = db_file[10];
     port_num = db_file[13];
+
+     connect();
 }
 
 bool DatabaseConn::connect() {

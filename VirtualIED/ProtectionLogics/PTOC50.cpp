@@ -23,6 +23,7 @@ void PTOC50::start() {
 
             for (auto cb_val : cb_list)
             {
+
                 vector<string> strings;
                 istringstream f(cb_val);
                 string s;
@@ -53,7 +54,7 @@ void PTOC50::start() {
                     bool cb_open = false;
 
                     do
-                    {                        
+                    {
                         if(atoi(row[cb_count]) == 0)
                         {
                             cb_open = true;
@@ -113,7 +114,7 @@ void PTOC50::start() {
                                                 string column_name_in = inner_strings[1];
                                                 string cb_value_in = inner_strings[2];
 
-                                                mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");
+                                                mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");                                                
                                                 mysqlpp::UseQueryResult res = update_query.use();
                                             }
                                             cb_open = true;
@@ -127,9 +128,9 @@ void PTOC50::start() {
                             thres_val++;
                         }
                     } while (cb_open); 
-                }        
+                }       
                 cb_count++;
-            } 
-       	}
+            }
+    	}
     printf("PTOC50: stop\n");
 }

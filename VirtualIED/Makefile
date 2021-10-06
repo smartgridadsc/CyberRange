@@ -49,8 +49,8 @@ ALL_OBJS := $(wildcard $(BUILD_DIR)/*.o)
 $(EXE): $(ALL_OBJS)
 	@echo "Building final executable $@"
 	@echo "Flags contains $(FLAGS)"
-	@echo "CXX is $(CXX)"
-	@$(CXX) -o $@ $(FLAGS) $(ALL_OBJS) $(LIBIEC)
+	
+	@$(CXX) -o $@ $(ALL_OBJS) $(FLAGS) $(LIBIEC)
 	@echo ""
 	@echo "Build Complete!"
 

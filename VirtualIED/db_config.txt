@@ -1,5 +1,5 @@
-USERNAME admin
-PASSWORD sss
-DB_NAME asd
-HOSTNAME localhost
-PORTNUM 3360
+username = "admin"
+password = "Admin123#"
+database = "pandapower_db"
+hostIP = "localhost"
+port = "3306"

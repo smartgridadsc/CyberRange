@@ -25,14 +25,12 @@ using namespace std;
 list<LogicFunction *> Parser::parse_config(std::string cpmapping_filename, std::string thresholds_filename) {
 list<LogicFunction *> logicList;
 
-
 std::ifstream ifs_cp(cpmapping_filename);
 json jf_cp = json::parse(ifs_cp);
 
 for (auto& el:jf_cp["CPMapping"].items())
     {
         string temp_cyber = el.value()["Cyber"];
-
         if (temp_cyber.find(PTOC_Cyber) != std::string::npos)
         {
             PTOC_cyber_list.push_back(temp_cyber);
@@ -57,7 +55,7 @@ for (auto& el:jf_cp["CPMapping"].items())
         {
             reactive_power_phy_list.push_back(el.value()["Physical"]);
         }
-        
+
         else if (temp_cyber.find(PTTR_Cyber) != std::string::npos)
         {
                 PTTR_cyber_list.push_back(temp_cyber);
@@ -67,13 +65,7 @@ for (auto& el:jf_cp["CPMapping"].items())
         {
                 PresSV_cyber_list.push_back(temp_cyber);
         }
-
-            Power_meas *power_meas = new Power_meas(real_power_phy_list,reactive_power_phy_list);
-            logicList.push_back(power_meas);
-            LOG(INFO, "Real Power added\n");
     }
-
-    for (auto v:real_power_phy_list)
 
     PTOC_cyber_list.sort();
     PTV_cyber_list.sort();
@@ -136,8 +128,8 @@ for (auto& el:jf_cp["CPMapping"].items())
         }
     }
 
-    vector<long long> PTOC51_store_time, PTOV59_alarm_store_time, PTOV59_trip_store_time, PTUV27_alarm_store_time, PTUV27_trip_store_time;
-    for (int i = 0; i < PTOC_phy_list.size();i++)
+    vector<long long> PTOC51_store_time, PTOV59_alarm_store_time, PTOV59_trip_store_time, PTUV27_alarm_store_time, PTUV27_trip_store_time; 
+    for (int i = 0; i < PTV_phy_list.size();i++)
     {
         PTOC51_store_time.push_back(0);
         PTOV59_alarm_store_time.push_back(0);
@@ -145,6 +137,7 @@ for (auto& el:jf_cp["CPMapping"].items())
         PTUV27_alarm_store_time.push_back(0);
         PTUV27_trip_store_time.push_back(0);
     }
+    cout << "size of store time: " << PTOV59_trip_store_time.size() << endl;
 
     std::ifstream ifs_t(thresholds_filename);
     json jf_t = json::parse(ifs_t);
@@ -155,9 +148,6 @@ for (auto& el:jf_cp["CPMapping"].items())
         {
           PTOC50_Thres_list.push_back(stod(el.value()["Threshold"].get<string>()));
         }
-        PTOC50 *ptoc50 = new PTOC50(PTOC_phy_list, PTOC50_Thres_list, CB_list);
-        logicList.push_back(ptoc50);
-        LOG(INFO, "PTOC50 added\n");
     }
 
     if (jf_t.contains("PTOV59"))
@@ -166,7 +156,7 @@ for (auto& el:jf_cp["CPMapping"].items())
         {
             for(auto& inner_el : el.value()["AlarmThreshold"]["Limit_p.u."].items()) 
             {
-                PTOV59_alarm_limit_list.push_back(stod(inner_el.value().get<string>()));
+                PTOV59_alarm_limit_list.push_back(stod(inner_el.value().get<string>())); 
             }
 
             for(auto& inner_el : el.value()["AlarmThreshold"]["Period_s"].items())
@@ -184,9 +174,6 @@ for (auto& el:jf_cp["CPMapping"].items())
                 PTOV59_trip_period_list.push_back(stod(inner_el.value().get<string>()));
             }
         }
-        PTOV59 *ptov59 = new PTOV59(PTV_phy_list,PTOV59_alarm_limit_list,PTOV59_alarm_period_list,PTOV59_alarm_store_time,PTOV59_trip_limit_list,PTOV59_trip_period_list, PTOV59_trip_store_time,CB_list);
-        logicList.push_back(ptov59);
-        LOG(INFO, "PTOV59 added\n");
     }
 
     if (jf_t.contains("PTUV27"))
@@ -213,9 +200,6 @@ for (auto& el:jf_cp["CPMapping"].items())
                 PTUV27_trip_period_list.push_back(stod(inner_el.value().get<string>()));
             }
         }
-        PTUV27 *ptuv27 = new PTUV27(PTV_phy_list,PTUV27_alarm_limit_list,PTUV27_alarm_period_list,PTUV27_trip_limit_list,PTUV27_trip_period_list,PTUV27_alarm_store_time, PTUV27_trip_store_time,CB_list);
-        logicList.push_back(ptuv27);
-        LOG(INFO, "PTUV27 added\n");
     }
 
     if (jf_t.contains("PTTR"))
@@ -224,9 +208,6 @@ for (auto& el:jf_cp["CPMapping"].items())
         {
             PTTR_limit_list.push_back(stod(el.value()["Limit"].get<string>()));
         }
-        PTTR *pttr = new PTTR(PTTR_phy_list,CB_list,PTTR_limit_list);
-        logicList.push_back(pttr);
-        LOG(INFO, "PTTR added\n");
     }
 
     if (jf_t.contains("PresSV"))
@@ -235,22 +216,65 @@ for (auto& el:jf_cp["CPMapping"].items())
         {
             PresSV_limit_list.push_back(stod(el.value()["Limit"].get<string>()));
         }
+    }
+
+    if (!PTOC50_Thres_list.empty())
+    {
+        PTOC50 *ptoc50 = new PTOC50(PTOC_phy_list, PTOC50_Thres_list, CB_list);
+        logicList.push_back(ptoc50);
+        LOG(INFO, "PTOC50 added\n");
+    }
+
+    if (!PTOV59_alarm_limit_list.empty())
+    {
+        PTOV59 *ptov59 = new PTOV59(PTV_phy_list,PTOV59_alarm_limit_list,PTOV59_alarm_period_list,PTOV59_alarm_store_time,PTOV59_trip_limit_list,PTOV59_trip_period_list, PTOV59_trip_store_time,CB_list);
+        logicList.push_back(ptov59);
+        LOG(INFO, "PTOV59 added\n");
+    }
+
+    if (!PTUV27_alarm_limit_list.empty())
+    {
+        PTUV27 *ptuv27 = new PTUV27(PTV_phy_list,PTUV27_alarm_limit_list,PTUV27_alarm_period_list,PTUV27_trip_limit_list,PTUV27_trip_period_list,PTUV27_alarm_store_time, PTUV27_trip_store_time,CB_list);
+        logicList.push_back(ptuv27);
+        LOG(INFO, "PTUV27 added\n");
+    }
+
+    if(!PTTR_limit_list.empty())
+    {
+        PTTR *pttr = new PTTR(PTTR_phy_list,CB_list,PTTR_limit_list);
+        logicList.push_back(pttr);
+        LOG(INFO, "PTTR added\n");
+    }
+    
+    if(!PresSV_limit_list.empty())
+    {
         PresSV *pressv = new PresSV(PresSV_phy_list,CB_list,PresSV_limit_list);
         logicList.push_back(pressv);
         LOG(INFO, "PresSV added\n");
     }
+
+    if (!real_power_phy_list.empty())
+    {
+        Power_meas *power_meas = new Power_meas(real_power_phy_list,reactive_power_phy_list);
+        logicList.push_back(power_meas);
+        LOG(INFO, "Power added\n");
+    }
+
+
+
+
     return logicList;
 }
 
-// list<CommModule*> Parser::parse_comm_config() {
-//     list<CommModule*> commList;
+list<CommModule*> Parser::parse_comm_config() {
+     list<CommModule*> commList;
 
-//     commList.push_back(new MMSModule());
-//     LOG(INFO, "MMS added\n"); 
-//     commList.push_back(new R_GOOSEModule());
-//     LOG(INFO, "R_GOOSE added\n"); 
-//     commList.push_back(new R_SVModule());
-//     LOG(INFO, "R_SV added\n"); 
+     commList.push_back(new MMSModule());
+     LOG(INFO, "MMS added\n"); 
+     commList.push_back(new R_GOOSEModule());
+     LOG(INFO, "R_GOOSE added\n"); 
+     commList.push_back(new R_SVModule());
+     LOG(INFO, "R_SV added\n"); 
 
-//     return commList;
-//}
+     return commList;
+}

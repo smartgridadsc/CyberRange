@@ -14,8 +14,8 @@ public:
         db_conn = NULL;
     }
     virtual void start() = 0;
-    void set_db_conn(DatabaseConn *_db_conn) {
-        db_conn = _db_conn;
+    void set_db_conn(std::string _db_configs) {
+        db_conn = new DatabaseConn(_db_configs);
     }
 protected:
     DatabaseConn *db_conn;

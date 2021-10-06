@@ -51,13 +51,12 @@ void PTTR::start()
 	            cout << "Error message: " << cb_query.error() << endl;
 	        }
 	        else
-	        {
+	        {	
 	            do
 	            {
 	                if(atoi(row[0]) == 0)
 	                {
 	                    cb_open = true;
-	                    cout << column_name << " is open" << endl;
 	                    return;
 	                }
 	                else

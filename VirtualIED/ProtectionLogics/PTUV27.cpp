@@ -116,6 +116,7 @@ void PTUV27::start()
 	                                {
 	                                    auto time_start = system_clock::now();
 	                                    auto time_s = time_start.time_since_epoch();
+	
 	                                    if (trip_store_time[loop_count] == 0)
 	                                    {
 	                                        trip_store_time[loop_count] = time_s.count();
@@ -139,8 +140,12 @@ void PTUV27::start()
 	                                            string column_name = strings[1];
 	                                            string cb_value = strings[2];
 	
+	                                            cout << phy_column_name << "'s voltage is lower than the threshold value of " << *trip_limit_val << endl;
+	                                            cout << "opening circuit breaker: " << column_name << endl;
+	
 	                                            mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'");
 	                                            mysqlpp::UseQueryResult res = update_cb.use();
+	                                            cout << "circuit breaker " << column_name << " opened" << endl;      
 	                                        }
 	                                        cb_open = true;
 	                                        return;
@@ -162,10 +167,11 @@ void PTUV27::start()
 	                                        if (time_s.count() - alarm_store_time[loop_count] >= ((*alarm_period_val)*pow(10,9)))
 	                                        {
 	                                            cout << "Over limit violation" << endl;
-\	                                        }
+	                                        }
 	                                    
 	                                    }
 	                                }    
+	
 	                                else if (atof(row[0]) >= *alarm_limit_val)
 	                                {
 	                                    alarm_store_time[loop_count] = 0;

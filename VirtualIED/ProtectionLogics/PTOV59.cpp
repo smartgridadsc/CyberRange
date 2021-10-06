@@ -39,7 +39,7 @@ void PTOV59::start()
 	    auto trip_period_val = std::begin(trip_period_list);
 	
 	    int loop_count = 0;
-	
+		
 	    for (auto cb_val : cb_list)
 	    {
 	        vector<string> strings;
@@ -70,9 +70,8 @@ void PTOV59::start()
 	        else
 	        {
 	            bool cb_open = false;
-	
 	            do
-	            {	
+	            {
 	                if(atoi(row[0]) == 0)
 	                {
 	                    cb_open = true;
@@ -101,7 +100,8 @@ void PTOV59::start()
 	
 	                        int phy_count = 0;
 	                        mysqlpp::Query phy_query = db_conn->conn.query("SELECT " + phy_value + " FROM " + phy_table_name + " WHERE name = '" + phy_column_name + "'");
-	                        mysqlpp::StoreQueryResult res = phy_query.store();
+	                        cout << "PTOV59 line 113" << endl;
+							mysqlpp::StoreQueryResult res = phy_query.store();
 	                        row = res[phy_count];
 	
 	                        if(!res)
@@ -112,8 +112,8 @@ void PTOV59::start()
 	
 	                        else
 	                        {
-	                            do
-	                            {
+	                            // do
+	                            // {
 	                                if(atof(row[0]) > *trip_limit_val)
 	                                {
 	                                    auto time_start = system_clock::now();
@@ -130,20 +130,24 @@ void PTOV59::start()
 	                                            mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'");
 	                                            mysqlpp::UseQueryResult res = update_cb.use();
 	                                            cb_open = true;
+	
 	                                            return;
 	                                        }
 	                                    }
 	                                }
 	                                else if(atof(row[0]) >= *alarm_limit_val && atof(row[0]) < *trip_limit_val)
 	                                {
-	                                    trip_store_time[loop_count] = 0;
-	
+										cout << "line 162 : " << loop_count  << endl;
+										cout << "array size" << trip_store_time.size() << endl;
+	                                    //trip_store_time[loop_count] = 0; // debug
+										cout << "line 164" << endl;
 	                                    auto time_start = system_clock::now();
-	                                    auto time_s = time_start.time_since_epoch();
-	
+	                                    cout << "line 166" << endl;
+										auto time_s = time_start.time_since_epoch();
+										cout << "line 168" << endl;
 	                                    if (alarm_store_time[loop_count] == 0)
 	                                    {
-	                                        alarm_store_time[loop_count] = time_s.count();
+	                                        //alarm_store_time[loop_count] = time_s.count(); //debug
 	                                    }
 	                                    else
 	                                    {
@@ -158,18 +162,18 @@ void PTOV59::start()
 	                                {
 	                                    alarm_store_time[loop_count] = 0;
 	                                }
-	                            } while (cb_open);
-	                        }
+	                            // } while (cb_open);
+	                        } 
 	                        loop_count ++;
 	                        phy_val++;
 	                        phy_count++;
-	                    }
+	                    } 
 	                    alarm_limit_val++;
 	                    alarm_period_val++;
 	                    trip_limit_val++;
 	                    trip_period_val++;
 	                } 
-	            } while (cb_open); 
+	            } while (cb_open);
 	        }
 	        cb_count++;
 	    } 

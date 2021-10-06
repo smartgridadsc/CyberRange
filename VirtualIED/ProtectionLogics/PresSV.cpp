@@ -49,7 +49,9 @@ void PresSV::start()
 	            cout << "Error message: " << cb_query.error() << endl;
 	        }
 	        else
-	        {	
+	        {
+	            cout << "The CB query executed successfully with no error." << endl;
+	
 	            do
 	            {
 	                if(atoi(row[0]) == 0)
@@ -85,11 +87,11 @@ void PresSV::start()
 	                    }
 	
 	                    else
-	                    {	
+	                    {
 	                        do
-	                        {	                            
+	                        {
 	                            if(atof(row[0]) > *limit_val)
-	                            {	
+	                            {
 	                                for (auto cb_val : CB_list)
 	                                {
 	                                    vector<string> inner_strings;
@@ -113,7 +115,6 @@ void PresSV::start()
 	                                cb_open = true;
 	                                return;
 	                            }
-
 	                        } while (cb_open);
 	                    }
 	                    phy_val++;
