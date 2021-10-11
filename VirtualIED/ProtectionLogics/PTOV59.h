@@ -12,7 +12,6 @@
 class PTOV59 : public LogicFunction {
 public:
 
-	//& is to reference to the list instead of copying the whole list
     PTOV59(std::list<std::string> &PTV_Phy_list, 
             std::list<double> &PTOV59_alarm_limit_list,
 			std::list<double> &PTOV59_alarm_period_list,

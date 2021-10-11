@@ -1,15 +1,54 @@
 #ifndef R_SV_H
 #define R_SV_H
 
-#include "CommModule.h"
+#include <vector>
+#include <string>
 
+//socket
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+
+#include "CommModule.h"
+#include "iec61850_model.h"
+
+struct SVCtlBlk_t {
+    /* For SV PDU */
+    std::string svcb_ref;
+    std::string dataSet_name;
+    std::string app_ID;
+
+    std::vector<DataAttribute*> da_refs;
+    std::vector<bool> da_view;
+
+    int sock_d;
+    sockaddr_in group_sock;
+    std::string multicast_ip; //for debug only
+
+    unsigned int spduNum {0};
+    unsigned int smpCnt {0};
+}; 
+
+//Only sends R-SV. For receiving, refer to UDPReceiver
 class R_SVModule : public CommModule {
 public:
-    R_SVModule();
+    R_SVModule() = delete;
+    R_SVModule(std::vector<std::string> &svcb_refs,
+                std::vector<std::string> &dataSet_names,
+                std::vector<std::string> &app_IDs,
+                std::vector<std::vector<std::string>> &data_attrs,
+                std::vector<std::string> &multicast_ips,
+                std::string &local_ip);
     void start();
+
 private:
-    static void main_loop();
+    std::vector<SVCtlBlk_t> ctl_blks;
+
+    void send_rsv_packet(unsigned int ctl_blk_idx);
+    static void form_rsv_pdu(SVCtlBlk_t &gse_blk, std::vector<unsigned char> &pduOut);    
 };
 
 
-#endif // R_SV_H
+#endif //R_SV_H

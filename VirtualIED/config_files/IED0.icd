@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SCL xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iec.ch/61850/2003/SCL">
+    <Header id="IEDServer00" nameStructure="IEDName" />
+    <!--Test file by WenShei-->
+    <Communication>
+        <SubNetwork name="node">
+            <ConnectedAP iedName="IED0" apName="W1">
+                <Address>
+                    <P type="IP">192.168.170.140</P>
+                    <P type="IP-SUBNET">255.255.255.0</P>
+                    <P type="IP-GATEWAY">192.168.170.2</P>
+                </Address>
+                <GSE ldInst="LD1" cbName="CBStatusIED0_GOOSE">
+                    <Address>
+                        <P type="IP">238.0.1.1</P>
+                        <P type="APPID">0001</P>
+                        <P type="VLAN-ID">0</P>
+                        <P type="VLAN-PRIORITY">4</P>
+                    </Address>
+                    <MinTime multiplier="m" unit="s">1000</MinTime>
+                    <MaxTime multiplier="m" unit="s">60000</MaxTime>
+                </GSE>
+                <SMV cbName="MeasurementsIED0_SV" desc="MeasurementsIED0_SV" ldInst="LD1">
+                    <Address>
+                        <P type="IP">238.0.2.1</P>
+                        <P type="APPID">0010</P>
+                        <P type="VLAN-ID">0</P>
+                        <P type="VLAN-PRIORITY">4</P>
+                    </Address>
+                </SMV>
+            </ConnectedAP>
+        </SubNetwork>
+    </Communication>
+    <IED name="IED0" type="Telecontrol application" manufacturer="NOONE" configVersion="1.0">
+        <Services>
+            <DynAssociation />
+            <SettingGroups />
+            <GetDirectory />
+            <GetDataObjectDefinition />
+            <GetDataSetValue />
+            <SetDataSetValue />
+            <DataSetDirectory />
+            <ConfDataSet max="2" />
+            <DynDataSet max="2" maxAttributes="50" />
+            <ReadWrite />
+            <TimerActivatedControl />
+            <ConfReportControl max="14" />
+            <GetCBValues />
+            <ReportSettings cbName="Conf" datSet="Conf" rptID="Conf" optFields="Conf" bufTime="Conf" trgOps="Conf" intgPd="Conf" />
+            <ConfLNs fixPrefix="true" fixLnInst="true" />
+            <GOOSE max="0" />
+        </Services>
+        <AccessPoint name="W1" desc="">
+            <Server>
+                <Authentication none="true" />
+                <LDevice inst="LD1" desc="">
+                    <LN0 desc="" lnType="LLN0_0" lnClass="LLN0" inst="">
+                        <DataSet name="MeasurementsIED0">
+                            <FCDA ldInst="LD1" lnInst="1" lnClass="MMXU" doName="A" daName="phsA.cVal" fc="MX" />
+                            <FCDA ldInst="LD1" lnInst="1" lnClass="MMXU" doName="A" daName="phsB.cVal" fc="MX" />
+                            <FCDA ldInst="LD1" lnInst="1" lnClass="MMXU" doName="A" daName="phsC.cVal" fc="MX" />
+                            <FCDA ldInst="LD1" lnInst="1" lnClass="MMXU" doName="PhV" daName="phsA.cVal" fc="MX" />
+                            <FCDA ldInst="LD1" lnInst="1" lnClass="MMXU" doName="PhV" daName="phsB.cVal" fc="MX" />
+                            <FCDA ldInst="LD1" lnInst="1" lnClass="MMXU" doName="PhV" daName="phsC.cVal" fc="MX" />
+                        </DataSet>
+                        <DataSet name="CBStatusIED0">
+                            <FCDA ldInst="LD1" prefix="" lnClass="GGIO" lnInst="1" doName="SPC1" daName="stVal" fc="ST" />
+                        </DataSet>
+                        <GSEControl Name="CBStatusIED0_GOOSE" desc="CBStatusIED0_GOOSE" type="GOOSE" fixedOffs="false" confRev="0" appID="0001" datSet="CBStatusIED0" />
+                        <SampledValuesControl Name="MeasurementsIED0_SV" desc="MeasurementsIED0_SV" datSet="MeasurementsIED0" appID= "0010"/>
+                        <ReportControl name="MeasurementsIED0_MMS" desc="" datSet="MeasurementsIED0" intgPd="1000" rptID="Measurements" confRev="0" buffered="false" bufTime="50">
+                            <TrgOps dchg="true" qchg="true" dupd="true" period="true" />
+                            <OptFields seqNum="true" timeStamp="true" reasonCode="true" dataSet="true" dataRef="true" entryID="true" configRef="true" />
+                            <RptEnabled max="5" />
+                        </ReportControl>
+                        <ReportControl name="CBStatusIED0_MMS" desc="" datSet="CBStatusIED0" intgPd="1000" rptID="Controls" confRev="0" buffered="false" bufTime="50">
+                            <TrgOps dchg="true" qchg="true" dupd="true" period="true" />
+                            <OptFields seqNum="true" timeStamp="true" reasonCode="true" dataSet="true" dataRef="true" entryID="true" configRef="true" />
+                            <RptEnabled max="5" />
+                        </ReportControl>
+                        <DOI name="Mod">
+                            <DAI name="stVal">
+                                <Val>on</Val>
+                            </DAI>
+                            <DAI name="ctlModel">
+                                <Val>status-only</Val>
+                            </DAI>
+                        </DOI>
+                        <DOI name="Beh">
+                            <DAI name="stVal">
+                                <Val>on</Val>
+                            </DAI>
+                        </DOI>
+                        <DOI name="Health">
+                            <DAI name="stVal">
+                                <Val>ok</Val>
+                            </DAI>
+                        </DOI>
+                    </LN0>
+                    <LN lnClass="MMXU" inst="1" lnType="MMXU_1" />
+                    <LN desc="" lnType="GGIO_3" lnClass="GGIO" inst="1" prefix="">
+                        <DOI name="Mod">
+                            <DAI name="stVal">
+                                <Val>on</Val>
+                            </DAI>
+                            <DAI name="ctlModel">
+                                <Val>direct-with-normal-security</Val>
+                            </DAI>
+                        </DOI>
+                        <DOI name="Beh">
+                            <DAI name="stVal">
+                                <Val>on</Val>
+                            </DAI>
+                        </DOI>
+                        <DOI name="Health">
+                            <DAI name="stVal">
+                                <Val>ok</Val>
+                            </DAI>
+                        </DOI>
+                        <DOI name="SPC1">
+                            <DAI name="stVal">
+                                <Val>true</Val>
+                            </DAI>
+                            <DAI name="ctlModel">
+                                <Val>direct-with-normal-security</Val>
+                            </DAI>
+                        </DOI>
+                    </LN>
+                </LDevice>
+            </Server>
+        </AccessPoint>
+    </IED>
+    <DataTypeTemplates>
+        <LNodeType id="LLN0_0" lnClass="LLN0">
+            <DO name="Mod" type="ENC_1_Mod" />
+            <DO name="Beh" type="ENS_1_Beh" />
+            <DO name="Health" type="ENS_2_Health" />
+            <DO name="NamPlt" type="LPL_1_NamPlt" />
+        </LNodeType>
+        <LNodeType id="MMXU_1" lnClass="MMXU">
+            <DO name="TotW" type="MV_adfe0d1e-f6a5-4834-be5b-ad17d91e6bd3" />
+            <DO name="Beh" type="ENS_0b1f0927-ffee-4de4-9404-51776e19a812" />
+            <DO name="TotVAr" type="MV_e6f5ba0c-a905-47b9-a537-3ec7cd8cf7e6" />
+            <DO name="TotVA" type="MV_659ae9cc-77c1-4bab-8576-08b9f96f7564" />
+            <DO name="PPV" type="DEL_25bf4e19-9f9c-4fbd-bd1d-a584a7caddb7" />
+            <DO name="PhV" type="WYE_076bb75a-fee3-4c7d-a6ef-4e4632a2d9b2" />
+            <DO name="A" type="WYE_907f82c0-7f37-4c52-9bd4-693034451d26" />
+        </LNodeType>
+        <LNodeType id="GGIO_3" lnClass="GGIO">
+            <DO name="Mod" type="ENC_1_Mod" />
+            <DO name="Beh" type="ENS_1_Beh" />
+            <DO name="Health" type="ENS_2_Health" />
+            <DO name="NamPlt" type="LPL_1_NamPlt" />
+            <DO name="SPC1" type="SPC_1" />
+        </LNodeType>
+        <DOType id="MV_adfe0d1e-f6a5-4834-be5b-ad17d91e6bd3" cdc="MV">
+            <DA name="mag" bType="Struct" type="AnalogueValue_98e542ab-ac76-4b85-be7e-aae28fe365e9" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="ENS_0b1f0927-ffee-4de4-9404-51776e19a812" cdc="ENS">
+            <DA name="stVal" bType="Enum" type="Beh" fc="ST" />
+            <DA name="q" bType="Quality" fc="ST" />
+            <DA name="t" bType="Timestamp" fc="ST" />
+        </DOType>
+        <DOType id="MV_e6f5ba0c-a905-47b9-a537-3ec7cd8cf7e6" cdc="MV">
+            <DA name="mag" bType="Struct" type="AnalogueValue_583b1838-7212-4330-944d-e0aa077b1baa" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="MV_659ae9cc-77c1-4bab-8576-08b9f96f7564" cdc="MV">
+            <DA name="mag" bType="Struct" type="AnalogueValue_79d9ce5d-89c1-4e7b-8d85-05cc018b7d0a" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="DEL_25bf4e19-9f9c-4fbd-bd1d-a584a7caddb7" cdc="DEL">
+            <SDO name="phsAB" type="CMV_0e9b2f10-3758-484c-ad9e-1189076196eb" />
+            <SDO name="phsBC" type="CMV_87cfff78-1018-4cd2-837a-07e952686e6a" />
+            <SDO name="phsCA" type="CMV_1770da75-ba91-40b3-95de-d67c20f9af9b" />
+        </DOType>
+        <DOType id="WYE_076bb75a-fee3-4c7d-a6ef-4e4632a2d9b2" cdc="WYE">
+            <SDO name="phsA" type="CMV_c311bea1-72b7-4abf-b6b6-4d8c0c8e4136" />
+            <SDO name="phsB" type="CMV_12b4ea6b-1fd5-49da-a1a8-5d5587420edd" />
+            <SDO name="phsC" type="CMV_34d4232d-3d12-44db-85b9-61a37869fe34" />
+        </DOType>
+        <DOType id="WYE_907f82c0-7f37-4c52-9bd4-693034451d26" cdc="WYE">
+            <SDO name="phsA" type="CMV_486adcba-411b-4747-9b94-c8c2a8cd90cb" />
+            <SDO name="phsB" type="CMV_9d8aa542-782b-400f-bfe6-a0344f8d81e9" />
+            <SDO name="phsC" type="CMV_5afe3684-12e7-4e3b-be7e-7468739c0021" />
+        </DOType>
+        <DOType id="ENC_1_Mod" cdc="ENC">
+            <DA name="stVal" bType="Enum" type="Beh" fc="ST" dchg="true" />
+            <DA name="q" bType="Quality" fc="ST" qchg="true" />
+            <DA name="t" bType="Timestamp" fc="ST" />
+            <DA name="ctlModel" type="CtlModels" bType="Enum" fc="CF" />
+        </DOType>
+        <DOType id="ENS_1_Beh" cdc="ENS">
+            <DA name="stVal" bType="Enum" type="Beh" fc="ST" dchg="true" />
+            <DA name="q" bType="Quality" fc="ST" qchg="true" />
+            <DA name="t" bType="Timestamp" fc="ST" />
+        </DOType>
+        <DOType id="ENS_2_Health" cdc="ENS">
+            <DA name="stVal" bType="Enum" type="HealthKind" fc="ST" dchg="true" />
+            <DA name="q" bType="Quality" fc="ST" qchg="true" />
+            <DA name="t" bType="Timestamp" fc="ST" />
+        </DOType>
+        <DOType id="LPL_1_NamPlt" cdc="LPL">
+            <DA name="vendor" bType="VisString255" fc="DC" />
+            <DA name="swRev" bType="VisString255" fc="DC" />
+            <DA name="d" bType="VisString255" fc="DC" />
+            <DA name="configRev" bType="VisString255" fc="DC" />
+            <DA name="ldNs" bType="VisString255" fc="EX" />
+        </DOType>
+        <DOType id="SPC_1" cdc="SPC">
+            <DA name="stVal" bType="BOOLEAN" fc="ST" dchg="true" />
+            <DA name="q" bType="Quality" fc="ST" qchg="true" />
+            <DA name="Oper" type="SPCOperate_1" bType="Struct" fc="CO"/>
+            <DA name="ctlModel" type="CtlModels" bType="Enum" fc="CF" />
+            <DA name="t" bType="Timestamp" fc="ST" />
+        </DOType>
+        <DOType id="CMV_0e9b2f10-3758-484c-ad9e-1189076196eb" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="CMV_87cfff78-1018-4cd2-837a-07e952686e6a" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="CMV_1770da75-ba91-40b3-95de-d67c20f9af9b" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="CMV_c311bea1-72b7-4abf-b6b6-4d8c0c8e4136" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="CMV_12b4ea6b-1fd5-49da-a1a8-5d5587420edd" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="CMV_34d4232d-3d12-44db-85b9-61a37869fe34" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="CMV_486adcba-411b-4747-9b94-c8c2a8cd90cb" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="CMV_9d8aa542-782b-400f-bfe6-a0344f8d81e9" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DOType id="CMV_5afe3684-12e7-4e3b-be7e-7468739c0021" cdc="CMV">
+            <DA name="cVal" bType="FLOAT32" fc="MX" />
+            <DA name="q" bType="Quality" fc="MX" />
+            <DA name="t" bType="Timestamp" fc="MX" />
+        </DOType>
+        <DAType id="AnalogueValue_98e542ab-ac76-4b85-be7e-aae28fe365e9">
+            <BDA name="f" bType="FLOAT32" />
+        </DAType>
+        <DAType id="AnalogueValue_583b1838-7212-4330-944d-e0aa077b1baa">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="AnalogueValue_79d9ce5d-89c1-4e7b-8d85-05cc018b7d0a">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_663e3e68-b035-4608-993b-213bee28b938">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_a44bfcbd-6aae-40a1-a4eb-c351802e604d" />
+        </DAType>
+        <DAType id="AnalogueValue_a44bfcbd-6aae-40a1-a4eb-c351802e604d">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_5c0bece5-a258-47e5-bf3c-b7b772e89108">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_76e97736-4c43-4cc4-bfd3-302156c54d70" />
+        </DAType>
+        <DAType id="AnalogueValue_76e97736-4c43-4cc4-bfd3-302156c54d70">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_5120e551-34d9-49cb-906a-914bde1c069c">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_0a937d9c-8f18-49ac-9440-5341c03d7692" />
+        </DAType>
+        <DAType id="AnalogueValue_0a937d9c-8f18-49ac-9440-5341c03d7692">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_31a20885-9f08-44ad-8da2-535928ed6586">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_a6b41ffd-e837-4f97-a414-fdbe3f426ce6" />
+        </DAType>
+        <DAType id="AnalogueValue_a6b41ffd-e837-4f97-a414-fdbe3f426ce6">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_a5697b36-028b-4e4d-b5af-c901039a605d">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_ba1bf899-1c96-441a-ba42-2c8629f1cfad" />
+        </DAType>
+        <DAType id="AnalogueValue_ba1bf899-1c96-441a-ba42-2c8629f1cfad">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_50f41bd8-8bab-4195-afef-3e886b5dd026">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_421c790d-b7b0-431e-b5de-a2a2f368e3e8" />
+        </DAType>
+        <DAType id="AnalogueValue_421c790d-b7b0-431e-b5de-a2a2f368e3e8">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_8620a991-2a4c-418d-ae11-25241ada7281">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_95573c65-2abf-47f4-a9e7-5d221997ebfb" />
+        </DAType>
+        <DAType id="AnalogueValue_95573c65-2abf-47f4-a9e7-5d221997ebfb">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_dcddc17a-5052-4c23-9c1f-995492125c6a">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_7419c6e4-bca0-4946-9db8-9c4b709851e8" />
+        </DAType>
+        <DAType id="AnalogueValue_7419c6e4-bca0-4946-9db8-9c4b709851e8">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="Vector_1fa5774e-3b09-4c17-9dc5-e9fd1a8f134c">
+            <BDA name="mag" bType="Struct" type="AnalogueValue_f39a5f74-1954-4213-83c1-154498e3f655" />
+        </DAType>
+        <DAType id="AnalogueValue_f39a5f74-1954-4213-83c1-154498e3f655">
+            <BDA name="i" bType="INT32" />
+        </DAType>
+        <DAType id="AnalogueValue_435f7bef-2aa0-4dc1-8585-b4677fe9f499">
+            <BDA name="f" bType="FLOAT32" />
+        </DAType>
+        <DAType id="AnalogueValue_a8378489-810a-4043-85cf-9130fe56840b">
+            <BDA name="f" bType="FLOAT32" />
+        </DAType>
+        <DAType id="AnalogueValue_e0fa6a0c-5fdc-4dc8-acc7-8bbe7bd63f11">
+            <BDA name="f" bType="FLOAT32" />
+        </DAType>
+        <DAType id="AnalogueValue_0da95620-c60b-44d0-8ebe-be98c94858f7">
+            <BDA name="f" bType="FLOAT32" />
+        </DAType>
+        <DAType id="AnalogueValue_1">
+            <BDA name="f" bType="FLOAT32" />
+        </DAType>
+        <DAType id="AnalogueValue_1">
+            <BDA name="f" bType="FLOAT32" />
+        </DAType>
+        <DAType id="SPCOperate_1">
+            <BDA name="ctlVal" bType="BOOLEAN" />
+            <BDA name="origin" type="Originator_1" bType="Struct" />
+            <BDA name="ctlNum" bType="INT8U" />
+            <BDA name="T" bType="Timestamp" />
+            <BDA name="Test" bType="BOOLEAN" />
+            <BDA name="Check" bType="Check" />
+        </DAType>
+        <DAType id="Originator_1">
+            <BDA name="orCat" type="OrCat" bType="Enum" />
+            <BDA name="orIdent" bType="Octet64" />
+        </DAType>
+        <EnumType id="Beh">
+            <EnumVal ord="1">on</EnumVal>
+            <EnumVal ord="2">blocked</EnumVal>
+            <EnumVal ord="3">test</EnumVal>
+            <EnumVal ord="4">test/blocked</EnumVal>
+            <EnumVal ord="5">off</EnumVal>
+        </EnumType>
+        <EnumType id="HealthKind">
+            <EnumVal ord="1">ok</EnumVal>
+            <EnumVal ord="2">warning</EnumVal>
+            <EnumVal ord="3">alarm</EnumVal>
+        </EnumType>
+        <EnumType id="CtlModels">
+            <EnumVal ord="0">status-only</EnumVal>
+            <EnumVal ord="1">direct-with-normal-security</EnumVal>
+            <EnumVal ord="2">sbo-with-normal-security</EnumVal>
+            <EnumVal ord="3">direct-with-enhanced-security</EnumVal>
+            <EnumVal ord="4">sbo-with-enhanced-security</EnumVal>
+        </EnumType>
+        <EnumType id="OrCat">
+            <EnumVal ord="0">not-supported</EnumVal>
+            <EnumVal ord="1">bay-control</EnumVal>
+            <EnumVal ord="2">station-control</EnumVal>
+            <EnumVal ord="3">remote-control</EnumVal>
+            <EnumVal ord="4">automatic-bay</EnumVal>
+            <EnumVal ord="5">automatic-station</EnumVal>
+            <EnumVal ord="6">automatic-remote</EnumVal>
+            <EnumVal ord="7">maintenance</EnumVal>
+            <EnumVal ord="8">process</EnumVal>
+        </EnumType>
+    </DataTypeTemplates>
+</SCL>

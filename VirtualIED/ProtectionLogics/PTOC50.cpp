@@ -8,9 +8,9 @@ PTOC50::PTOC50(list<string> &PTOC_phy_list,
             LogicFunction(),
             phy_list(PTOC_phy_list),
             threshold_list(PTOC_threshold_list),
-            cb_list(CB_list) {
+            cb_list(CB_list) 
+{
 }
-
 
 void PTOC50::start() {
     printf("PTOC50: start\n");
@@ -23,7 +23,6 @@ void PTOC50::start() {
 
             for (auto cb_val : cb_list)
             {
-
                 vector<string> strings;
                 istringstream f(cb_val);
                 string s;
@@ -32,7 +31,7 @@ void PTOC50::start() {
                 {
                     if (!s.empty())
                     {
-                    strings.push_back(s);
+                        strings.push_back(s);
                     }
                 }
                 string table_name = strings[0];
@@ -58,6 +57,7 @@ void PTOC50::start() {
                         if(atoi(row[cb_count]) == 0)
                         {
                             cb_open = true;
+                            cout << column_name << " is open" << endl;
                             return;
                         }
                         
@@ -93,42 +93,40 @@ void PTOC50::start() {
 
                                 else
                                 {
-                                    do
-                                    {                                                                                                           
-                                        if(atof(row[phy_count]) > *thres_val)
+                                    if(atof(row[phy_count]) > *thres_val)
+                                    {
+                                        for (auto cb_val : cb_list)
                                         {
-                                            for (auto cb_val : cb_list){
+                                            vector<string> inner_strings;
+                                            istringstream f_in(cb_val);
+                                            string s_in;
 
-                                                vector<string> inner_strings;
-                                                istringstream f_in(cb_val);
-                                                string s_in;
-
-                                                while (getline(f_in, s_in, '.'))
+                                            while (getline(f_in, s_in, '.'))
+                                            {
+                                                if (!s_in.empty())
                                                 {
-                                                    if (!s_in.empty())
-                                                    {
-                                                    inner_strings.push_back(s_in);
-                                                    }
+                                                inner_strings.push_back(s_in);
                                                 }
-                                                string table_name_in = inner_strings[0];
-                                                string column_name_in = inner_strings[1];
-                                                string cb_value_in = inner_strings[2];
-
-                                                mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");                                                
-                                                mysqlpp::UseQueryResult res = update_query.use();
                                             }
-                                            cb_open = true;
-                                            return;
+                                            string table_name_in = inner_strings[0];
+                                            string column_name_in = inner_strings[1];
+                                            string cb_value_in = inner_strings[2];
+
+                                            mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");                                                
+                                            mysqlpp::UseQueryResult res = update_query.use();
+                                            cout << "circuit breaker " << column_name_in << " has opened" << endl;
                                         }
-                                    } while (cb_open);
+                                        cb_open = true;
+                                        return;
+                                    }
                                 }
                                 phy_val++;
                                 phy_count++;
                             }
                             thres_val++;
                         }
-                    } while (cb_open); 
-                }       
+                    } while (cb_open);
+                }         
                 cb_count++;
             }
     	}

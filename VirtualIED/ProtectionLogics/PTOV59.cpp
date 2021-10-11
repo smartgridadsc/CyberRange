@@ -3,7 +3,6 @@
 using namespace std;
 using namespace std::chrono;
 
-
 PTOV59::PTOV59(list<string> &PTV_Phy_list, 
             	list<double> &PTOV59_alarm_limit_list,
 				list<double> &PTOV59_alarm_period_list,
@@ -11,8 +10,7 @@ PTOV59::PTOV59(list<string> &PTV_Phy_list,
 				list<double> &PTOV59_trip_limit_list,
 				list<double> &PTOV59_trip_period_list,
 				vector<long long> &PTOV59_trip_store_time,
-				list<string> &CB_list): 
-				LogicFunction(),
+				list<string> &CB_list): LogicFunction(),
 				phy_list(PTV_Phy_list),
     			alarm_limit_list(PTOV59_alarm_limit_list),
    				alarm_period_list(PTOV59_alarm_period_list),
@@ -70,11 +68,13 @@ void PTOV59::start()
 	        else
 	        {
 	            bool cb_open = false;
+	
 	            do
 	            {
 	                if(atoi(row[0]) == 0)
 	                {
 	                    cb_open = true;
+	                    cout << column_name << " is open" << endl;
 	                    return;
 	                }
 	                
@@ -100,83 +100,90 @@ void PTOV59::start()
 	
 	                        int phy_count = 0;
 	                        mysqlpp::Query phy_query = db_conn->conn.query("SELECT " + phy_value + " FROM " + phy_table_name + " WHERE name = '" + phy_column_name + "'");
-	                        cout << "PTOV59 line 113" << endl;
 							mysqlpp::StoreQueryResult res = phy_query.store();
 	                        row = res[phy_count];
 	
 	                        if(!res)
 	                        {
-	                        cout << "Error message: " << phy_query.error() << endl;
-	                        
+	                        cout << "Error message: " << phy_query.error() << endl;	                        
 	                        }
 	
 	                        else
 	                        {
-	                            // do
-	                            // {
-	                                if(atof(row[0]) > *trip_limit_val)
+	                            if(atof(row[0]) > *trip_limit_val)
+	                            {
+	                                auto time_start = system_clock::now();
+	                                auto time_s = time_start.time_since_epoch();
+	
+	                                if (trip_store_time[loop_count] == 0)
+                                    {
+										trip_store_time[loop_count] = time_s.count();
+	                                }
+	                                else
 	                                {
-	                                    auto time_start = system_clock::now();
-	                                    auto time_s = time_start.time_since_epoch();
-	
-	                                    if (trip_store_time[loop_count] == 0)
+	                                    if ((time_s.count() - trip_store_time[loop_count]) >= ((*trip_period_val)*pow(10,9)))
 	                                    {
-	                                        trip_store_time[loop_count] = time_s.count();
-	                                    }
-	                                    else
-	                                    {
-	                                        if (time_s.count() - trip_store_time[loop_count] >= ((*trip_period_val)*pow(10,9)))
-	                                        {
-	                                            mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'");
-	                                            mysqlpp::UseQueryResult res = update_cb.use();
-	                                            cb_open = true;
-	
-	                                            return;
-	                                        }
+											for (auto cb_val : cb_list)
+											{
+												vector<string> inner_strings;
+												istringstream f_in(cb_val);
+												string s_in;
+
+												while (getline(f_in, s_in, '.'))
+												{
+													if (!s_in.empty())
+													{
+													inner_strings.push_back(s_in);
+													}
+												}
+												string table_name_in = inner_strings[0];
+												string column_name_in = inner_strings[1];
+												string cb_value_in = inner_strings[2];
+
+												mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");													
+												mysqlpp::UseQueryResult res = update_query.use();
+												cout << "circuit breaker " << column_name_in << " has opened" << endl;
+											}
+											cb_open = true;
+	                                        return;
 	                                    }
 	                                }
-	                                else if(atof(row[0]) >= *alarm_limit_val && atof(row[0]) < *trip_limit_val)
+	                            }
+	                            else if(atof(row[0]) >= *alarm_limit_val && atof(row[0]) < *trip_limit_val)
+	                            {
+	                                auto time_start = system_clock::now();
+									auto time_s = time_start.time_since_epoch();
+
+									trip_store_time[loop_count] = 0;
+
+	                                if (alarm_store_time[loop_count] == 0)
 	                                {
-										cout << "line 162 : " << loop_count  << endl;
-										cout << "array size" << trip_store_time.size() << endl;
-	                                    //trip_store_time[loop_count] = 0; // debug
-										cout << "line 164" << endl;
-	                                    auto time_start = system_clock::now();
-	                                    cout << "line 166" << endl;
-										auto time_s = time_start.time_since_epoch();
-										cout << "line 168" << endl;
-	                                    if (alarm_store_time[loop_count] == 0)
-	                                    {
-	                                        //alarm_store_time[loop_count] = time_s.count(); //debug
-	                                    }
-	                                    else
-	                                    {
-	                                        if (time_s.count() - alarm_store_time[loop_count] >= ((*alarm_period_val)*pow(10,9)))
-	                                        {
-	                                            cout << "Over limit violation" << endl;
-	                                        }
-	                                    }
+										alarm_store_time[loop_count] = time_s.count();
 	                                }
+	                                else if (time_s.count() - alarm_store_time[loop_count] >= ((*alarm_period_val)*pow(10,9)))
+	                                {    
+	                                    cout << "Over limit violation" << endl;
+	                                }
+	                            }
 	
-	                                else if (atof(row[0]) < *alarm_limit_val)
-	                                {
-	                                    alarm_store_time[loop_count] = 0;
-	                                }
-	                            // } while (cb_open);
-	                        } 
+	                            else if (atof(row[0]) < *alarm_limit_val)
+	                            {
+	                                alarm_store_time[loop_count] = 0;
+	                            }
+	                        }
 	                        loop_count ++;
 	                        phy_val++;
 	                        phy_count++;
-	                    } 
+	                    }
 	                    alarm_limit_val++;
 	                    alarm_period_val++;
 	                    trip_limit_val++;
 	                    trip_period_val++;
 	                } 
-	            } while (cb_open);
+	            } while (cb_open); 
 	        }
 	        cb_count++;
-	    } 
+	    }
     }
     printf("PTOV59: stop\n");
 }

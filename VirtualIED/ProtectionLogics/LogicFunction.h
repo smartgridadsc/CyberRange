@@ -11,7 +11,7 @@ extern bool ied_running;
 class LogicFunction {
 public:
     LogicFunction() {
-        db_conn = NULL;
+        db_conn = NULL; 
     }
     virtual void start() = 0;
     void set_db_conn(std::string _db_configs) {

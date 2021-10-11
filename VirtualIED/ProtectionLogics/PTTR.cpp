@@ -51,12 +51,13 @@ void PTTR::start()
 	            cout << "Error message: " << cb_query.error() << endl;
 	        }
 	        else
-	        {	
+	        {
 	            do
 	            {
 	                if(atoi(row[0]) == 0)
 	                {
 	                    cb_open = true;
+	                    cout << column_name << " is open" << endl;
 	                    return;
 	                }
 	                else
@@ -111,6 +112,7 @@ void PTTR::start()
 	                                        
 	                                    mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");
 	                                    mysqlpp::UseQueryResult res = update_cb.use();
+	                                    cout << "circuit breaker " << column_name_in << " opened" << endl;
 	                                }
 	                                cb_open = true;
 	                                return;

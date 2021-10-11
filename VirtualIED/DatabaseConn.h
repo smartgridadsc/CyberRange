@@ -7,11 +7,11 @@
 
 class DatabaseConn {
 public:
-    DatabaseConn(std::string config_filename);
+    DatabaseConn(std::string config_filename); 
     bool connect();
+    void close();
 
     mysqlpp::Connection conn;
-
 private:
     std::string username;
     std::string password;

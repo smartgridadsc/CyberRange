@@ -50,13 +50,12 @@ void PresSV::start()
 	        }
 	        else
 	        {
-	            cout << "The CB query executed successfully with no error." << endl;
-	
 	            do
 	            {
 	                if(atoi(row[0]) == 0)
 	                {
 	                    cb_open = true;
+	                    cout << column_name << " is open" << endl;
 	                    return;
 	                }
 	                else
@@ -88,34 +87,32 @@ void PresSV::start()
 	
 	                    else
 	                    {
-	                        do
+	                        if(atof(row[0]) > *limit_val)
 	                        {
-	                            if(atof(row[0]) > *limit_val)
+	                            for (auto cb_val : CB_list)
 	                            {
-	                                for (auto cb_val : CB_list)
-	                                {
-	                                    vector<string> inner_strings;
-	                                    istringstream f_in(cb_val);
-	                                    string s_in;
+	                                vector<string> inner_strings;
+	                                istringstream f_in(cb_val);
+	                                string s_in;
 	
-	                                    while (getline(f_in, s_in, '.'))
+	                                while (getline(f_in, s_in, '.'))
+	                                {
+	                                    if (!s_in.empty())
 	                                    {
-	                                        if (!s_in.empty())
-	                                        {
-	                                        inner_strings.push_back(s_in);
-	                                        }
-	                                    }
-	                                    string table_name_in = inner_strings[0];
-	                                    string column_name_in = inner_strings[1];
-	                                    string cb_value_in = inner_strings[2];
-	                                        
-	                                    mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");
-	                                    mysqlpp::UseQueryResult res = update_cb.use();
+	                                    inner_strings.push_back(s_in);
+                                        }
 	                                }
-	                                cb_open = true;
-	                                return;
-	                            }
-	                        } while (cb_open);
+	                                string table_name_in = inner_strings[0];
+	                                string column_name_in = inner_strings[1];
+	                                string cb_value_in = inner_strings[2];
+	                                        
+	                                mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");
+	                                mysqlpp::UseQueryResult res = update_cb.use();
+	                                cout << "circuit breaker " << column_name_in << " has opened" << endl;
+                                }
+	                            cb_open = true;
+	                            return;
+	                        }
 	                    }
 	                    phy_val++;
 	                    phy_count++;

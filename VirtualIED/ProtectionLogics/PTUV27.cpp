@@ -76,6 +76,7 @@ void PTUV27::start()
 	                if(atoi(row[0]) == 0)
 	                {
 	                    cb_open = true;
+	                    cout << column_name << " is open" << endl;
 	                    return;
 	                }
 	                else
@@ -110,73 +111,67 @@ void PTUV27::start()
 	
 	                        else
 	                        {
-	                            do
+	                            if(atof(row[0]) < *trip_limit_val)
 	                            {
-	                                if(atof(row[0]) < *trip_limit_val)
+	                                auto time_start = system_clock::now();
+	                                auto time_s = time_start.time_since_epoch();
+	
+	                                if (trip_store_time[loop_count] == 0)
+                                    {
+	                                    trip_store_time[loop_count] = time_s.count();
+	                                }
+	                                else if (time_s.count() - trip_store_time[loop_count] >= ((*trip_period_val)*pow(10,9)))
 	                                {
-	                                    auto time_start = system_clock::now();
-	                                    auto time_s = time_start.time_since_epoch();
+	                                    for (auto cb_val : cb_list)
+	                                    {
+	                                        vector<string> strings;
+	                                        istringstream f(cb_val);
+	                                        string s;
 	
-	                                    if (trip_store_time[loop_count] == 0)
-	                                    {
-	                                        trip_store_time[loop_count] = time_s.count();
-	                                    }
-	                                    else if (time_s.count() - trip_store_time[loop_count] >= ((*trip_period_val)*pow(10,9)))
-	                                    {
-	                                        for (auto cb_val : cb_list)
+                                            while (getline(f, s, '.'))
 	                                        {
-	                                            vector<string> strings;
-	                                            istringstream f(cb_val);
-	                                            string s;
-	
-	                                            while (getline(f, s, '.'))
+	                                            if (!s.empty())
 	                                            {
-	                                                if (!s.empty())
-	                                                {
-	                                                strings.push_back(s);
-	                                                }
+	                                            strings.push_back(s);
 	                                            }
-	                                            string table_name = strings[0];
-	                                            string column_name = strings[1];
-	                                            string cb_value = strings[2];
-	
-	                                            cout << phy_column_name << "'s voltage is lower than the threshold value of " << *trip_limit_val << endl;
-	                                            cout << "opening circuit breaker: " << column_name << endl;
-	
-	                                            mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'");
-	                                            mysqlpp::UseQueryResult res = update_cb.use();
-	                                            cout << "circuit breaker " << column_name << " opened" << endl;      
 	                                        }
-	                                        cb_open = true;
-	                                        return;
-	                                    }                    
-	                                }
-	                                else if(atof(row[0]) < *alarm_limit_val && atof(row[0]) >= *trip_limit_val)
-	                                {
-	                                    trip_store_time[loop_count] = 0;
+	                                        string table_name = strings[0];
+	                                        string column_name = strings[1];
+	                                        string cb_value = strings[2];
 	
-	                                    auto time_start = system_clock::now();
-	                                    auto time_s = time_start.time_since_epoch();
-	
-	                                    if (alarm_store_time[loop_count] == 0)
-	                                    {
-	                                        alarm_store_time[loop_count] = time_s.count();
+	                                        mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'");
+	                                        mysqlpp::UseQueryResult res = update_cb.use();
+	                                        cout << "circuit breaker " << column_name << " opened" << endl;      
 	                                    }
-	                                    else
+	                                    cb_open = true;
+	                                    return;
+	                                }                    
+                                }
+	                            else if(atof(row[0]) < *alarm_limit_val && atof(row[0]) >= *trip_limit_val)
+	                            {
+	                                trip_store_time[loop_count] = 0;
+	
+	                                auto time_start = system_clock::now();
+	                                auto time_s = time_start.time_since_epoch();
+	
+	                                if (alarm_store_time[loop_count] == 0)
+	                                {
+	                                    alarm_store_time[loop_count] = time_s.count();
+	                                }
+	                                else
+	                                {
+	                                    if (time_s.count() - alarm_store_time[loop_count] >= ((*alarm_period_val)*pow(10,9)))
 	                                    {
-	                                        if (time_s.count() - alarm_store_time[loop_count] >= ((*alarm_period_val)*pow(10,9)))
-	                                        {
-	                                            cout << "Over limit violation" << endl;
-	                                        }
+	                                        cout << "Over limit violation" << endl;
+	                                    }
 	                                    
-	                                    }
-	                                }    
-	
-	                                else if (atof(row[0]) >= *alarm_limit_val)
-	                                {
-	                                    alarm_store_time[loop_count] = 0;
 	                                }
-	                            } while (cb_open);
+	                            }    
+	
+	                            else if (atof(row[0]) >= *alarm_limit_val)
+	                            {
+	                                alarm_store_time[loop_count] = 0;
+	                            }
 	                        } 
 	                        loop_count ++;
 	                        phy_val++;
@@ -187,7 +182,7 @@ void PTUV27::start()
 	                    trip_limit_val++;
 	                    trip_period_val++;
 	                }
-	            }  while (cb_open);
+	            } while (cb_open);
 	        }
 	        cb_count++;
 	    }

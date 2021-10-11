@@ -11,7 +11,7 @@ all: $(OBJS)
 
 $(BUILD_DIR)/%.o: %.cpp
 	@echo "Building $@"
-	@$(CXX) $(FLAGS) $(INCLUDES) -o $@ -c $< 
+	@$(CXX) $(INCLUDES) -o $@ -c $< $(FLAGS) 
 
 checks:
 	@echo "Output directory:"

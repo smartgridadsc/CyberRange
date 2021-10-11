@@ -46,7 +46,6 @@ void Power_meas::start() {
 
             else
             {
-                cout << "The real power query executed successfully with no error." << endl;
                 cout << "Real Power: " << row[0] << endl;
             }
         }
@@ -81,7 +80,6 @@ void Power_meas::start() {
 
             else
             {
-                cout << "The reactive power query executed successfully with no error." << endl;
                 cout << "Reactive Power: " << row[0] << endl;
             }
         }
