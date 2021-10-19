@@ -49,26 +49,22 @@ static void startThread_ModelUpdater(ModelUpdater &modelUpdater)
 }
 
 
-// prints general usage help 
+// prints general usage help
+//TO DO: change input format, from static positions to flag-based (i.e. --db-config=<db-config-filename>)
 static void print_usage() 
 {
     printf("Usage:\n\t"
-            BINARY_NAME" <db-config> <cpmapping> <thresholds> <sed-file> <ied-name>\n");
+            BINARY_NAME" <ied-name> <db-config> <cpmapping> <thresholds> [<sed-file>] \n");
 }
 
 // checks for validity of input arguments
+//TO DO: change input format, from static positions to flag-based (i.e. --db-config=<db-config-filename>)
 static bool has_valid_args(int argc, char **argv) 
 {
-    if (argc != 6) 
+    if (argc != 6 && argc != 5) //can run with/without sed-file
     {
         return false;
     }
-
-    LOG(INFO, "DBconfig file: %s\n", argv[1]);
-    LOG(INFO, "CPMapping file: %s\n", argv[2]);
-    LOG(INFO, "Threshold file: %s\n", argv[3]);
-    LOG(INFO, "SED file: %s\n", argv[4]);
-    LOG(INFO, "IED NAME: %s\n", argv[5]);
 
     return true;
 }
@@ -84,28 +80,44 @@ int main(int argc, char ** argv)
         return 0;
     }
 
+    string ied_name(argv[1]);
+    LOG(INFO, "IED NAME: %s\n", ied_name.c_str());
+    string dbconfig_filename(argv[2]);
+    LOG(INFO, "DBconfig file: %s\n", dbconfig_filename.c_str());
+    string cpmapping_filename(argv[3]);
+    LOG(INFO, "CPMapping file: %s\n", cpmapping_filename.c_str());
+    string thresholds_filename(argv[4]);
+    LOG(INFO, "Threshold file: %s\n", thresholds_filename.c_str());
+    string sed_filename("");
+    if (argc == 6) {
+        sed_filename = string(argv[5]);
+        LOG(INFO, "SED file: %s\n", sed_filename.c_str());
+    }
+    else 
+        LOG(INFO, "SED file: none (will not start UDPReceiver)\n");
+    
     LOG(INFO, "---------------Configuring ModelUpdater---------------\n");
-    ModelUpdater modelUpdater = Parser::parse_model_updater_config(string(argv[2]));
+    ModelUpdater modelUpdater = Parser::parse_model_updater_config(cpmapping_filename);
     LOG(INFO, "------------------ModelUpdater Done-------------------\n\n");
 
     LOG(INFO, "-----------------Configuring logicList----------------\n");
-    list<LogicFunction*> logicList = Parser::parse_protection_logic_config(string(argv[2]), string(argv[3]));
+    list<LogicFunction*> logicList = Parser::parse_protection_logic_config(cpmapping_filename, thresholds_filename);
     LOG(INFO, "--------------------logicList Done--------------------\n\n");
     
     LOG(INFO, "-----------------Configuring commList-----------------\n");
-    list<CommModule*> commList = Parser::parse_comm_config(string(argv[4]), string(argv[5]));
+    list<CommModule*> commList = Parser::parse_comm_config(sed_filename, ied_name);
     LOG(INFO, "--------------------commList Done---------------------\n\n");
 
     //initialize database connection
     LOG(INFO, "-------------Initiating Database connections----------\n");
-    modelUpdater.set_db_conn(string(argv[1]));
+    modelUpdater.set_db_conn(dbconfig_filename);
     for (LogicFunction *logic : logicList) 
     {
-        logic->set_db_conn(string(argv[1]));
+        logic->set_db_conn(dbconfig_filename);
     }
     for (CommModule *comm : commList) 
     {
-        comm->set_db_conn(string(argv[1]));
+        comm->set_db_conn(dbconfig_filename);
     }
     LOG(INFO, "--------------- Database connections done ------------\n\n");
 

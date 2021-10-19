@@ -34,7 +34,7 @@ using namespace std;
 
 vector<long long> PTOC51_store_time, PTOV59_alarm_store_time, PTOV59_trip_store_time, PTUV27_alarm_store_time, PTUV27_trip_store_time;
 
-list<LogicFunction *> Parser::parse_protection_logic_config(std::string cpmapping_filename, std::string thresholds_filename) 
+list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmapping_filename, std::string &thresholds_filename) 
 {
     list<LogicFunction *> logicList;
 
@@ -300,7 +300,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string cpmappin
     return logicList;
 }
 
-ModelUpdater Parser::parse_model_updater_config(std::string cpmapping_filename)
+ModelUpdater Parser::parse_model_updater_config(std::string &cpmapping_filename)
 {
     vector<string> da_strings;
     vector<string> db_entries;
@@ -315,8 +315,12 @@ ModelUpdater Parser::parse_model_updater_config(std::string cpmapping_filename)
 
         //Get DataAttribute ref string
         //Need to modify string, given the current CPMapping schema
+        //e.g. MIED1.MEAS.MMXU1.TotW.mag.i --> MIED1MEAS/MMXU1.TotW.mag.i
         int pos = temp_cyber.find_first_of('.', 0);
-        temp_cyber.replace(pos, 1, "LD1/"); //need a way to get Logical device name
+        temp_cyber.replace(pos, 1, "");
+
+        pos = temp_cyber.find_first_of('.', 0);
+        temp_cyber.replace(pos, 1, "/");        
 
         da_strings.push_back(temp_cyber);
 
@@ -329,7 +333,7 @@ ModelUpdater Parser::parse_model_updater_config(std::string cpmapping_filename)
     return modelUpdater;
 }
 
-list<CommModule *> Parser::parse_comm_config(std::string sed_filename, std::string ied_name)
+list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::string &ied_name)
 {
     list<CommModule *> commList;
     CommModule *commMod;
@@ -337,7 +341,8 @@ list<CommModule *> Parser::parse_comm_config(std::string sed_filename, std::stri
         UDPReceiver (.sed)
     --------------------------------------*/
     
-    commMod = config_UDPRecv(sed_filename, ied_name);
+    if (!sed_filename.empty())
+        commMod = config_UDPRecv(sed_filename, ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);

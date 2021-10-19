@@ -1,0 +1,133 @@
+{
+    "CPMapping": [
+        
+        {
+            "Physical": "line_real_power.line_real_power_17.value",
+            "Cyber": "MIED1.MEAS.MMXU1.TotW.mag.i"
+        },
+	{
+            "Physical": "line_real_power.line_real_power_0.value",
+            "Cyber": "MIED1.MEAS.MMXU2.TotW.mag.i"
+        },
+	{
+            "Physical": "line_apparent_power.line_apparent_power_17.value",
+            "Cyber": "MIED1.MEAS.MMXU1.TotVAr.mag.i"
+        },
+	{
+            "Physical": "line_apparent_power.line_apparent_power_0.value",
+            "Cyber": "MIED1.MEAS.MMXU2.TotVAr.mag.i"
+        },
+	{
+            "Physical": "line_reactive_power.line_reactive_power_17.value",
+            "Cyber": "MIED1.MEAS.MMXU1.TotVA.mag.i"
+        },
+	{
+            "Physical": "line_reactive_power.line_reactive_power_0.value",
+            "Cyber": "MIED1.MEAS.MMXU2.TotVA.mag.i"
+        },
+	{
+            "Physical": "line_power_factor.line_power_factor_1.value",
+            "Cyber": "MIED1.MEAS.MMXU1.TotPF.mag.i"
+        },
+	{
+            "Physical": "line_power_factor.line_power_factor_2.value",
+            "Cyber": "MIED1.MEAS.MMXU2.TotPF.mag.i"
+        },
+	{
+            "Physical": "line_current.line_current_17.value",
+            "Cyber": "MIED1.MEAS.MMXU1.A.phsA.cVal.mag.i"
+        },
+        {
+            "Physical": "line_current.line_current_17.value",
+            "Cyber": "MIED1.MEAS.MMXU1.A.phsB.cVal.mag.i"
+        },
+        {
+            "Physical": "line_current.line_current_17.value",
+            "Cyber": "MIED1.MEAS.MMXU1.A.phsC.cVal.mag.i"
+        },
+        {
+            "Physical": "line_current.line_current_0.value",
+            "Cyber": "MIED1.MEAS.MMXU2.A.phsA.cVal.mag.i"
+        },
+        {
+            "Physical": "line_current.line_current_0.value",
+            "Cyber": "MIED1.MEAS.MMXU2.A.phsB.cVal.mag.i"
+        },
+        {
+            "Physical": "line_current.line_current_0.value",
+            "Cyber": "MIED1.MEAS.MMXU2.A.phsC.cVal.mag.i"
+        },
+	{
+            "Physical": "line_frequency.line_frenquency_1.value",
+            "Cyber": "MIED1.MEAS.MMXU1.Hz.mag.i"
+        },
+        {
+            "Physical": "line_frequency.line_frenquency_2.value",
+            "Cyber": "MIED1.MEAS.MMXU2.Hz.mag.i"
+        },	
+	{
+            "Physical": "line_p2p_voltage.line_voltage_phsAB_1.value",
+            "Cyber": "MIED1.MEAS.MMXU1.PPV.phsAB.cVal.mag.i"
+        },
+        {
+            "Physical": "line_p2p_voltage.line_voltage_phsBC_1.value",
+            "Cyber": "MIED1.MEAS.MMXU1.PPV.phsBC.cVal.mag.i"
+        },
+	{
+            "Physical": "line_p2p_voltage.line_voltage_phsCA_1.value",
+            "Cyber": "MIED1.MEAS.MMXU1.PPV.phsCA.cVal.mag.i"
+        },
+	{
+            "Physical": "line_p2p_voltage.line_voltage_phsAB_2.value",
+            "Cyber": "MIED1.MEAS.MMXU2.PPV.phsAB.cVal.mag.i"
+        },
+        {
+            "Physical": "line_p2p_voltage.line_voltage_phsBC_2.value",
+            "Cyber": "MIED1.MEAS.MMXU2.PPV.phsBC.cVal.mag.i"
+        },
+	{
+            "Physical": "line_p2p_voltage.line_voltage_phsCA_2.value",
+            "Cyber": "MIED1.MEAS.MMXU2.PPV.phsCA.cVal.mag.i"
+        },
+	{
+            "Physical": "bus_voltage.bus_voltage_29.value",
+            "Cyber": "MIED1.MEAS.MMXU1.PhV.phsA.cVal.mag.i"
+        },
+        {
+            "Physical": "bus_voltage.bus_voltage_29.value",
+            "Cyber": "MIED1.MEAS.MMXU1.PhV.phsB.cVal.mag.i"
+        },
+        {
+            "Physical": "bus_voltage.bus_voltage_29.value",
+            "Cyber": "MIED1.MEAS.MMXU1.PhV.phsC.cVal.mag.i"
+        },
+	{
+            "Physical": "bus_voltage.bus_voltage_29.value",
+            "Cyber": "MIED1.MEAS.MMXU1.PhV.phsneut.cVal.mag.i"
+        },
+	{
+            "Physical": "bus_voltage.bus_voltage_7.value",
+            "Cyber": "MIED1.MEAS.MMXU2.PhV.phsA.cVal.mag.i"
+        },
+        {
+            "Physical": "bus_voltage.bus_voltage_7.value",
+            "Cyber": "MIED1.MEAS.MMXU2.PhV.phsB.cVal.mag.i"
+        },
+        {
+            "Physical": "bus_voltage.bus_voltage_7.value",
+            "Cyber": "MIED1.MEAS.MMXU2.PhV.phsC.cVal.mag.i"
+        },
+	{
+            "Physical": "line_cb.line_cb_1.value",
+            "Cyber": "MIED1.CTRL.XCBR1.Pos.stVal"
+        },
+	{
+            "Physical": "relay.relay_1.value",
+            "Cyber": "MIED1.CTRL.RSYN1.Rel.stVal"
+        },
+	{
+            "Physical": "line_cb.line_cb_2.value",
+            "Cyber": "MIED1.CTRL.XCBR2.Pos.stVal"
+        }
+    ]
+}

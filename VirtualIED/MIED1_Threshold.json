@@ -1,0 +1,39 @@
+{
+    "@name": "MIED1",
+    "PTOC50": [
+        {
+            "@instance": "1",
+            "Threshold": "50"
+        },
+        {
+            "@instance": "2",
+            "Threshold": "100"
+        }
+    ],
+    "PTOV59": [
+        {
+            "@instance": "1",
+            "AlarmThreshold": {
+                "Limit_p.u.": "1.1",
+                "Period_s": "10"
+            },
+            "TripThreshold": {
+                "Limit_p.u.": "1.2",
+                "Period_s": "2"
+            }
+        }
+    ],
+    "PTOF": [
+        {
+            "@instance": "1",
+            "AlarmThreshold": {
+                "Limit_hz.": "50.5",
+                "Period_s": "5"
+            },
+            "TripThreshold": {
+                "Limit_hz.": "52.5",
+                "Period_s": "2"
+            }
+        }
+    ]
+}

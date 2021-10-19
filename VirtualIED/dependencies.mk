@@ -28,4 +28,5 @@ FLAGS := -w -pthread -lmysqlclient -lmysqlpp
 export FLAGS
 
 #others
-ICDFILE = config_files/IED0.icd
+CONFIG_DIR = $(IED_HOME)/config_files
+ICDFILE = $(CONFIG_DIR)/$(shell cat $(CONFIG_DIR)/active_icd)
