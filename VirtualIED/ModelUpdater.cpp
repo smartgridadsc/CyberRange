@@ -73,8 +73,15 @@ void ModelUpdater::start() {
 void ModelUpdater::update_model() {
     for (DataPoint dp : datapoints) {
         //Querying the database
-        mysqlpp::Query cb_query = db_conn->conn.query("SELECT " + dp.targetColumn + " FROM " + dp.tableName + " WHERE name = '" + dp.entryKey + "'");
+        string query_str("SELECT " + dp.targetColumn + " FROM " + dp.tableName + " WHERE name = '" + dp.entryKey + "'");
+        mysqlpp::Query cb_query = db_conn->conn.query(query_str);
         mysqlpp::StoreQueryResult res = cb_query.store();
+
+        if (res.empty()) {
+            LOG(ERROR, "Query returned empty for [%s]\n", query_str.c_str());
+            continue;
+        } 
+
         mysqlpp::Row row = res[0];
         std::string res_val(row[0].c_str());
 
