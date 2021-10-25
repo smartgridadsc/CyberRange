@@ -18,6 +18,9 @@ private:
     DatabaseConn *db_conn;
     unsigned int interval;
     
+    //to store parameters for control handlers
+    std::vector<std::vector<void*> *> controlParams;
+    
     static void main_loop();
     static ControlHandlerResult control_handler(ControlAction action, void *parameter, MmsValue *value, bool test);
 };
