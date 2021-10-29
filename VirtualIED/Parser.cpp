@@ -345,7 +345,7 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         R_SVModule (ied_name)
     --------------------------------------*/
-    //commMod = config_RSV(ied_name);
+    commMod = config_RSV(ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);
@@ -355,7 +355,7 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         R_GOOSEModule (ied_name)
     --------------------------------------*/
-    //commMod = config_RGOOSE(ied_name);
+    commMod = config_RGOOSE(ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);
@@ -1503,21 +1503,3 @@ void Parser::mmsmodule_check_data_object(xml_node *dotype_node,
 
     //printf("\t\tEND DO %s\n", current_string.c_str());
 }
-
-// CommModule *Parser::config_MMS_stub(string &this_ied)
-// {
-//     vector<string> do_strings;
-//     do_strings.push_back("MIED1CTRL/XCBR1.Pos");
-//     do_strings.push_back("MIED1CTRL/GGIO1.SPCSO1");
-
-//     vector<string> t_strings;
-//     t_strings.push_back("MIED1CTRL/XCBR1.Pos.t");
-//     t_strings.push_back("MIED1CTRL/GGIO1.Pos.t");
-
-//     vector<string> stVal_strings;
-//     stVal_strings.push_back("MIED1CTRL/XCBR1.Pos.stVal");
-//     stVal_strings.push_back("MIED1CTRL/GGIO1.SPCSO1.stVal");
-
-//     MMSModule *mms = new MMSModule(do_strings, t_strings, stVal_strings);
-//     return (CommModule *)mms;
-// }

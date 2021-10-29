@@ -31,7 +31,6 @@ private:
     static CommModule *config_RSV(std::string &this_ied);
     static CommModule *config_RGOOSE(std::string &this_ied);
     static CommModule *config_MMS(std::string &this_ied, std::string &cpmapping_filename);
-    //static CommModule *config_MMS_stub(std::string &this_ied);
 
     //helper functions for config_MMS()
     static void mmsmodule_check_logical_node(xml_node *lnodetype_node,
