@@ -105,15 +105,15 @@ int main(int argc, char ** argv)
     LOG(INFO, "--------------------logicList Done--------------------\n\n");
     
     LOG(INFO, "-----------------Configuring commList-----------------\n");
-    list<CommModule*> commList = Parser::parse_comm_config(sed_filename, ied_name);
+    list<CommModule*> commList = Parser::parse_comm_config(sed_filename, ied_name, cpmapping_filename);
     LOG(INFO, "--------------------commList Done---------------------\n\n");
 
     //initialize database connection
     LOG(INFO, "-------------Initiating Database connections----------\n");
-    modelUpdater.set_db_conn(dbconfig_filename);
+    //modelUpdater.set_db_conn(dbconfig_filename);
     for (LogicFunction *logic : logicList) 
     {
-        logic->set_db_conn(dbconfig_filename);
+        //logic->set_db_conn(dbconfig_filename);
     }
     for (CommModule *comm : commList) 
     {
@@ -126,11 +126,11 @@ int main(int argc, char ** argv)
               "Starting Threads\n"
               "-----------------------------------------\n\n");
 
-    threads.push_back(thread(startThread_ModelUpdater, ref(modelUpdater)));
+    //threads.push_back(thread(startThread_ModelUpdater, ref(modelUpdater)));
 
     for (LogicFunction *logic : logicList) 
     {
-        threads.push_back(thread(startThread_LogicFunction, ref(*logic)));
+        //threads.push_back(thread(startThread_LogicFunction, ref(*logic)));
     }
     for (CommModule *comm : commList) 
     {
