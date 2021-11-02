@@ -9,6 +9,7 @@
 #include "Utils.h"
 #include "ProtectionLogics/LogicFunction.h"
 #include "CommModules/CommModule.h"
+#include "CommModules/MMS.h"
 #include "ModelUpdater.h"
 #include "SharedMemory.h"
 
@@ -105,15 +106,26 @@ int main(int argc, char ** argv)
     LOG(INFO, "--------------------logicList Done--------------------\n\n");
     
     LOG(INFO, "-----------------Configuring commList-----------------\n");
-    list<CommModule*> commList = Parser::parse_comm_config(sed_filename, ied_name, cpmapping_filename);
+    list<CommModule*> commList = Parser::parse_comm_config(sed_filename, ied_name);
     LOG(INFO, "--------------------commList Done---------------------\n\n");
+
+    LOG(INFO, "-----------------Configuring MMS server-----------------\n");
+    MMSModule* mmsModule = Parser::parse_mms_server(ied_name, cpmapping_filename);
+    if (mmsModule != nullptr) {
+        modelUpdater.set_mms_server(mmsModule->get_mms_server());
+        LOG(INFO, "MMS server linked to ModelUpdater\n");
+        commList.push_back((CommModule *) mmsModule);
+    }
+    LOG(INFO, "--------------------MMS server Done---------------------\n\n");
+
+    
 
     //initialize database connection
     LOG(INFO, "-------------Initiating Database connections----------\n");
     modelUpdater.set_db_conn(dbconfig_filename);
     for (LogicFunction *logic : logicList) 
     {
-        logic->set_db_conn(dbconfig_filename);
+        //logic->set_db_conn(dbconfig_filename);
     }
     for (CommModule *comm : commList) 
     {
@@ -130,7 +142,7 @@ int main(int argc, char ** argv)
 
     for (LogicFunction *logic : logicList) 
     {
-        threads.push_back(thread(startThread_LogicFunction, ref(*logic)));
+        //threads.push_back(thread(startThread_LogicFunction, ref(*logic)));
     }
     for (CommModule *comm : commList) 
     {
@@ -140,9 +152,10 @@ int main(int argc, char ** argv)
     signal(SIGINT, sigint_handler);
 
     //loop
+    
     while(ied_running) 
     {
-        sleep(10);
+        sleep(1000);
     }
 
     LOG(INFO, "Closing Threads\n");

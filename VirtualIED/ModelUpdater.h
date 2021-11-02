@@ -5,6 +5,7 @@
 #include <string>
 
 #include "DatabaseConn.h"
+#include "iec61850_server.h"
 #include "iec61850_model.h"
 
 extern bool ied_running;
@@ -26,9 +27,14 @@ public:
     void set_db_conn(std::string _db_configs) {
         db_conn = new DatabaseConn(_db_configs);
     }
+    void set_mms_server(IedServer *_mms_server) {
+        mms_server = _mms_server;
+    }
+
 private:
     std::vector<DataPoint> datapoints;
     DatabaseConn *db_conn;
+    IedServer *mms_server; //need reference to mms_server to lock it when updating values
 
     void update_model();
 };

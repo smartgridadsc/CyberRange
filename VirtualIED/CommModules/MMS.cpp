@@ -236,7 +236,6 @@ ControlHandlerResult MMSModule::control_handler(ControlAction action, void *para
 
 void MMSModule::set_db_conn (std::string _db_configs) {
     db_conn = new DatabaseConn(_db_configs);
-    LOG(DEBUG, "MMSModule db_conn address = 0x%X\n", db_conn);
 
     for (auto it : controlParams) {
         it->at(3) = db_conn;

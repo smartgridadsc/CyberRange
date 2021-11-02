@@ -326,7 +326,7 @@ ModelUpdater Parser::parse_model_updater_config(std::string &cpmapping_filename)
     return modelUpdater;
 }
 
-list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::string &ied_name, std::string &cpmapping_filename)
+list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::string &ied_name)
 {
     list<CommModule *> commList;
     CommModule *commMod;
@@ -345,7 +345,7 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         R_SVModule (ied_name)
     --------------------------------------*/
-    commMod = config_RSV(ied_name);
+    //commMod = config_RSV(ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);
@@ -355,25 +355,31 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         R_GOOSEModule (ied_name)
     --------------------------------------*/
-    commMod = config_RGOOSE(ied_name);
+    //commMod = config_RGOOSE(ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);
         LOG(INFO, "R-GOOSE added\n\n");
     }
 
-    /*--------------------------------------
-        MMSModule (N.A.)
-    --------------------------------------*/
-    commMod = config_MMS(ied_name, cpmapping_filename);
-    if (commMod != nullptr)
-    {
-        commList.push_back(commMod);
-        LOG(INFO, "MMS added\n");
-    }
+   
 
     return commList;
 }
+
+MMSModule *Parser::parse_mms_server(std::string &ied_name, std::string &cpmapping_filename) {
+     /*--------------------------------------
+        MMSModule (N.A.)
+    --------------------------------------*/
+    MMSModule *mmsMod = (MMSModule *) config_MMS(ied_name, cpmapping_filename);
+    if (mmsMod != nullptr)
+    {
+        LOG(INFO, "MMS added\n");
+    }
+
+    return mmsMod;
+}
+
 
 // Current code only parses if there is 1 logical device
 // TO DO: handle multiple logical device
@@ -1503,3 +1509,21 @@ void Parser::mmsmodule_check_data_object(xml_node *dotype_node,
 
     //printf("\t\tEND DO %s\n", current_string.c_str());
 }
+
+// CommModule *Parser::config_MMS_stub(string &this_ied)
+// {
+//     vector<string> do_strings;
+//     do_strings.push_back("MIED1CTRL/XCBR1.Pos");
+//     do_strings.push_back("MIED1CTRL/GGIO1.SPCSO1");
+
+//     vector<string> t_strings;
+//     t_strings.push_back("MIED1CTRL/XCBR1.Pos.t");
+//     t_strings.push_back("MIED1CTRL/GGIO1.Pos.t");
+
+//     vector<string> stVal_strings;
+//     stVal_strings.push_back("MIED1CTRL/XCBR1.Pos.stVal");
+//     stVal_strings.push_back("MIED1CTRL/GGIO1.SPCSO1.stVal");
+
+//     MMSModule *mms = new MMSModule(do_strings, t_strings, stVal_strings);
+//     return (CommModule *)mms;
+// }

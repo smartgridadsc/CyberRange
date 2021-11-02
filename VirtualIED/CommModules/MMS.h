@@ -17,6 +17,9 @@ public:
             std::vector<std::string> &db_strings);
     void start();
     void set_db_conn (std::string _db_configs) override;
+    IedServer *get_mms_server() {
+        return &iedServer;
+    }
     
 private:
     IedServer iedServer;
