@@ -86,18 +86,29 @@ void ModelUpdater::update_model() {
         std::string res_val(row[0].c_str());
 
         DataAttribute *da = dp.data_attr;
-        lock_guard<mutex>lock(static_model_lock);
-        if (da->mmsValue != nullptr) {
-            MmsValue_delete(da->mmsValue);
-        }
+
+        MmsValue *new_mms_val;
+        bool isTypeSupported = true;
+
         //TO DO: add more data types
         if (da->type == IEC61850_FLOAT32) {
             float flt_val = atof(res_val.c_str());
-            da->mmsValue = MmsValue_newFloat(flt_val);
+            new_mms_val = MmsValue_newFloat(flt_val);
         }
         else if (da->type == IEC61850_BOOLEAN) {
-            bool bool_val = atoi(res_val.c_str());
-            da->mmsValue = MmsValue_newBoolean(bool_val);
+            int res = atoi(res_val.c_str());
+            bool bool_val = (bool) res;
+            new_mms_val = MmsValue_newBoolean(bool_val);
+        }
+        else {
+            isTypeSupported = false;
+        }
+
+        if (isTypeSupported) {
+            if (mms_server != nullptr) IedServer_lockDataModel(*mms_server);
+            lock_guard<mutex>lock(static_model_lock);
+            MmsValue_update(da->mmsValue, new_mms_val);
+            if (mms_server != nullptr) IedServer_unlockDataModel(*mms_server);
         }
     }
 }

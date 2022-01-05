@@ -27,14 +27,11 @@ using json = nlohmann::json;
 
 #define CONFIG_DIR "config_files/"
 
-typedef rapidxml::xml_node<> xml_node;
-typedef rapidxml::xml_attribute<> xml_attr;
-
 using namespace std;
 
 vector<long long> PTOC51_store_time, PTOV59_alarm_store_time, PTOV59_trip_store_time, PTUV27_alarm_store_time, PTUV27_trip_store_time;
 
-list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmapping_filename, std::string &thresholds_filename) 
+list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmapping_filename, std::string &thresholds_filename)
 {
     list<LogicFunction *> logicList;
 
@@ -42,7 +39,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
     std::ifstream ifs_cp(cpmapping_filename);
     json jf_cp = json::parse(ifs_cp);
 
-    for (auto& el:jf_cp["CPMapping"].items())
+    for (auto &el : jf_cp["CPMapping"].items())
     {
         string temp_cyber = el.value()["Cyber"];
 
@@ -50,8 +47,8 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
         {
             PTOC_cyber_list.push_back(temp_cyber);
         }
-            
-        else if(temp_cyber.find(PTV_Cyber) != std::string::npos)
+
+        else if (temp_cyber.find(PTV_Cyber) != std::string::npos)
         {
             PTV_cyber_list.push_back(el.value()["Cyber"]);
         }
@@ -78,7 +75,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
         else if (temp_cyber.find(PresSV_Cyber) != std::string::npos)
         {
-                PresSV_cyber_list.push_back(temp_cyber);
+            PresSV_cyber_list.push_back(temp_cyber);
         }
     }
 
@@ -90,7 +87,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     for (auto ptoc_cyb_val : PTOC_cyber_list)
     {
-        for (auto& el:jf_cp["CPMapping"].items())
+        for (auto &el : jf_cp["CPMapping"].items())
         {
             if (ptoc_cyb_val == el.value()["Cyber"])
             {
@@ -101,7 +98,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     for (auto ptv_cyb_val : PTV_cyber_list)
     {
-        for (auto& el:jf_cp["CPMapping"].items())
+        for (auto &el : jf_cp["CPMapping"].items())
         {
             if (ptv_cyb_val == el.value()["Cyber"])
             {
@@ -112,7 +109,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     for (auto cb_cyb_val : CB_cyber_list)
     {
-        for (auto& el:jf_cp["CPMapping"].items())
+        for (auto &el : jf_cp["CPMapping"].items())
         {
             if (cb_cyb_val == el.value()["Cyber"])
             {
@@ -123,7 +120,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     for (auto pttr_cyb_val : PTTR_cyber_list)
     {
-        for (auto& el:jf_cp["CPMapping"].items())
+        for (auto &el : jf_cp["CPMapping"].items())
         {
             if (pttr_cyb_val == el.value()["Cyber"])
             {
@@ -134,7 +131,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     for (auto pressv_cyb_val : PresSV_cyber_list)
     {
-        for (auto& el:jf_cp["CPMapping"].items())
+        for (auto &el : jf_cp["CPMapping"].items())
         {
             if (pressv_cyb_val == el.value()["Cyber"])
             {
@@ -149,32 +146,32 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     if (jf_t.contains("PTOC50"))
     {
-        for (auto& el : jf_t["PTOC50"].items())
+        for (auto &el : jf_t["PTOC50"].items())
         {
-          PTOC50_Thres_list.push_back(stod(el.value()["Threshold"].get<string>()));
+            PTOC50_Thres_list.push_back(stod(el.value()["Threshold"].get<string>()));
         }
     }
 
     if (jf_t.contains("PTOV59"))
     {
-        for (auto& el : jf_t["PTOV59"].items())
+        for (auto &el : jf_t["PTOV59"].items())
         {
-            for(auto& inner_el : el.value()["AlarmThreshold"]["Limit_p.u."].items())
+            for (auto &inner_el : el.value()["AlarmThreshold"]["Limit_p.u."].items())
             {
-                PTOV59_alarm_limit_list.push_back(stod(inner_el.value().get<string>())); 
+                PTOV59_alarm_limit_list.push_back(stod(inner_el.value().get<string>()));
             }
 
-            for(auto& inner_el : el.value()["AlarmThreshold"]["Period_s"].items())
+            for (auto &inner_el : el.value()["AlarmThreshold"]["Period_s"].items())
             {
                 PTOV59_alarm_period_list.push_back(stod(inner_el.value().get<string>()));
             }
 
-            for(auto& inner_el : el.value()["TripThreshold"]["Limit_p.u."].items())
+            for (auto &inner_el : el.value()["TripThreshold"]["Limit_p.u."].items())
             {
                 PTOV59_trip_limit_list.push_back(stod(inner_el.value().get<string>()));
             }
 
-            for(auto& inner_el : el.value()["TripThreshold"]["Period_s"].items())
+            for (auto &inner_el : el.value()["TripThreshold"]["Period_s"].items())
             {
                 PTOV59_trip_period_list.push_back(stod(inner_el.value().get<string>()));
             }
@@ -183,24 +180,24 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     if (jf_t.contains("PTUV27"))
     {
-        for (auto& el : jf_t["PTUV27"].items())
+        for (auto &el : jf_t["PTUV27"].items())
         {
-            for(auto& inner_el : el.value()["AlarmThreshold"]["Limit_p.u."].items())
+            for (auto &inner_el : el.value()["AlarmThreshold"]["Limit_p.u."].items())
             {
                 PTUV27_alarm_limit_list.push_back(stod(inner_el.value().get<string>()));
             }
 
-            for(auto& inner_el : el.value()["AlarmThreshold"]["Period_s"].items())
+            for (auto &inner_el : el.value()["AlarmThreshold"]["Period_s"].items())
             {
                 PTUV27_alarm_period_list.push_back(stod(inner_el.value().get<string>()));
             }
 
-            for(auto& inner_el : el.value()["TripThreshold"]["Limit_p.u."].items())
+            for (auto &inner_el : el.value()["TripThreshold"]["Limit_p.u."].items())
             {
                 PTUV27_trip_limit_list.push_back(stod(inner_el.value().get<string>()));
             }
 
-            for(auto& inner_el : el.value()["TripThreshold"]["Period_s"].items())
+            for (auto &inner_el : el.value()["TripThreshold"]["Period_s"].items())
             {
                 PTUV27_trip_period_list.push_back(stod(inner_el.value().get<string>()));
             }
@@ -209,7 +206,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     if (jf_t.contains("PTTR"))
     {
-        for (auto& el : jf_t["PTTR"].items())
+        for (auto &el : jf_t["PTTR"].items())
         {
             PTTR_limit_list.push_back(stod(el.value()["Limit"].get<string>()));
         }
@@ -217,7 +214,7 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     if (jf_t.contains("PresSV"))
     {
-        for (auto& el : jf_t["PresSV"].items())
+        for (auto &el : jf_t["PresSV"].items())
         {
             PresSV_limit_list.push_back(stod(el.value()["Limit"].get<string>()));
         }
@@ -226,31 +223,30 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
     //for time stamp
     if (!PTOV59_alarm_limit_list.empty())
     {
-        for (int i = 0; i < PTV_phy_list.size();i++)
+        for (int i = 0; i < PTV_phy_list.size(); i++)
         {
             PTOV59_alarm_store_time.push_back(0);
             PTOV59_trip_store_time.push_back(0);
-        }    
+        }
     }
 
     if (!PTUV27_alarm_limit_list.empty())
+    {
+        for (int i = 0; i < PTV_phy_list.size(); i++)
         {
-            for (int i = 0; i < PTV_phy_list.size();i++)
-            {
-                PTUV27_alarm_store_time.push_back(0);
-                PTUV27_trip_store_time.push_back(0);
-            }    
+            PTUV27_alarm_store_time.push_back(0);
+            PTUV27_trip_store_time.push_back(0);
         }
+    }
     if (!PTOC51_currentNom_list.empty())
-    { 
-        for (int i = 0; i < PTOC_phy_list.size();i++)
+    {
+        for (int i = 0; i < PTOC_phy_list.size(); i++)
         {
             PTOC51_store_time.push_back(0);
         }
     }
 
-    
-	//list empty
+    //list empty
 
     if (!PTOC50_Thres_list.empty())
     {
@@ -261,41 +257,38 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
 
     if (!PTOV59_alarm_limit_list.empty())
     {
-        PTOV59 *ptov59 = new PTOV59(PTV_phy_list,PTOV59_alarm_limit_list,PTOV59_alarm_period_list,PTOV59_alarm_store_time,PTOV59_trip_limit_list,PTOV59_trip_period_list, PTOV59_trip_store_time,CB_list);
+        PTOV59 *ptov59 = new PTOV59(PTV_phy_list, PTOV59_alarm_limit_list, PTOV59_alarm_period_list, PTOV59_alarm_store_time, PTOV59_trip_limit_list, PTOV59_trip_period_list, PTOV59_trip_store_time, CB_list);
         logicList.push_back(ptov59);
         LOG(INFO, "PTOV59 added\n");
     }
 
     if (!PTUV27_alarm_limit_list.empty())
     {
-        PTUV27 *ptuv27 = new PTUV27(PTV_phy_list,PTUV27_alarm_limit_list,PTUV27_alarm_period_list,PTUV27_trip_limit_list,PTUV27_trip_period_list,PTUV27_alarm_store_time, PTUV27_trip_store_time,CB_list);
+        PTUV27 *ptuv27 = new PTUV27(PTV_phy_list, PTUV27_alarm_limit_list, PTUV27_alarm_period_list, PTUV27_trip_limit_list, PTUV27_trip_period_list, PTUV27_alarm_store_time, PTUV27_trip_store_time, CB_list);
         logicList.push_back(ptuv27);
         LOG(INFO, "PTUV27 added\n");
     }
 
-    if(!PTTR_limit_list.empty())
+    if (!PTTR_limit_list.empty())
     {
-        PTTR *pttr = new PTTR(PTTR_phy_list,CB_list,PTTR_limit_list);
+        PTTR *pttr = new PTTR(PTTR_phy_list, CB_list, PTTR_limit_list);
         logicList.push_back(pttr);
         LOG(INFO, "PTTR added\n");
     }
-    
-    if(!PresSV_limit_list.empty())
+
+    if (!PresSV_limit_list.empty())
     {
-        PresSV *pressv = new PresSV(PresSV_phy_list,CB_list,PresSV_limit_list);
+        PresSV *pressv = new PresSV(PresSV_phy_list, CB_list, PresSV_limit_list);
         logicList.push_back(pressv);
         LOG(INFO, "PresSV added\n");
     }
 
     if (!real_power_phy_list.empty())
     {
-        Power_meas *power_meas = new Power_meas(real_power_phy_list,reactive_power_phy_list);
+        Power_meas *power_meas = new Power_meas(real_power_phy_list, reactive_power_phy_list);
         logicList.push_back(power_meas);
         LOG(INFO, "Power added\n");
     }
-
-
-
 
     return logicList;
 }
@@ -320,7 +313,7 @@ ModelUpdater Parser::parse_model_updater_config(std::string &cpmapping_filename)
         temp_cyber.replace(pos, 1, "");
 
         pos = temp_cyber.find_first_of('.', 0);
-        temp_cyber.replace(pos, 1, "/");        
+        temp_cyber.replace(pos, 1, "/");
 
         da_strings.push_back(temp_cyber);
 
@@ -340,7 +333,7 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         UDPReceiver (.sed)
     --------------------------------------*/
-    
+
     if (!sed_filename.empty())
         commMod = config_UDPRecv(sed_filename, ied_name);
     if (commMod != nullptr)
@@ -352,7 +345,7 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         R_SVModule (ied_name)
     --------------------------------------*/
-    commMod = config_RSV(ied_name);
+    //commMod = config_RSV(ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);
@@ -362,26 +355,34 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         R_GOOSEModule (ied_name)
     --------------------------------------*/
-    commMod = config_RGOOSE(ied_name);
+    //commMod = config_RGOOSE(ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);
         LOG(INFO, "R-GOOSE added\n\n");
     }
 
-    /*--------------------------------------
-        MMSModule (N.A.)
-    --------------------------------------*/
-    commMod = config_MMS();
-    if (commMod != nullptr) 
-    {
-        commList.push_back(commMod);
-        LOG(INFO, "MMS added\n");
-    }
+   
 
     return commList;
 }
 
+MMSModule *Parser::parse_mms_server(std::string &ied_name, std::string &cpmapping_filename) {
+     /*--------------------------------------
+        MMSModule (N.A.)
+    --------------------------------------*/
+    MMSModule *mmsMod = (MMSModule *) config_MMS(ied_name, cpmapping_filename);
+    if (mmsMod != nullptr)
+    {
+        LOG(INFO, "MMS added\n");
+    }
+
+    return mmsMod;
+}
+
+
+// Current code only parses if there is 1 logical device
+// TO DO: handle multiple logical device
 CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
 {
     unordered_map<string, GOOSE_Subscription> goose_subs;
@@ -490,7 +491,8 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                         found = true;
                     }
                 }
-                if (!found) {
+                if (!found)
+                {
                     LOG(ERROR, "Cannot find source IP\n");
                 }
 
@@ -571,9 +573,10 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                             gse_sub.da_strs.push_back(da_ref);
                             gse_sub.num_dataSet_entries++;
                         } // end for each fcda node
-                    } // endif dsname == ds_in_gocb
-                }// end for each dataset in ln0
-                if (!found) {
+                    }     // endif dsname == ds_in_gocb
+                }         // end for each dataset in ln0
+                if (!found)
+                {
                     LOG(ERROR, "\tCannot find dataset definition\n");
                     return nullptr;
                 }
@@ -604,11 +607,13 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                         }
                     }
                 }
-                if (temp_multicast.compare("") == 0) {
+                if (temp_multicast.compare("") == 0)
+                {
                     LOG(ERROR, "Cannot find multicast addr\n");
                     return nullptr;
                 }
-                if (gse_sub.app_ID.compare("") == 0) {
+                if (gse_sub.app_ID.compare("") == 0)
+                {
                     LOG(ERROR, "Cannot find appID\n");
                     return nullptr;
                 }
@@ -616,8 +621,8 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                 multicast_addrs.push_back(temp_multicast);
                 goose_subs[gse_sub.sourceIP] = gse_sub;
                 break; //can exit if this GSEControl already added
-            } // END for each subscribing IED
-        } // END for each GSEControl node
+            }          // END for each subscribing IED
+        }              // END for each GSEControl node
         // END check for goose
 
         //FOR SVCTL BLOCKS
@@ -654,7 +659,8 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                         found = true;
                     }
                 }
-                if (!found) {
+                if (!found)
+                {
                     LOG(ERROR, "Cannot find source IP\n");
                 }
 
@@ -735,9 +741,10 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                             sv_sub.da_strs.push_back(da_ref);
                             sv_sub.num_dataSet_entries++;
                         } // end for each fcda node
-                    } // endif dsname == ds_in_svcb
-                }// end for each dataset in ln0
-                if (!found) {
+                    }     // endif dsname == ds_in_svcb
+                }         // end for each dataset in ln0
+                if (!found)
+                {
                     LOG(ERROR, "\tCannot find dataset definition\n");
                     return nullptr;
                 }
@@ -768,11 +775,13 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                         }
                     }
                 }
-                if (temp_multicast.compare("") == 0) {
+                if (temp_multicast.compare("") == 0)
+                {
                     LOG(ERROR, "Cannot find multicast addr\n");
                     return nullptr;
                 }
-                if (sv_sub.app_ID.compare("") == 0) {
+                if (sv_sub.app_ID.compare("") == 0)
+                {
                     LOG(ERROR, "Cannot find appID\n");
                     return nullptr;
                 }
@@ -780,15 +789,16 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                 multicast_addrs.push_back(temp_multicast);
                 sv_subs[sv_sub.sourceIP] = sv_sub;
                 break; //can exit if this GSEControl already added
-            } // END for each subscribing IED
-        } // END for each SVControl node
+            }          // END for each subscribing IED
+        }              // END for each SVControl node
         // END check for SV
 
     } // END for each IED node
 
     doc.clear();
 
-    if (multicast_addrs.size() != goose_subs.size() + sv_subs.size()) {
+    if (multicast_addrs.size() != goose_subs.size() + sv_subs.size())
+    {
         LOG(ERROR, "list sizes don't match\n");
         return nullptr;
     }
@@ -797,6 +807,8 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
     return (CommModule *)udprecv;
 }
 
+// Current code only parses if there is 1 logical device
+// TO DO: handle multiple logical device
 CommModule *Parser::config_RSV(string &this_ied)
 {
     bool found = false;
@@ -990,6 +1002,8 @@ CommModule *Parser::config_RSV(string &this_ied)
     return (CommModule *)rsv;
 }
 
+// Current code only parses if there is 1 logical device
+// TO DO: handle multiple logical device
 CommModule *Parser::config_RGOOSE(string &this_ied)
 {
     bool found = false;
@@ -1183,8 +1197,333 @@ CommModule *Parser::config_RGOOSE(string &this_ied)
     return (CommModule *)rgoose;
 }
 
-CommModule *Parser::config_MMS()
+CommModule *Parser::config_MMS(string &this_ied, string &cpmapping_filename)
 {
-    MMSModule *mms = new MMSModule();
+    /* 
+        Parse ICD File:
+        1. Parse DataTypeTemplates for LNodeType and DOType, and store in maps
+        2. Parse entire IED definition in SCL file (.icd) to look for any Oper data attribute 
+            e.g. MIED1CTRL/XCBR1.Pos.Oper  
+        3. For each Oper data attribute:
+            a. look for corresponding stVal WITHIN the same data object
+                e.g. MIED1CTRL/XCBR1.Pos.stVal
+            b. look for corresponding time data attribute (optional)
+                e.g. MIED1CTRL/XCBR1.Pos.t
+        Parse CPMapping:
+        4. Extract database string
+
+        5. Pass DO, stVal and time string references to MMSModule constructor
+    */
+    vector<string> do_strings;
+    vector<string> t_strings;
+    vector<string> stVal_strings;
+
+    string filename = CONFIG_DIR + this_ied + ".icd";
+    rapidxml::file<> xmlFile(filename.c_str());
+    rapidxml::xml_document<> doc;
+    doc.parse<0>(xmlFile.data());
+
+    // Find out the root node: prints "Root Node's name: SCL" for a SED file
+    xml_node *root_node = doc.first_node();
+    if (static_cast<string>(root_node->name()) == "SCL")
+    {
+        LOG(DEBUG, "Parsing for MMS Module (%s)\n", filename.c_str());
+    }
+    else
+    {
+        LOG(ERROR, "Parsing FAILED to start for MMS Module (%s)\n", filename.c_str());
+        return nullptr;
+    }
+
+    xml_node *ied_node = root_node->first_node("IED");
+    if (ied_node == nullptr)
+    {
+        LOG(ERROR, "<IED> xml node not found, FAILED\n");
+        return nullptr;
+    }
+    xml_node *ap_node = ied_node->first_node("AccessPoint");
+    if (ap_node == nullptr)
+    {
+        LOG(ERROR, "<AccessPoint> xml node not found, FAILED\n");
+        return nullptr;
+    }
+    xml_node *server_node = ap_node->first_node("Server");
+    if (server_node == nullptr)
+    {
+        LOG(ERROR, "<Server> xml node not found, FAILED\n");
+        return nullptr;
+    }
+
+    // Parse through DataTypeTemplates to store in map
+    xml_node *datatemplate_node = root_node->first_node("DataTypeTemplates");
+    if (server_node == nullptr)
+    {
+        LOG(ERROR, "<DataTypeTemplates> xml node not found, FAILED\n");
+        return nullptr;
+    }
+
+    unordered_map<string, xml_node *> ln_template_map;
+    unordered_map<string, xml_node *> do_template_map; //contains sdo too
+
+    for (xml_node *lnodetype_node = datatemplate_node->first_node("LNodeType"); lnodetype_node; lnodetype_node = lnodetype_node->next_sibling("LNodeType"))
+    {
+        xml_attr *lnodetype_id_attr = lnodetype_node->first_attribute("id");
+        if (lnodetype_id_attr == nullptr)
+            continue;
+        string lnodetype_id_string(lnodetype_id_attr->value());
+        ln_template_map[lnodetype_id_string] = lnodetype_node;
+    }
+
+    for (xml_node *dotype_node = datatemplate_node->first_node("DOType"); dotype_node; dotype_node = dotype_node->next_sibling("DOType"))
+    {
+        xml_attr *dotype_id_attr = dotype_node->first_attribute("id");
+        if (dotype_id_attr == nullptr)
+            continue;
+        string dotype_id_string(dotype_id_attr->value());
+        do_template_map[dotype_id_string] = dotype_node;
+    }
+
+    // Iterate through IED definition
+    for (xml_node *ld_node = server_node->first_node("LDevice"); ld_node; ld_node = ld_node->next_sibling("LDevice"))
+    {
+        xml_attr *ld_name_attr = ld_node->first_attribute("inst");
+        if (ld_name_attr == nullptr)
+            continue;
+        string ld_name(ld_name_attr->value());
+        //printf("START LDevice %s\n", ld_name.c_str());
+
+        for (xml_node *ln_node = ld_node->first_node("LN"); ln_node; ln_node = ln_node->next_sibling("LN"))
+        {
+            xml_attr *ln_lnclass_attr = ln_node->first_attribute("lnClass");
+            if (ln_lnclass_attr == nullptr)
+                continue;
+            string ln_name(ln_lnclass_attr->value());
+            xml_attr *ln_inst_attr = ln_node->first_attribute("inst");
+            if (ln_inst_attr == nullptr)
+                continue;
+            ln_name.append(ln_inst_attr->value());
+
+            //check logical node definition
+            xml_attr *ln_lntype_attr = ln_node->first_attribute("lnType");
+            if (ln_lntype_attr == nullptr)
+                continue;
+            string ln_lntype_string(ln_lntype_attr->value());
+
+            auto it = ln_template_map.find(ln_lntype_string);
+            if (it == ln_template_map.end())
+            {
+                LOG(ERROR, "Cannot find <LNodeType> for id = \"%s\"\n", ln_lntype_string.c_str());
+                continue;
+            }
+            xml_node *lnodetype_node = it->second;
+            mmsmodule_check_logical_node(lnodetype_node,
+                                         this_ied + ld_name + "/" + ln_name,
+                                         ln_template_map,
+                                         do_template_map,
+                                         do_strings,
+                                         t_strings,
+                                         stVal_strings);
+        }
+        //printf("END LDevice %s\n", ld_name.c_str());
+    }
+
+    doc.clear();
+
+    //CPMapping
+
+    unordered_map<string, string> da_to_db_map;
+
+    //JSON parsing
+    std::ifstream ifs_cp(cpmapping_filename);
+    json jf_cp = json::parse(ifs_cp);
+
+    for (auto &el : jf_cp["CPMapping"].items())
+    {
+        string temp_cyber = el.value()["Cyber"];
+
+        //Get DataAttribute ref string
+        //Need to modify string, given the current CPMapping schema
+        //e.g. MIED1.MEAS.MMXU1.TotW.mag.i --> MIED1MEAS/MMXU1.TotW.mag.i
+        int pos = temp_cyber.find_first_of('.', 0);
+        temp_cyber.replace(pos, 1, "");
+
+        pos = temp_cyber.find_first_of('.', 0);
+        temp_cyber.replace(pos, 1, "/");
+
+        //Get database tableName, entryKey and targetColumn
+        string temp_phy = el.value()["Physical"];
+
+        da_to_db_map[temp_cyber] = temp_phy;
+    }
+
+    vector<string> db_strings;
+
+    for (int i = 0; i < stVal_strings.size(); i++) {
+        string &stVal_ref_str = stVal_strings[i];
+        auto it = da_to_db_map.find(stVal_ref_str);
+        if (it == da_to_db_map.end()) {
+            LOG(ERROR, "Cannot find %s in CPMapping\n", stVal_ref_str.c_str());
+            db_strings.push_back("null");
+        }
+        else {
+            db_strings.push_back(it->second);
+            LOG(DEBUG, "Found mapping for %s in CPMapping\n", stVal_ref_str.c_str())
+        }
+    }
+
+    MMSModule *mms = new MMSModule(do_strings,
+                                   t_strings,
+                                   stVal_strings,
+                                   db_strings);
     return (CommModule *)mms;
 }
+
+void Parser::mmsmodule_check_logical_node(xml_node *lnodetype_node,
+                                          string current_string,
+                                          unordered_map<string, xml_node *> &ln_template_map,
+                                          unordered_map<string, xml_node *> &do_template_map,
+                                          vector<string> &do_strings,
+                                          vector<string> &t_strings,
+                                          vector<string> &stVal_strings)
+{
+
+    //printf("\tSTART LNode %s\n", current_string.c_str());
+    for (xml_node *do_node = lnodetype_node->first_node("DO"); do_node; do_node = do_node->next_sibling("DO"))
+    {
+        xml_attr *do_name_attr = do_node->first_attribute("name");
+        if (do_name_attr == nullptr)
+            continue;
+        string do_name(do_name_attr->value());
+
+        //check data object definition
+        xml_attr *do_type_attr = do_node->first_attribute("type");
+        if (do_type_attr == nullptr)
+            continue;
+        string do_type_string(do_type_attr->value());
+
+        auto it = do_template_map.find(do_type_string);
+        if (it == do_template_map.end())
+        {
+            LOG(ERROR, "Cannot find <DOType> for id = \"%s\"\n", do_type_string.c_str());
+            continue;
+        }
+        xml_node *dotype_node = it->second;
+        mmsmodule_check_data_object(dotype_node,
+                                    current_string + "." + do_name,
+                                    do_template_map,
+                                    do_strings,
+                                    t_strings,
+                                    stVal_strings);
+    }
+    //printf("\tEND LNode %s\n", current_string.c_str());
+}
+
+void Parser::mmsmodule_check_data_object(xml_node *dotype_node,
+                                         string current_string,
+                                         unordered_map<string, xml_node *> &do_template_map,
+                                         vector<string> &do_strings,
+                                         vector<string> &t_strings,
+                                         vector<string> &stVal_strings)
+{
+    //printf("\t\tSTART DO %s\n", current_string.c_str());
+    bool hasSDO = false;
+    // Data object may contain SDO or DA
+    //SDO
+    for (xml_node *sdo_node = dotype_node->first_node("SDO"); sdo_node; sdo_node = sdo_node->next_sibling("SDO"))
+    {
+        hasSDO = true;
+
+        xml_attr *sdo_name_attr = sdo_node->first_attribute("name");
+        if (sdo_name_attr == nullptr)
+            continue;
+        string sdo_name(sdo_name_attr->value());
+
+        //check sdo definition
+        xml_attr *sdo_type_attr = sdo_node->first_attribute("type");
+        if (sdo_type_attr == nullptr)
+            continue;
+        string sdo_type_string(sdo_type_attr->value());
+
+        auto it = do_template_map.find(sdo_type_string);
+        if (it == do_template_map.end())
+        {
+            LOG(ERROR, "Cannot find <DOType> for id = \"%s\"\n", sdo_type_string.c_str());
+            continue;
+        }
+        xml_node *dotype_node = it->second;
+        mmsmodule_check_data_object(dotype_node,
+                                    current_string + "." + sdo_name,
+                                    do_template_map,
+                                    do_strings,
+                                    t_strings,
+                                    stVal_strings);
+    }
+    //DA
+
+    if (hasSDO)
+        return;
+
+    bool hasOper = false;
+    bool hasStVal = false;
+    bool hasTime = false;
+    for (xml_node *da_node = dotype_node->first_node("DA"); da_node; da_node = da_node->next_sibling("DA"))
+    {
+        xml_attr *da_name_attr = da_node->first_attribute("name");
+        if (da_name_attr == nullptr)
+            continue;
+        string da_name_string(da_name_attr->value());
+        //printf("\t\t\tSTART DA %s\n", da_name_string.c_str());
+
+        if (da_name_string.compare("Oper") == 0)
+        {
+            hasOper = true;
+        }
+        else if (da_name_string.compare("stVal") == 0)
+        {
+            hasStVal = true;
+        }
+        else if (da_name_string.compare("t") == 0)
+        {
+            hasTime = true;
+        }
+
+        //printf("\t\t\tEND DA %s\n", da_name_string.c_str());
+    }
+
+    if (hasOper && hasStVal)
+    {
+        do_strings.push_back(current_string);
+        LOG(DEBUG, "Found Oper for %s\n", current_string.c_str());
+        stVal_strings.push_back(current_string + ".stVal");
+        LOG(DEBUG, "Found %s\n", (current_string + ".stVal").c_str());
+        if (hasTime)
+        {
+            t_strings.push_back(current_string + ".t");
+            LOG(DEBUG, "Found %s\n", (current_string + ".t").c_str());
+        }
+        else
+        {
+            t_strings.push_back("null");
+        }
+    }
+
+    //printf("\t\tEND DO %s\n", current_string.c_str());
+}
+
+// CommModule *Parser::config_MMS_stub(string &this_ied)
+// {
+//     vector<string> do_strings;
+//     do_strings.push_back("MIED1CTRL/XCBR1.Pos");
+//     do_strings.push_back("MIED1CTRL/GGIO1.SPCSO1");
+
+//     vector<string> t_strings;
+//     t_strings.push_back("MIED1CTRL/XCBR1.Pos.t");
+//     t_strings.push_back("MIED1CTRL/GGIO1.Pos.t");
+
+//     vector<string> stVal_strings;
+//     stVal_strings.push_back("MIED1CTRL/XCBR1.Pos.stVal");
+//     stVal_strings.push_back("MIED1CTRL/GGIO1.SPCSO1.stVal");
+
+//     MMSModule *mms = new MMSModule(do_strings, t_strings, stVal_strings);
+//     return (CommModule *)mms;
+// }
