@@ -28,11 +28,15 @@ MMSModule::MMSModule() {
     //TO DO: dynamic control handler setting
     vector<void*> ctrl_param;
     ctrl_param.push_back(&iedServer);
-    ctrl_param.push_back(IEDMODEL_LD1_GGIO1_SPC1);
-    //ctrl_param.push_back(IEDMODEL_LogicalDevice_GGIO3_SPC1);
+    ctrl_param.push_back(IEDMODEL_CTRL_XCBR1_Pos);
     ctrl_param.push_back(db_conn);
-    IedServer_setControlHandler(iedServer, IEDMODEL_LD1_GGIO1_SPC1, (ControlHandler)MMSModule::control_handler, &ctrl_param);
-    //IedServer_setControlHandler(iedServer, IEDMODEL_LogicalDevice_GGIO3_SPC1, (ControlHandler)MMSModule::control_handler, &ctrl_param);
+    IedServer_setControlHandler(iedServer, IEDMODEL_CTRL_XCBR1_Pos, (ControlHandler)MMSModule::control_handler, &ctrl_param);
+
+    vector<void*> ctrl_param2;
+    ctrl_param2.push_back(&iedServer);
+    ctrl_param2.push_back(IEDMODEL_CTRL_XCBR2_Pos);
+    ctrl_param2.push_back(db_conn);
+    IedServer_setControlHandler(iedServer, IEDMODEL_CTRL_XCBR2_Pos, (ControlHandler)MMSModule::control_handler, &ctrl_param2);
 
     LOG(DEBUG, ">>>>>>>>>>>>>>>>>> MMSModule created\n");
 }
@@ -100,13 +104,13 @@ ControlHandlerResult MMSModule::control_handler(ControlAction action, void *para
     DatabaseConn *db_conn = (DatabaseConn*) ctrl_param->at(2);
 
     uint64_t timeStamp = Hal_getTimeInMs();
-    //if (data_attr == IEDMODEL_LogicalDevice_GGIO3_SPC1) {
-    if (data_attr == IEDMODEL_LD1_GGIO1_SPC1) {
+
+    if (data_attr == IEDMODEL_CTRL_XCBR1_Pos) {
         lock_guard<mutex> lock(static_model_lock);
         IedServer_updateUTCTimeAttributeValue(
-                *iedServer, IEDMODEL_LD1_GGIO1_SPC1_t, timeStamp);
+                *iedServer, IEDMODEL_CTRL_XCBR1_Pos_t, timeStamp);
         IedServer_updateAttributeValue(
-                *iedServer, IEDMODEL_LD1_GGIO1_SPC1_stVal, value);
+                *iedServer, IEDMODEL_CTRL_XCBR1_Pos_stVal, value);
 
         //write to database
         //TO DO: get
@@ -125,8 +129,33 @@ ControlHandlerResult MMSModule::control_handler(ControlAction action, void *para
             return CONTROL_RESULT_FAILED;
         }
     }
+    else if (data_attr == IEDMODEL_CTRL_XCBR2_Pos) {
+        lock_guard<mutex> lock(static_model_lock);
+        IedServer_updateUTCTimeAttributeValue(
+                *iedServer, IEDMODEL_CTRL_XCBR2_Pos_t, timeStamp);
+        IedServer_updateAttributeValue(
+                *iedServer, IEDMODEL_CTRL_XCBR2_Pos_stVal, value);
+
+        //write to database
+        //TO DO: get
+        string querystring;
+        if (MmsValue_getBoolean(value))
+            querystring = "UPDATE line_cb SET value=1 WHERE name=\"line_cb_0_2\"";
+        else
+            querystring = "UPDATE line_cb SET value=0 WHERE name=\"line_cb_0_2\"";
+        LOG(DEBUG, "Writing to database: [%s]\n", querystring)
+        try {
+            mysqlpp::Query query = db_conn->conn.query(querystring);
+            query.exec();
+        }
+        catch (mysqlpp::Exception e) {
+            LOG(DEBUG, "Exception when writing to database\n");
+            return CONTROL_RESULT_FAILED;
+        }
+    }
     else
         return CONTROL_RESULT_FAILED;
 
     return CONTROL_RESULT_OK;
 }
+

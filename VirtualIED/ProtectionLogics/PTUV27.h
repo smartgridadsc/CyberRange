@@ -3,7 +3,7 @@
 
 #include <list>
 #include <string>
-#include <unistd.h> //for multithread
+#include <unistd.h>
 #include <math.h>
 #include <chrono>
 

@@ -1,0 +1,15 @@
+{
+    "@name": "TIED1",
+    "PTOC50": [{
+        "@instance": "1",
+        "Threshold": "125"
+    }],
+    
+    "PDIF87L": 
+    [
+	    {
+		"@instance": "1",
+		"Threshold": "60"
+	    }
+    ]
+}
