@@ -21,8 +21,7 @@ struct GooseCtlBlk_t {
     std::string app_ID;
 
     std::vector<DataAttribute*> da_refs;
-    std::vector<bool> da_view;
-
+    std::vector<MmsValue*> da_view;
     int sock_d;
     sockaddr_in group_sock;
     std::string multicast_ip; //for debug only

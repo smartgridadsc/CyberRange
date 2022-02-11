@@ -6,6 +6,9 @@
 #include <cassert>
 #include <unordered_map>
 
+//conversion
+#include "static_model.h"
+
 //socket
 #include <arpa/inet.h>
 #include <netinet/in.h>
@@ -26,10 +29,10 @@ using namespace std;
 static char errormsg[100] = {};
 static int error_msg_sz = 100;
 
-UDPReceiver::UDPReceiver(unordered_map<string, GOOSE_Subscription> &goose_subs, 
-                unordered_map<string, SV_Subscription> &sv_subs, 
-                string &local_ip, vector<string> &multicast_addrs)
-                : goose_subs(goose_subs), sv_subs(sv_subs)
+UDPReceiver::UDPReceiver(unordered_map<string, GOOSE_Subscription> &goose_subs,
+                         unordered_map<string, SV_Subscription> &sv_subs,
+                         string &local_ip, vector<string> &multicast_addrs)
+    : goose_subs(goose_subs), sv_subs(sv_subs)
 {
     int res = 0;
     LOG(DEBUG, "Creating new UDPReceiver >>>>>>>>>>>>>>>>\n");
@@ -55,11 +58,12 @@ UDPReceiver::UDPReceiver(unordered_map<string, GOOSE_Subscription> &goose_subs,
     struct timeval tv;
     tv.tv_sec = 0;
     tv.tv_usec = 100000;
-    if ((res = setsockopt(sock_d, SOL_SOCKET, SO_RCVTIMEO, (struct timeval *)&tv, sizeof(struct timeval))) != 0) {
+    if ((res = setsockopt(sock_d, SOL_SOCKET, SO_RCVTIMEO, (struct timeval *)&tv, sizeof(struct timeval))) != 0)
+    {
         strerror_r(errno, errormsg, error_msg_sz);
         LOG(ERROR, "Fail to set timeout for socket (%d)(%s)\n", errno, errormsg);
         return;
-    } 
+    }
 
     // Bind to the proper port number with the IP address specified as INADDR_ANY
     sockaddr_in localSock = {}; // initialize to all zeroes
@@ -107,9 +111,11 @@ UDPReceiver::UDPReceiver(unordered_map<string, GOOSE_Subscription> &goose_subs,
         }
     }
     //DEBUG PRINT
-    if (LOG_LEVEL == DEBUG) {
+    if (LOG_LEVEL == DEBUG)
+    {
         int idx = 0;
-        for (auto &it : goose_subs) {
+        for (auto &it : goose_subs)
+        {
             GOOSE_Subscription &goose_sub = it.second;
 
             LOG(DEBUG, "GOOSE Subscription[%d]\n", idx);
@@ -123,7 +129,8 @@ UDPReceiver::UDPReceiver(unordered_map<string, GOOSE_Subscription> &goose_subs,
             idx++;
         }
         idx = 0;
-        for (auto &it : sv_subs) {
+        for (auto &it : sv_subs)
+        {
             SV_Subscription &sv_sub = it.second;
 
             LOG(DEBUG, "SV Subscription[%d]\n", idx);
@@ -139,7 +146,7 @@ UDPReceiver::UDPReceiver(unordered_map<string, GOOSE_Subscription> &goose_subs,
         }
     }
     //END DEBUG PRINT
-    
+
     LOG(DEBUG, ">>>>>>>>>>>>>>>>>>>>>> UDPReceiver created\n");
 }
 
@@ -192,7 +199,8 @@ void UDPReceiver::handleUDP(string &src_addr,
         // SI = 0xA1 for R-GOOSE
         if (buf[2] == 0xA1)
         {
-            if (goose_subs.find(src_addr) == goose_subs.end()) {
+            if (goose_subs.find(src_addr) == goose_subs.end())
+            {
                 LOG(ERROR, "GOOSECtl for %s not found\n", src_addr.c_str());
                 return;
             }
@@ -202,7 +210,8 @@ void UDPReceiver::handleUDP(string &src_addr,
         // SI = 0xA2 for R-SV
         else if (buf[2] == 0xA2)
         {
-            if (sv_subs.find(src_addr) == sv_subs.end()) {
+            if (sv_subs.find(src_addr) == sv_subs.end())
+            {
                 LOG(ERROR, "SVCTL for %s not found\n", src_addr.c_str());
                 return;
             }
@@ -578,29 +587,67 @@ void UDPReceiver::handleGOOSE(GOOSE_Subscription &goose_sub,
     unsigned int allData_len = current_allData.size();
     unsigned int da_idx = 0;
     unsigned int allData_idx = 0;
-    char temp_buf[16] = { 0 }; //WARN: size must fit all expected datatypes
+    char temp_buf[16] = {0}; //WARN: size must fit all expected datatypes
     LOG(DEBUG, "----------------------------------------------\n");
     LOG(DEBUG, "Received allData (len %u):\n", allData_len);
     LOG(DEBUG, "Expected entries = %u\n", goose_sub.num_dataSet_entries);
     //TO DO: Add more data type handling
-    for (int i = 0; i < goose_sub.num_dataSet_entries; i++) {
+    for (int i = 0; i < goose_sub.num_dataSet_entries; i++)
+    {
         LOG(DEBUG, "Datatype = 0x%X\n", current_allData[allData_idx]);
         unsigned int entry_datatype = current_allData[allData_idx++];
         LOG(DEBUG, "Length = %X\n", current_allData[allData_idx]);
         unsigned int entry_len = current_allData[allData_idx++];
-        if (entry_datatype == 0x83) { // BOOLEAN
-            MemBlock memblk { MemType::BOOL };
+        if (entry_datatype == 0x83)
+        { // BOOLEAN
+            MemBlock memblk{MemType::BOOL};
             bool bool_val = current_allData[allData_idx++];
             memblk.bool_val = bool_val;
             g_sh_mem.insert(goose_sub.da_strs[i], memblk);
-            if (bool_val) {
+            if (bool_val)
+            {
                 LOG(DEBUG, "%s = true\n", goose_sub.da_strs[i].c_str());
             }
-            else {
+            else
+            {
                 LOG(DEBUG, "%s = false\n", goose_sub.da_strs[i].c_str());
             }
         }
-        //else if
+        else if (entry_datatype == 0x84) // DBPOS
+        {
+            Dbpos dbpos_val = (Dbpos)current_allData[allData_idx++];
+            bool new_val;
+            if (dbpos_val == DBPOS_ON)
+            {
+                new_val = true;
+            }
+            else if (dbpos_val == DBPOS_OFF)
+            {
+                new_val = false;
+            }
+            else if (dbpos_val == DBPOS_INTERMEDIATE_STATE)
+            {
+                printf("Dbpos INTERMIDATE STATE\n");
+                new_val = false;
+            }
+            else if (dbpos_val == DBPOS_BAD_STATE)
+            {
+                printf("Dbpos BAD STATE\n");
+                new_val = false;
+            }
+
+            if (new_val)
+            {
+                LOG(DEBUG, "%s = true\n", goose_sub.da_strs[i].c_str());
+            }
+            else
+            {
+                LOG(DEBUG, "%s = false\n", goose_sub.da_strs[i].c_str());
+            }
+            MemBlock memblk{MemType::BOOL};
+            memblk.bool_val = new_val;
+            g_sh_mem.insert(goose_sub.da_strs[i], memblk);
+        }
     }
     LOG(DEBUG, "----------------------------------------------\n");
 
@@ -863,31 +910,33 @@ void UDPReceiver::handleSV(SV_Subscription &sv_sub,
     }
     /* Checking of timestamp Value not yet included */
 
-
     // At this point, all checks completed
     // Write to shared mem
-    // wenshei: 
+    // wenshei:
     // TO DO: determine what is the datatype for each entry in seqData
     // currently assuming each value is float, of size 4 bytes
     unsigned int seqData_len = current_seqOfData.size();
-    if (seqData_len != (sizeof(float) * sv_sub.num_dataSet_entries)) {
+    if (seqData_len != (sizeof(float) * sv_sub.num_dataSet_entries))
+    {
         LOG(ERROR, "SV seqData (len %u) abnormal data, may not contain all float\n", seqData_len);
     }
     unsigned int da_idx = 0;
     unsigned int seqData_idx = 0;
-    char temp_buf[4] = { 0 };
+    char temp_buf[4] = {0};
     LOG(DEBUG, "----------------------------------------------\n");
-    LOG(DEBUG, "Received seqData with %u entries:\n", seqData_len/sizeof(float));
-    for (int i = 0; i < sv_sub.num_dataSet_entries; i++) {
-        MemBlock memblk { MemType::FLOAT32 };
+    LOG(DEBUG, "Received seqData with %u entries:\n", seqData_len / sizeof(float));
+    for (int i = 0; i < sv_sub.num_dataSet_entries; i++)
+    {
+        MemBlock memblk{MemType::FLOAT32};
         LOG(DEBUG, "Hex = 0x");
-        for (int j = 0; j < sizeof(float); j++) {
+        for (int j = 0; j < sizeof(float); j++)
+        {
             temp_buf[j] = current_seqOfData[seqData_idx];
             LOG(DEBUG, "%X", current_seqOfData[seqData_idx]);
             seqData_idx++;
         }
         LOG(DEBUG, "\n");
-        float *flt_ptr = reinterpret_cast<float*>(temp_buf);
+        float *flt_ptr = reinterpret_cast<float *>(temp_buf);
         memblk.float_val = *flt_ptr;
 
         g_sh_mem.insert(sv_sub.da_strs[i], memblk);

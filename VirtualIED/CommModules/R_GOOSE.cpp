@@ -65,19 +65,34 @@ R_GOOSEModule::R_GOOSEModule(vector<string> &gocb_refs,
 
         vector<string> &da_grp  = data_attrs[i];
         for (string &da_str : da_grp) {
-            LOG(DEBUG, "DataAttr: %s\n", da_str.c_str());
             DataAttribute *da = (DataAttribute *) IedModel_getModelNodeByObjectReference(&iedModel, da_str.c_str());
+
             if (da == NULL) {
                 LOG(ERROR, "DataAttribute not found for %s\n", da_str.c_str());
                 continue;
             }
-            if (da->type != IEC61850_BOOLEAN) {
-                LOG(ERROR, "DataAttribute type is not BOOLEAN for %s\n", da_str.c_str());
+
+            LOG(DEBUG, "DataAttr: %s(%d)\n", da_str.c_str(),da->type);
+            
+            MmsValue *mms_val = nullptr;
+            
+            if(da->type == IEC61850_BOOLEAN) {
+                mms_val = MmsValue_newBoolean(true);
+            }
+            else if (da->type == IEC61850_CODEDENUM) {
+                mms_val = Dbpos_toMmsValue(NULL, DBPOS_ON);
+            }
+            else {
+                LOG(ERROR, "DataAttribute type is not BOOLEAN/CODEDENUM for %s\n", da_str.c_str());
                 continue;
             }
 
-            new_blk.da_refs.push_back(da); 
-            new_blk.da_view.push_back(true);
+            if (mms_val == nullptr) {
+                continue;
+            }
+
+            new_blk.da_refs.push_back(da);
+            new_blk.da_view.push_back(mms_val); 
         }
 
         // Setup UDP socket
@@ -166,7 +181,8 @@ void R_GOOSEModule::update_view(bool mode) {
         //LOG(DEBUG, "GOOSECtlBlk[%d]\n", i);
 
         vector<DataAttribute*> &da_refs = gse_blk.da_refs;
-        vector<bool> &da_view = gse_blk.da_view;
+        vector<MmsValue*> &da_view = gse_blk.da_view;
+
         for (int j = 0; j < da_refs.size(); j++) {
             DataAttribute *da = da_refs[j];
             //LOG(DEBUG, "\tDataAttr[%d]\n", j);
@@ -175,25 +191,56 @@ void R_GOOSEModule::update_view(bool mode) {
 
             if (mode == INITIALIZE_VIEW) {
                 if (mms_val == NULL) {
-                    mms_val = da->mmsValue = MmsValue_newBoolean(true);
+                    if (da->type == IEC61850_CODEDENUM){
+                        mms_val = da->mmsValue = Dbpos_toMmsValue(NULL,DBPOS_ON);            
+                    }
+                    else if (da->type == IEC61850_BOOLEAN){
+                        mms_val = da->mmsValue = MmsValue_newBoolean(true);                    
+                    }
                 }
-            }
-
-            bool new_val = MmsValue_getBoolean(mms_val);
+            }         
+            
             lock.unlock();
-            if (new_val != da_view[j]) {
-                LOG(DEBUG, "\tChanged value\n");
-                da_view[i] = new_val;
-                if (mode == UPDATE_VIEW) {
-                    (gse_blk.stNum < UINT_MAX) ? gse_blk.stNum++ : gse_blk.stNum = 0;
-                    gse_blk.sqNum = 0;
-                    send_rgoose_packet(i);
-                    LOG(DEBUG, "stNum = %u, sqNum = %u\n", gse_blk.stNum, gse_blk.sqNum-1);
+            
+            if(da->type == IEC61850_CODEDENUM)
+            {
+                Dbpos new_val = Dbpos_fromMmsValue(mms_val);
+
+                if (new_val != Dbpos_fromMmsValue(da_view[j]))
+                {
+                    LOG(DEBUG, "\tChanged value\n"); 
+                    MmsValue_update(da_view[i], mms_val);
+
+                    if (mode == UPDATE_VIEW) {
+                        (gse_blk.stNum < UINT_MAX) ? gse_blk.stNum++ : gse_blk.stNum = 0;
+                        gse_blk.sqNum = 0;
+                        send_rgoose_packet(i);
+                        LOG(DEBUG, "stNum = %u, sqNum = %u\n", gse_blk.stNum, gse_blk.sqNum-1);
+                    }
+                }
+                else {
+                //LOG(DEBUG, "\tNo change\n");
                 }
             }
-            else {
+            else if(da->type == IEC61850_BOOLEAN)
+            {
+                bool new_val = MmsValue_getBoolean(mms_val);
+                if (new_val != MmsValue_getBoolean(da_view[j]))
+                {
+                    LOG(DEBUG, "\tChanged value\n"); 
+                    MmsValue_update(da_view[i], mms_val);
+                    if (mode == UPDATE_VIEW) {
+                        (gse_blk.stNum < UINT_MAX) ? gse_blk.stNum++ : gse_blk.stNum = 0;
+                        gse_blk.sqNum = 0;
+                        send_rgoose_packet(i);
+                        LOG(DEBUG, "stNum = %u, sqNum = %u\n", gse_blk.stNum, gse_blk.sqNum-1);
+                    }
+                }
+                else {
                 //LOG(DEBUG, "\tNo change\n");
-            }
+                }
+            }      
+
         }
         //if (mode == INITIALIZE_VIEW)
             //LOG(DEBUG, "stNum = %u\nsqNum = %u\n", gse_blk.stNum, gse_blk.sqNum);
@@ -305,12 +352,29 @@ void R_GOOSEModule::form_rgoose_pdu(GooseCtlBlk_t &gse_blk, vector<unsigned char
     // (xii) get allData value from gse_blk.da_view
     //for now only boolean, can be extended for other values
     //TO DO: add other data types
-    for (bool val : gse_blk.da_view) {
+
+    for (MmsValue* val : gse_blk.da_view)
+    {
+    //for (bool val : gse_blk.da_view) {
         /* GOOSE data set encoded based on the MMS adapted ASN.1/BER rule */
-        allData_Value.push_back(0x83); // Tag = 0x83 -> Data type: Boolean
-        allData_Value.push_back(0x01); // Length = 0x01
-        val ? allData_Value.push_back(0x01) : allData_Value.push_back(0x00);
+        if (MmsValue_getType(val) == MMS_BOOLEAN) //weizhe
+        {
+            allData_Value.push_back(0x83); // Tag = 0x83 -> Data type: Boolean
+            allData_Value.push_back(0x01); // Length = 0x01
+            MmsValue_getBoolean(val) ? allData_Value.push_back(0x01) : allData_Value.push_back(0x00);
+        }
+        else if (MmsValue_getType(val) == MMS_BIT_STRING)
+        {
+            allData_Value.push_back(0x84); // Tag = 0x84 -> Data type: Dbpos
+            allData_Value.push_back(0x01); // Length = 0x01
+            uint8_t dbpos_val = Dbpos_fromMmsValue(val);
+            allData_Value.push_back(dbpos_val);
+        }
+        else{
+            LOG(DEBUG, "Data Type from MmsValue_getType(val) %d not supported.\n", MmsValue_getType(val));
+        }
     }
+
     allData_Len = allData_Value.size();
     LOG(DEBUG, "allData len %u\n", allData_Len);
 

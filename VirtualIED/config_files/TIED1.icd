@@ -87,7 +87,8 @@
         <LDevice inst="CTRL">
           <LN0 lnClass="LLN0" inst="" lnType="CTRL.LLN0">
             <DataSet name="CDS">
-              <FCDA ldInst="CTRL" lnInst="1" lnClass="XCBR" doName="Pos" daName="stVal" fc="MX" />
+              <!--<FCDA ldInst="CTRL" lnInst="1" lnClass="XCBR" doName="Pos" daName="stVal" fc="MX" />-->
+            <FCDA ldInst="CTRL" lnInst="1" lnClass="XCBR" doName="Pos" daName="stVal" fc="ST" />
             </DataSet>
             <GSEControl Name="TIED1_Status-R-GOOSE" desc="Status info of CB TIED1" type="GOOSE" fixedOffs="false" confRev="0" appID="0005" datSet="CDS" >
 				<IEDName>S1IED1</IEDName>

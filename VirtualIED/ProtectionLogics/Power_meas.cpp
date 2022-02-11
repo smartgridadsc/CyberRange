@@ -46,8 +46,7 @@ void Power_meas::start() {
 
             else
             {
-                //comment out for now
-                //cout << "Real Power: " << row[0] << endl;
+                cout << "Real Power: " << row[0] << endl;
             }
         }
 
@@ -81,8 +80,7 @@ void Power_meas::start() {
 
             else
             {
-                //comment out for now
-                //cout << "Reactive Power: " << row[0] << endl;
+                cout << "Reactive Power: " << row[0] << endl;
             }
         }
     }

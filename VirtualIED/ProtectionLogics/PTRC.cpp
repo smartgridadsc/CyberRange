@@ -49,31 +49,26 @@ void PTRC::start() {
             else
             {
                 cout << "PTRC remote circuit breaker is open" << endl;
-                // for (auto cb_val : cb_list)
-                // {
 
-                    vector<string> strings;
-                    istringstream f(*cb_val);
-                    string s;
+                vector<string> strings;
+                istringstream f(*cb_val);
+                string s;
 
-                    while (getline(f, s, '.'))
+                while (getline(f, s, '.'))
+                {
+                    if (!s.empty())
                     {
-                        if (!s.empty())
-                        {
-                            strings.push_back(s);
-                        }
+                        strings.push_back(s);
                     }
-                    string table_name = strings[0];
-                    string column_name = strings[1];
-                    string cb_value = strings[2];
-
-                    //int cb_count = 0;                    
-                    mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'");                                                
-                    cout << "UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'" << endl;
-                    mysqlpp::UseQueryResult res = update_query.use();
-                    cout << "PTRC circuit breaker " << column_name << " has opened." << endl;
-                    //cb_count ++;                    
-                //}
+                }
+                string table_name = strings[0];
+                string column_name = strings[1];
+                string cb_value = strings[2];
+                
+				mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'");                                                
+                cout << "UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'" << endl;
+                mysqlpp::UseQueryResult res = update_query.use();
+                cout << "PTRC circuit breaker " << column_name << " has opened." << endl;
             }
         cb_val++;
         }

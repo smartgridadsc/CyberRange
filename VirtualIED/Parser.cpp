@@ -15,6 +15,10 @@ using json = nlohmann::json;
 #include "PTTR.h"
 #include "PresSV.h"
 #include "Power_meas.h"
+#include "PTRC.h"
+#include "PDIF87L.h"
+#include "CILO.h"
+
 
 #include "MMS.h"
 #include "R_GOOSE.h"
@@ -30,11 +34,17 @@ using json = nlohmann::json;
 using namespace std;
 
 vector<long long> PTOC51_store_time, PTOV59_alarm_store_time, PTOV59_trip_store_time, PTUV27_alarm_store_time, PTUV27_trip_store_time;
+bool CILO_exist;
+CILO cilo;
 
-list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmapping_filename, std::string &thresholds_filename)
+//add a new argument for sed and icd for the new functions
+//list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmapping_filename, std::string &thresholds_filename)
+list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmapping_filename, std::string &thresholds_filename,std::string &this_ied, std::string &sed_filename)
 {
     list<LogicFunction *> logicList;
 
+
+    
     //JSON parsing
     std::ifstream ifs_cp(cpmapping_filename);
     json jf_cp = json::parse(ifs_cp);
@@ -220,6 +230,14 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
         }
     }
 
+    if (jf_t.contains("PDIF87L"))
+    {
+        for (auto &el : jf_t["PDIF87L"].items())
+        {
+            PDIF87L_Thres_list.push_back(stod(el.value()["Threshold"].get<string>()));
+        }
+    }
+
     //for time stamp
     if (!PTOV59_alarm_limit_list.empty())
     {
@@ -289,6 +307,212 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
         logicList.push_back(power_meas);
         LOG(INFO, "Power added\n");
     }
+     
+    //SED parsing
+    if (!sed_filename.empty())
+    {
+        string filename = CONFIG_DIR + sed_filename;
+        rapidxml::file<> xmlFile(filename.c_str());
+        rapidxml::xml_document<> doc;
+        doc.parse<0>(xmlFile.data());
+
+        // Find out the root node: prints "Root Node's name: SCL" for a SED file
+        xml_node *root_node = doc.first_node();
+        if (static_cast<string>(root_node->name()) == "SCL")
+        {
+            LOG(DEBUG, "Parsing for SED (%s)\n", filename.c_str());
+        }
+        else
+        {
+            LOG(ERROR, "Name of Root Node is not \"SCL\"! Please check format of SED file: %s", sed_filename.c_str());
+        }
+
+        for (xml_node *ied_node = root_node->first_node("IED"); ied_node; ied_node = ied_node->next_sibling("IED"))
+        {
+            xml_attr *IED_name_attr = ied_node->first_attribute("name");
+            string IED_name(IED_name_attr->value());
+
+            if (IED_name.compare(this_ied) != 0)
+            {
+                xml_node *ap_node = ied_node->first_node("AccessPoint");
+                for (xml_node *ld_node = ap_node->first_node("LDevice"); ld_node; ld_node = ld_node->next_sibling("LDevice"))
+                {
+                    xml_node *ln0_node = ld_node->first_node("LN0"); 
+
+                    //for loop start
+                    xml_node *gsectrl_node = ln0_node->first_node("GSEControl");
+                    bool same_IED = false;
+
+                    if (gsectrl_node != nullptr)
+                    {
+                        for(xml_node *gseCTRL_node = ln0_node->first_node("GSEControl"); gseCTRL_node; gseCTRL_node = gseCTRL_node->next_sibling("GSEControl"))
+                        {
+                            xml_node *iedname_node = gseCTRL_node->first_node("IEDName");
+                            if(iedname_node != nullptr)
+                            {
+                                for(xml_node *iedName_node = gseCTRL_node->first_node("IEDName"); iedName_node; iedName_node = iedName_node->next_sibling("IEDName"))
+                                {
+                                    string iedName(iedName_node->value());
+                                    if (iedName.compare(this_ied) == 0)
+                                    {
+                                        same_IED = true;
+                                        break;
+                                    }
+                                    
+                                }
+                            }
+                        }  
+                    }
+            
+                    //xml_node *svctrl_node = ld_node->first_node("SampledValueControl");
+                    xml_node *svctrl_node = ln0_node->first_node("SampledValuesControl");
+                    if (svctrl_node != nullptr)
+                    {
+                        //for(xml_node *svCTRL_node = ld_node->first_node("SampledValueControl"); svCTRL_node; svCTRL_node = svCTRL_node->next_sibling("SampledValueControl"))
+                        for(xml_node *svCTRL_node = ln0_node->first_node("SampledValuesControl"); svCTRL_node; svCTRL_node = svCTRL_node->next_sibling("SampledValuesControl"))
+                        {
+                            xml_node *iedname_node = svCTRL_node->first_node("IEDName");
+                            if(iedname_node != nullptr)
+                            {
+                                for(xml_node *iedName_node = svCTRL_node->first_node("IEDName"); iedName_node; iedName_node = iedName_node->next_sibling("IEDName"))
+                                {
+                                    string iedName(iedName_node->value());
+                                    if (iedName.compare(this_ied) == 0)
+                                    {
+                                        same_IED = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }  
+                    }
+                    if (svctrl_node == nullptr && gsectrl_node == nullptr)                    
+                    {
+                        continue;
+                    }
+
+                    xml_node *dataset_node = ln0_node->first_node("DataSet");
+                    
+                    //validation to make sure it is implemented in the correct IED
+                    if (same_IED) 
+                    {                               
+                        cout << "SAME IED VALID" << endl;
+                        for (xml_node *FCDA_node = dataset_node->first_node("FCDA"); FCDA_node; FCDA_node = FCDA_node->next_sibling("FCDA"))
+                        {
+                            xml_attr *FCDA_attr = FCDA_node->first_attribute("lnClass");
+                            string lnClass_name(FCDA_attr->value());
+
+                            if (lnClass_name.compare("XCBR") == 0)
+                            {
+                                xml_attr *FCDA_ldInst = FCDA_node->first_attribute("ldInst");
+                                //if block to check for null
+                                string ldInst_name(FCDA_ldInst->value());
+                                    
+                                xml_attr *FCDA_lnInst = FCDA_node->first_attribute("lnInst");
+                                string lnInst_name(FCDA_lnInst->value());
+                                
+                                xml_attr *FCDA_lnClass = FCDA_node->first_attribute("lnClass");
+                                string lnClass_name(FCDA_lnClass->value());
+
+                                xml_attr *FCDA_doName = FCDA_node->first_attribute("doName");
+                                string doName_name(FCDA_doName->value());
+
+                                xml_attr *FCDA_daName = FCDA_node->first_attribute("daName");
+                                string daName_name(FCDA_daName->value());
+
+                                string CB_cyber_str = IED_name + ldInst_name + "/" + lnClass_name + lnInst_name + "." + doName_name + "." + daName_name;
+                                remote_CB_cyber_list.push_back(CB_cyber_str);
+                            }
+                            
+                            if (lnClass_name.compare("MMXU") == 0)
+                            {
+                                xml_attr *FCDA_ldInst = FCDA_node->first_attribute("ldInst");
+                                string ldInst_name(FCDA_ldInst->value());
+                                    
+                                xml_attr *FCDA_lnInst = FCDA_node->first_attribute("lnInst");
+                                string lnInst_name(FCDA_lnInst->value());
+                                
+                                xml_attr *FCDA_lnClass = FCDA_node->first_attribute("lnClass");
+                                string lnClass_name(FCDA_lnClass->value());
+
+                                xml_attr *FCDA_doName = FCDA_node->first_attribute("doName");
+                                string doName_name(FCDA_doName->value());
+
+                                xml_attr *FCDA_daName = FCDA_node->first_attribute("daName");
+                                string daName_name(FCDA_daName->value());
+
+                                string current_cyber_str = IED_name + ldInst_name + "/" + lnClass_name + lnInst_name + "." + doName_name + "." + daName_name;
+                                remote_current_cyber_list.push_back(current_cyber_str);
+                            }
+                        }
+                    }
+                } 
+            }
+            else
+            {
+                printf("the same IED, therefore skipping\n");
+                continue;
+            }        
+                
+        }
+    doc.clear();
+    }
+    
+
+    //weizhe Parsing icd files
+    string filename = CONFIG_DIR + this_ied + ".icd";
+    rapidxml::file<> xmlFile(filename.c_str());
+    rapidxml::xml_document<> doc;
+
+    //Parse the buffer
+    doc.parse<0>(xmlFile.data());
+
+    //defining root
+    xml_node *root_node = doc.first_node();
+    if (static_cast<string>(root_node->name()) == "SCL")
+    {
+        LOG(DEBUG, "Parsing icd file (%s)\n", filename.c_str());
+    }
+    else
+    {
+        LOG(ERROR, "Parsing icd file has FAILED (%s)\n", filename.c_str());
+    }
+
+    xml_node *ied_node = root_node->first_node("IED");
+    xml_node *server_node = ied_node->first_node("AccessPoint")
+                             ->first_node("Server");
+
+    //LDevice node
+    for (xml_node *ld_node = server_node->first_node("LDevice"); ld_node; ld_node = ld_node->next_sibling("LDevice"))
+    {
+        // ln node        
+        for (xml_node *ln_node = ld_node->first_node("LN"); ln_node; ln_node = ln_node->next_sibling("LN"))
+        {
+            xml_attr *lnClass_attr = ln_node->first_attribute("lnClass");
+            if (lnClass_attr == nullptr)
+                continue;
+            
+            string lnClass_name(lnClass_attr->value());
+
+            if (lnClass_name.compare("PTRC") == 0 && !remote_CB_cyber_list.empty()) 
+            {                               
+                PTRC *ptrc = new PTRC(CB_list, remote_CB_cyber_list);
+                logicList.push_back(ptrc);
+                LOG(INFO, "PTRC added\n");
+                break;
+            }
+        }
+    }
+    doc.clear();
+    //end weizhe Parsing icd files
+
+    //PDIF87L list
+    if (!PDIF87L_Thres_list.empty() && !remote_current_cyber_list.empty())
+    {
+        PDIF87L *pdif87l = new PDIF87L(PTOC_phy_list, PDIF87L_Thres_list, CB_list,remote_current_cyber_list);
+        logicList.push_back(pdif87l);
+        LOG(INFO, "PDIF87L added\n");
+    }
 
     return logicList;
 }
@@ -345,7 +569,7 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         R_SVModule (ied_name)
     --------------------------------------*/
-    //commMod = config_RSV(ied_name);
+    commMod = config_RSV(ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);
@@ -355,15 +579,13 @@ list<CommModule *> Parser::parse_comm_config(std::string &sed_filename, std::str
     /*--------------------------------------
         R_GOOSEModule (ied_name)
     --------------------------------------*/
-    //commMod = config_RGOOSE(ied_name);
+    commMod = config_RGOOSE(ied_name);
     if (commMod != nullptr)
     {
         commList.push_back(commMod);
         LOG(INFO, "R-GOOSE added\n\n");
     }
-
-   
-
+    
     return commList;
 }
 
@@ -449,351 +671,360 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
         if (this_ied.compare(ied_name) == 0)
             continue;
 
-        xml_node *ln0_node = ied_node->first_node("AccessPoint")
-                                 ->first_node("LDevice")
-                                 ->first_node("LN0");
-        if (ln0_node == nullptr)
+        //weizhe
+        // xml_node *ln0_node = ied_node->first_node("AccessPoint")
+        //                          ->first_node("LDevice")
+        //                          ->first_node("LN0");
+        xml_node *ap_node = ied_node->first_node("AccessPoint");
+
+        //LDevice node
+        
+        for (xml_node *ld_node = ap_node->first_node("LDevice"); ld_node; ld_node = ld_node->next_sibling("LDevice"))
         {
-            LOG(DEBUG, "ln0 node not found for %s\n", name_attr->value());
-            continue;
+            xml_node *ln0_node = ld_node->first_node("LN0");
+
+            if (ln0_node == nullptr)
+            {
+                LOG(DEBUG, "ln0 node not found for %s\n", name_attr->value());
+                continue;
+            }
+            //FOR GOOSECTL BLOCKS
+            LOG(DEBUG, "Parsing available GOOSE_CTL_BLOCKS WeiZhe\n");
+
+            for (xml_node *gsectl_node = ln0_node->first_node("GSEControl"); gsectl_node; gsectl_node = gsectl_node->next_sibling("GSEControl"))
+            {
+                for (xml_node *sub_ied = gsectl_node->first_node("IEDName"); sub_ied; sub_ied = sub_ied->next_sibling("IEDName"))
+                {
+                    if (this_ied.compare(sub_ied->value()) != 0)
+                        continue;
+
+                    GOOSE_Subscription gse_sub;
+                    string temp_multicast;
+
+                    xml_node *connAP_node;
+                    try
+                    {
+                        connAP_node = connAP_map.at(ied_name);
+                    }
+                    catch (out_of_range e)
+                    {
+                        LOG(ERROR, "Cannot find IED communication details in <Communication>\n");
+                        continue;
+                    }
+
+                    //get sourceIP
+                    found = false;
+                    for (xml_node *p_node = connAP_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
+                    {
+                        xml_attr *type_attr = p_node->first_attribute("type");
+                    	if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
+                        {
+                            gse_sub.sourceIP = string(p_node->value());
+                            found = true;
+                        }
+                    }
+                    if (!found)
+                    {
+                        LOG(ERROR, "Cannot find source IP\n");
+                    }
+
+                    //get gocb_ref
+                    xml_attr *gsectl_name = gsectl_node->first_attribute("Name");
+                    if (gsectl_name == nullptr)
+                        continue;
+                    gse_sub.gocb_ref = string(gsectl_name->value());
+                    LOG(DEBUG, "Found GSEControl %s\n", gse_sub.gocb_ref.c_str());
+
+                    //get dataset name
+                    xml_attr *gsectl_dsname = gsectl_node->first_attribute("datSet");
+                    if (gsectl_dsname == nullptr)
+                        continue;
+                    gse_sub.dataset_name = string(gsectl_dsname->value());
+
+                    found = false;
+                    //get da strings and numDataSetEntries
+                    for (xml_node *ds_node = ln0_node->first_node("DataSet"); ds_node; ds_node = ds_node->next_sibling("DataSet"))
+                    {
+                        xml_attr *ds_name = ds_node->first_attribute("name");
+                        if (strncmp(ds_name->value(), gsectl_dsname->value(), strlen(gsectl_dsname->value())) == 0)
+                        {
+                            found = true;
+                            LOG(DEBUG, "Found Dataset %s\n", ds_name->value());
+                            for (xml_node *fcda_node = ds_node->first_node("FCDA"); fcda_node; fcda_node = fcda_node->next_sibling("FCDA"))
+                            {
+                                if (fcda_node == 0)
+                                {
+                                    LOG(ERROR, "Cannot find FCDA node\n");
+                                    return nullptr;
+                                }
+                                //Ied name
+                                string da_ref(ied_name);
+                                //LD name
+                                xml_attr *entry_attr = fcda_node->first_attribute("ldInst");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find ldInst\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+                                da_ref.append("/");
+                                //LN name
+                                entry_attr = fcda_node->first_attribute("lnClass");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find lnClass\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+                                entry_attr = fcda_node->first_attribute("lnInst");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find lnInst\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+                                da_ref.append(".");
+                                //DO name
+                                entry_attr = fcda_node->first_attribute("doName");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find doName\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+                                da_ref.append(".");
+                                //DA name
+                                entry_attr = fcda_node->first_attribute("daName");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find daName\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+
+                                gse_sub.da_strs.push_back(da_ref);
+                                gse_sub.num_dataSet_entries++;
+                            } // end for each fcda node
+                        }     // endif dsname == ds_in_gocb
+                    }         // end for each dataset in ln0
+                    if (!found)
+                    {
+                        LOG(ERROR, "\tCannot find dataset definition\n");
+                        return nullptr;
+                    }
+
+                    //get multicast addr and appID
+                    for (xml_node *gse_node = connAP_node->first_node("GSE"); gse_node; gse_node = gse_node->next_sibling("GSE"))
+                    {
+                        xml_attr *cbName_attr = gse_node->first_attribute("cbName");
+                        if (cbName_attr == nullptr)
+                            continue;
+                        if (gse_sub.gocb_ref.compare(cbName_attr->value()) != 0)
+                            continue;
+                        for (xml_node *p_node = gse_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
+                        {
+                            xml_attr *type_attr = p_node->first_attribute("type");
+                            if (type_attr == nullptr)
+                                continue;
+                            //get multicast addr
+                            if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
+                            {
+                                temp_multicast = string(p_node->value());
+                            }
+                            //get appID
+                            else if (strncmp(type_attr->value(), "APPID", strlen("APPID")) == 0)
+                            {
+                                gse_sub.app_ID = string(p_node->value());
+                            }
+                        }
+                    }
+
+                    if (temp_multicast.compare("") == 0)
+                    {
+                        LOG(ERROR, "Cannot find multicast addr\n");
+                        return nullptr;
+                    }
+                    if (gse_sub.app_ID.compare("") == 0)
+                    {
+                        LOG(ERROR, "Cannot find appID\n");
+                        return nullptr;
+                    }
+                    //add if okay
+                    multicast_addrs.push_back(temp_multicast);
+                    goose_subs[gse_sub.sourceIP] = gse_sub;
+                    break; //can exit if this GSEControl already added
+                }          // END for each subscribing IED
+            }              // END for each GSEControl node
+            // END check for goose
+            //FOR SVCTL BLOCKS
+            LOG(DEBUG, "Parsing available SV_CTL_BLOCKS\n");
+            for (xml_node *svctl_node = ln0_node->first_node("SampledValuesControl"); svctl_node; svctl_node = svctl_node->next_sibling("SampledValuesControl"))
+            {
+                for (xml_node *sub_ied = svctl_node->first_node("IEDName"); sub_ied; sub_ied = sub_ied->next_sibling("IEDName"))
+                {
+                    if (this_ied.compare(sub_ied->value()) != 0)
+                        continue;
+
+                    SV_Subscription sv_sub;
+                    string temp_multicast;
+
+                    xml_node *connAP_node;
+                    try
+                    {
+                        connAP_node = connAP_map.at(ied_name);
+                    }
+                    catch (out_of_range e)
+                    {
+                        LOG(ERROR, "Cannot find IED communication details in <Communication>\n");
+                        continue;
+                    }
+
+                    //get sourceIP
+                    found = false;
+                    for (xml_node *p_node = connAP_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
+                    {
+                        xml_attr *type_attr = p_node->first_attribute("type");
+                        if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
+                        {
+                            sv_sub.sourceIP = string(p_node->value());
+                            found = true;
+                        }
+                    }
+                    if (!found)
+                    {
+                        LOG(ERROR, "Cannot find source IP\n");
+                    }
+
+                    //get gocb_ref
+                    xml_attr *svctl_name = svctl_node->first_attribute("Name");
+                    if (svctl_name == nullptr)
+                        continue;
+                    sv_sub.svcb_ref = string(svctl_name->value());
+                    LOG(DEBUG, "Found SampledValuesControl %s\n", sv_sub.svcb_ref.c_str());
+
+                    //get dataset name
+                    xml_attr *svctl_dsname = svctl_node->first_attribute("datSet");
+                    if (svctl_dsname == nullptr)
+                        continue;
+                    sv_sub.dataset_name = string(svctl_dsname->value());
+
+                    found = false;
+                    //get da strings and numDataSetEntries
+                    for (xml_node *ds_node = ln0_node->first_node("DataSet"); ds_node; ds_node = ds_node->next_sibling("DataSet"))
+                    {
+                        xml_attr *ds_name = ds_node->first_attribute("name");
+                        if (strncmp(ds_name->value(), svctl_dsname->value(), strlen(svctl_dsname->value())) == 0)
+                        {
+                            found = true;
+                            LOG(DEBUG, "Found Dataset %s\n", ds_name->value());
+                            for (xml_node *fcda_node = ds_node->first_node("FCDA"); fcda_node; fcda_node = fcda_node->next_sibling("FCDA"))
+                            {
+                                if (fcda_node == 0)
+                                {
+                                    LOG(ERROR, "Cannot find FCDA node\n");
+                                    return nullptr;
+                                }
+                                //Ied name
+                                string da_ref(ied_name);
+                                //LD name
+                                xml_attr *entry_attr = fcda_node->first_attribute("ldInst");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find ldInst\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+                                da_ref.append("/");
+                                //LN name
+                                entry_attr = fcda_node->first_attribute("lnClass");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find lnClass\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+                                entry_attr = fcda_node->first_attribute("lnInst");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find lnInst\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+                                da_ref.append(".");
+                                //DO name
+                                entry_attr = fcda_node->first_attribute("doName");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find doName\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+                                da_ref.append(".");
+                                //DA name
+                                entry_attr = fcda_node->first_attribute("daName");
+                                if (entry_attr == 0)
+                                {
+                                    LOG(ERROR, "Cannot find daName\n");
+                                    return nullptr;
+                                }
+                                da_ref.append(entry_attr->value());
+
+                                sv_sub.da_strs.push_back(da_ref);
+                                sv_sub.num_dataSet_entries++;
+                            } // end for each fcda node
+                        }     // endif dsname == ds_in_svcb
+                    }         // end for each dataset in ln0
+                    if (!found)
+                    {
+                        LOG(ERROR, "\tCannot find dataset definition\n");
+                        return nullptr;
+                    }
+
+                    //get multicast addr and appID
+                    for (xml_node *sv_node = connAP_node->first_node("SMV"); sv_node; sv_node = sv_node->next_sibling("SMV"))
+                    {
+                        xml_attr *cbName_attr = sv_node->first_attribute("cbName");
+                        if (cbName_attr == nullptr)
+                            continue;
+                        if (sv_sub.svcb_ref.compare(cbName_attr->value()) != 0)
+                            continue;
+
+                        for (xml_node *p_node = sv_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
+                        {
+                            xml_attr *type_attr = p_node->first_attribute("type");
+                            if (type_attr == nullptr)
+                                continue;
+                            //get multicast addr
+                            if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
+                            {
+                                temp_multicast = string(p_node->value());
+                            }
+                            //get appID
+                            else if (strncmp(type_attr->value(), "APPID", strlen("APPID")) == 0)
+                            {
+                                sv_sub.app_ID = string(p_node->value());
+                            }
+                        }
+                    }
+                    if (temp_multicast.compare("") == 0)
+                    {
+                        LOG(ERROR, "Cannot find multicast addr\n");
+                        return nullptr;
+                    }
+                    if (sv_sub.app_ID.compare("") == 0)
+                    {
+                        LOG(ERROR, "Cannot find appID\n");
+                        return nullptr;
+                    }
+                    //add if okay
+                    multicast_addrs.push_back(temp_multicast);
+                    sv_subs[sv_sub.sourceIP] = sv_sub;
+                    break; //can exit if this GSEControl already added
+                }          // END for each subscribing IED
+            }              // END for each SVControl node
+            // END check for SV
         }
-        //FOR GOOSECTL BLOCKS
-        LOG(DEBUG, "Parsing available GOOSE_CTL_BLOCKS\n");
-        for (xml_node *gsectl_node = ln0_node->first_node("GSEControl"); gsectl_node; gsectl_node = gsectl_node->next_sibling("GSEControl"))
-        {
-            for (xml_node *sub_ied = gsectl_node->first_node("IEDName"); sub_ied; sub_ied = sub_ied->next_sibling("IEDName"))
-            {
-                if (this_ied.compare(sub_ied->value()) != 0)
-                    continue;
-
-                GOOSE_Subscription gse_sub;
-                string temp_multicast;
-
-                xml_node *connAP_node;
-                try
-                {
-                    connAP_node = connAP_map.at(ied_name);
-                }
-                catch (out_of_range e)
-                {
-                    LOG(ERROR, "Cannot find IED communication details in <Communication>\n");
-                    continue;
-                }
-
-                //get sourceIP
-                found = false;
-                for (xml_node *p_node = connAP_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
-                {
-                    xml_attr *type_attr = p_node->first_attribute("type");
-                    if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
-                    {
-                        gse_sub.sourceIP = string(p_node->value());
-                        found = true;
-                    }
-                }
-                if (!found)
-                {
-                    LOG(ERROR, "Cannot find source IP\n");
-                }
-
-                //get gocb_ref
-                xml_attr *gsectl_name = gsectl_node->first_attribute("Name");
-                if (gsectl_name == nullptr)
-                    continue;
-                gse_sub.gocb_ref = string(gsectl_name->value());
-                LOG(DEBUG, "Found GSEControl %s\n", gse_sub.gocb_ref.c_str());
-
-                //get dataset name
-                xml_attr *gsectl_dsname = gsectl_node->first_attribute("datSet");
-                if (gsectl_dsname == nullptr)
-                    continue;
-                gse_sub.dataset_name = string(gsectl_dsname->value());
-
-                found = false;
-                //get da strings and numDataSetEntries
-                for (xml_node *ds_node = ln0_node->first_node("DataSet"); ds_node; ds_node = ds_node->next_sibling("DataSet"))
-                {
-                    xml_attr *ds_name = ds_node->first_attribute("name");
-                    if (strncmp(ds_name->value(), gsectl_dsname->value(), strlen(gsectl_dsname->value())) == 0)
-                    {
-                        found = true;
-                        LOG(DEBUG, "Found Dataset %s\n", ds_name->value());
-                        for (xml_node *fcda_node = ds_node->first_node("FCDA"); fcda_node; fcda_node = fcda_node->next_sibling("FCDA"))
-                        {
-                            if (fcda_node == 0)
-                            {
-                                LOG(ERROR, "Cannot find FCDA node\n");
-                                return nullptr;
-                            }
-                            //Ied name
-                            string da_ref(ied_name);
-                            //LD name
-                            xml_attr *entry_attr = fcda_node->first_attribute("ldInst");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find ldInst\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-                            da_ref.append("/");
-                            //LN name
-                            entry_attr = fcda_node->first_attribute("lnClass");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find lnClass\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-                            entry_attr = fcda_node->first_attribute("lnInst");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find lnInst\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-                            da_ref.append(".");
-                            //DO name
-                            entry_attr = fcda_node->first_attribute("doName");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find doName\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-                            da_ref.append(".");
-                            //DA name
-                            entry_attr = fcda_node->first_attribute("daName");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find daName\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-
-                            gse_sub.da_strs.push_back(da_ref);
-                            gse_sub.num_dataSet_entries++;
-                        } // end for each fcda node
-                    }     // endif dsname == ds_in_gocb
-                }         // end for each dataset in ln0
-                if (!found)
-                {
-                    LOG(ERROR, "\tCannot find dataset definition\n");
-                    return nullptr;
-                }
-
-                //get multicast addr and appID
-                for (xml_node *gse_node = connAP_node->first_node("GSE"); gse_node; gse_node = gse_node->next_sibling("GSE"))
-                {
-                    xml_attr *cbName_attr = gse_node->first_attribute("cbName");
-                    if (cbName_attr == nullptr)
-                        continue;
-                    if (gse_sub.gocb_ref.compare(cbName_attr->value()) != 0)
-                        continue;
-
-                    for (xml_node *p_node = gse_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
-                    {
-                        xml_attr *type_attr = p_node->first_attribute("type");
-                        if (type_attr == nullptr)
-                            continue;
-                        //get multicast addr
-                        if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
-                        {
-                            temp_multicast = string(p_node->value());
-                        }
-                        //get appID
-                        else if (strncmp(type_attr->value(), "APPID", strlen("APPID")) == 0)
-                        {
-                            gse_sub.app_ID = string(p_node->value());
-                        }
-                    }
-                }
-                if (temp_multicast.compare("") == 0)
-                {
-                    LOG(ERROR, "Cannot find multicast addr\n");
-                    return nullptr;
-                }
-                if (gse_sub.app_ID.compare("") == 0)
-                {
-                    LOG(ERROR, "Cannot find appID\n");
-                    return nullptr;
-                }
-                //add if okay
-                multicast_addrs.push_back(temp_multicast);
-                goose_subs[gse_sub.sourceIP] = gse_sub;
-                break; //can exit if this GSEControl already added
-            }          // END for each subscribing IED
-        }              // END for each GSEControl node
-        // END check for goose
-
-        //FOR SVCTL BLOCKS
-        LOG(DEBUG, "Parsing available SV_CTL_BLOCKS\n");
-        for (xml_node *svctl_node = ln0_node->first_node("SampledValuesControl"); svctl_node; svctl_node = svctl_node->next_sibling("SampledValuesControl"))
-        {
-            for (xml_node *sub_ied = svctl_node->first_node("IEDName"); sub_ied; sub_ied = sub_ied->next_sibling("IEDName"))
-            {
-                if (this_ied.compare(sub_ied->value()) != 0)
-                    continue;
-
-                SV_Subscription sv_sub;
-                string temp_multicast;
-
-                xml_node *connAP_node;
-                try
-                {
-                    connAP_node = connAP_map.at(ied_name);
-                }
-                catch (out_of_range e)
-                {
-                    LOG(ERROR, "Cannot find IED communication details in <Communication>\n");
-                    continue;
-                }
-
-                //get sourceIP
-                found = false;
-                for (xml_node *p_node = connAP_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
-                {
-                    xml_attr *type_attr = p_node->first_attribute("type");
-                    if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
-                    {
-                        sv_sub.sourceIP = string(p_node->value());
-                        found = true;
-                    }
-                }
-                if (!found)
-                {
-                    LOG(ERROR, "Cannot find source IP\n");
-                }
-
-                //get gocb_ref
-                xml_attr *svctl_name = svctl_node->first_attribute("Name");
-                if (svctl_name == nullptr)
-                    continue;
-                sv_sub.svcb_ref = string(svctl_name->value());
-                LOG(DEBUG, "Found SampledValuesControl %s\n", sv_sub.svcb_ref.c_str());
-
-                //get dataset name
-                xml_attr *svctl_dsname = svctl_node->first_attribute("datSet");
-                if (svctl_dsname == nullptr)
-                    continue;
-                sv_sub.dataset_name = string(svctl_dsname->value());
-
-                found = false;
-                //get da strings and numDataSetEntries
-                for (xml_node *ds_node = ln0_node->first_node("DataSet"); ds_node; ds_node = ds_node->next_sibling("DataSet"))
-                {
-                    xml_attr *ds_name = ds_node->first_attribute("name");
-                    if (strncmp(ds_name->value(), svctl_dsname->value(), strlen(svctl_dsname->value())) == 0)
-                    {
-                        found = true;
-                        LOG(DEBUG, "Found Dataset %s\n", ds_name->value());
-                        for (xml_node *fcda_node = ds_node->first_node("FCDA"); fcda_node; fcda_node = fcda_node->next_sibling("FCDA"))
-                        {
-                            if (fcda_node == 0)
-                            {
-                                LOG(ERROR, "Cannot find FCDA node\n");
-                                return nullptr;
-                            }
-                            //Ied name
-                            string da_ref(ied_name);
-                            //LD name
-                            xml_attr *entry_attr = fcda_node->first_attribute("ldInst");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find ldInst\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-                            da_ref.append("/");
-                            //LN name
-                            entry_attr = fcda_node->first_attribute("lnClass");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find lnClass\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-                            entry_attr = fcda_node->first_attribute("lnInst");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find lnInst\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-                            da_ref.append(".");
-                            //DO name
-                            entry_attr = fcda_node->first_attribute("doName");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find doName\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-                            da_ref.append(".");
-                            //DA name
-                            entry_attr = fcda_node->first_attribute("daName");
-                            if (entry_attr == 0)
-                            {
-                                LOG(ERROR, "Cannot find daName\n");
-                                return nullptr;
-                            }
-                            da_ref.append(entry_attr->value());
-
-                            sv_sub.da_strs.push_back(da_ref);
-                            sv_sub.num_dataSet_entries++;
-                        } // end for each fcda node
-                    }     // endif dsname == ds_in_svcb
-                }         // end for each dataset in ln0
-                if (!found)
-                {
-                    LOG(ERROR, "\tCannot find dataset definition\n");
-                    return nullptr;
-                }
-
-                //get multicast addr and appID
-                for (xml_node *sv_node = connAP_node->first_node("SMV"); sv_node; sv_node = sv_node->next_sibling("SMV"))
-                {
-                    xml_attr *cbName_attr = sv_node->first_attribute("cbName");
-                    if (cbName_attr == nullptr)
-                        continue;
-                    if (sv_sub.svcb_ref.compare(cbName_attr->value()) != 0)
-                        continue;
-
-                    for (xml_node *p_node = sv_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
-                    {
-                        xml_attr *type_attr = p_node->first_attribute("type");
-                        if (type_attr == nullptr)
-                            continue;
-                        //get multicast addr
-                        if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
-                        {
-                            temp_multicast = string(p_node->value());
-                        }
-                        //get appID
-                        else if (strncmp(type_attr->value(), "APPID", strlen("APPID")) == 0)
-                        {
-                            sv_sub.app_ID = string(p_node->value());
-                        }
-                    }
-                }
-                if (temp_multicast.compare("") == 0)
-                {
-                    LOG(ERROR, "Cannot find multicast addr\n");
-                    return nullptr;
-                }
-                if (sv_sub.app_ID.compare("") == 0)
-                {
-                    LOG(ERROR, "Cannot find appID\n");
-                    return nullptr;
-                }
-                //add if okay
-                multicast_addrs.push_back(temp_multicast);
-                sv_subs[sv_sub.sourceIP] = sv_sub;
-                break; //can exit if this GSEControl already added
-            }          // END for each subscribing IED
-        }              // END for each SVControl node
-        // END check for SV
-
-    } // END for each IED node
+    }
 
     doc.clear();
 
@@ -809,6 +1040,7 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
 
 // Current code only parses if there is 1 logical device
 // TO DO: handle multiple logical device
+//Weizhe
 CommModule *Parser::config_RSV(string &this_ied)
 {
     bool found = false;
@@ -842,155 +1074,169 @@ CommModule *Parser::config_RSV(string &this_ied)
     xml_node *connAP_node = root_node->first_node("Communication")
                                 ->first_node("SubNetwork")
                                 ->first_node("ConnectedAP");
-    xml_node *ln0_node = ied_node->first_node("AccessPoint")
-                             ->first_node("Server")
-                             ->first_node("LDevice")
-                             ->first_node("LN0");
+    // xml_node *ln0_node = ied_node->first_node("AccessPoint")
+    //                          ->first_node("Server")
+    //                          ->first_node("LDevice")
+    //                          ->first_node("LN0");
 
-    //Get Local IP
-    for (xml_node *p_node = connAP_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
+    xml_node *server_node = ied_node->first_node("AccessPoint")
+                             ->first_node("Server");
+
+    for (xml_node *ld_node = server_node->first_node("LDevice"); ld_node; ld_node = ld_node->next_sibling("LDevice"))                         
     {
-        xml_attr *type_attr = p_node->first_attribute("type");
-        if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
-        {
-            local_ip = string(p_node->value());
-            found = true;
-            break;
-        }
-    }
-    if (!found)
-    {
-        LOG(ERROR, "\tFailed to find local IP\n");
-        return nullptr;
-    }
+        xml_node *ln0_node = ld_node->first_node("LN0");
 
-    //Get SVControl
-    for (xml_node *svCTL_node = ln0_node->first_node("SampledValuesControl"); svCTL_node; svCTL_node = svCTL_node->next_sibling("SampledValuesControl"))
-    {
-        //Get SV CB REF
-        xml_attr *svcb_attr = svCTL_node->first_attribute("Name");
-        if (svcb_attr == 0)
+        if (ln0_node == nullptr)
         {
-            LOG(ERROR, "Failed to get gocb_ref attr\n");
-            return nullptr;
-        }
-        svcb_refs.push_back(svcb_attr->value());
-
-        //Get AppID
-        xml_attr *appID_attr = svCTL_node->first_attribute("appID");
-        if (appID_attr == 0)
+            LOG(DEBUG, "ln0 node not found for LDdevice\n");
+            continue;
+        } 
+        
+        //Get Local IP
+        for (xml_node *p_node = connAP_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
         {
-            LOG(ERROR, "Failed to get appID attr\n");
-            return nullptr;
-        }
-        app_IDs.push_back(appID_attr->value());
-
-        //Get Dataset associated with CB
-        xml_attr *ds_attr = svCTL_node->first_attribute("datSet");
-        if (ds_attr == 0)
-        {
-            LOG(ERROR, "Failed to get datSet attr\n");
-            return nullptr;
-        }
-        dataSet_names.push_back(ds_attr->value());
-
-        //Get Data Attrs
-        found = false;
-        vector<string> da_vector;
-        for (xml_node *ds_node = ln0_node->first_node("DataSet"); ds_node; ds_node = ds_node->next_sibling("DataSet"))
-        {
-            xml_attr *ds_name = ds_node->first_attribute("name");
-            if (strncmp(ds_name->value(), ds_attr->value(), strlen(ds_attr->value())) == 0)
+            xml_attr *type_attr = p_node->first_attribute("type");
+            if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
             {
+                local_ip = string(p_node->value());
                 found = true;
-                //LOG(DEBUG, "\tFound dataset %s\n", ds_name->value());
-                for (xml_node *fcda_node = ds_node->first_node("FCDA"); fcda_node; fcda_node = fcda_node->next_sibling("FCDA"))
-                {
-                    if (fcda_node == 0)
-                    {
-                        LOG(ERROR, "Cannot find FCDA node\n");
-                        return nullptr;
-                    }
-                    //Ied name
-                    string da_ref = this_ied;
-                    //LD name
-                    xml_attr *entry_attr = fcda_node->first_attribute("ldInst");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find ldInst\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-                    da_ref.append("/");
-                    //LN name
-                    entry_attr = fcda_node->first_attribute("lnClass");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find lnClass\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-                    entry_attr = fcda_node->first_attribute("lnInst");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find lnInst\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-                    da_ref.append(".");
-                    //DO name
-                    entry_attr = fcda_node->first_attribute("doName");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find doName\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-                    da_ref.append(".");
-                    //DA name
-                    entry_attr = fcda_node->first_attribute("daName");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find daName\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-
-                    da_vector.push_back(da_ref);
-                }
-            }
-        }
-        if (!found)
-        {
-            LOG(ERROR, "\tCannot find dataset definition\n");
-            return nullptr;
-        }
-        data_attrs.push_back(da_vector);
-
-        //Get Multicast addrs
-        found = false;
-        for (xml_node *conn_node = connAP_node->first_node("SMV"); conn_node; conn_node = conn_node->next_sibling("SMV"))
-        {
-            if (strncmp(conn_node->first_attribute("cbName")->value(), svcb_attr->value(), strlen(svcb_attr->value())) == 0)
-            {
-                for (xml_node *p_node = conn_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
-                {
-                    xml_attr *type_attr = p_node->first_attribute("type");
-                    if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
-                    {
-                        multicast_ips.push_back(p_node->value());
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            if (found)
                 break;
+            }
         }
         if (!found)
         {
-            LOG(ERROR, "\tCannot find MulticastIP\n");
+            LOG(ERROR, "\tFailed to find local IP\n");
             return nullptr;
+        }
+
+        //Get SVControl
+        for (xml_node *svCTL_node = ln0_node->first_node("SampledValuesControl"); svCTL_node; svCTL_node = svCTL_node->next_sibling("SampledValuesControl"))
+        {
+            //Get SV CB REF
+            xml_attr *svcb_attr = svCTL_node->first_attribute("Name");
+            if (svcb_attr == 0)
+            {
+                LOG(ERROR, "Failed to get gocb_ref attr\n");
+                return nullptr;
+            }
+            svcb_refs.push_back(svcb_attr->value());
+
+            //Get AppID
+            xml_attr *appID_attr = svCTL_node->first_attribute("appID");
+            if (appID_attr == 0)
+            {
+                LOG(ERROR, "Failed to get appID attr\n");
+                return nullptr;
+            }
+            app_IDs.push_back(appID_attr->value());
+
+            //Get Dataset associated with CB
+            xml_attr *ds_attr = svCTL_node->first_attribute("datSet");
+            if (ds_attr == 0)
+            {
+                LOG(ERROR, "Failed to get datSet attr\n");
+                return nullptr;
+            }
+            dataSet_names.push_back(ds_attr->value());
+
+            //Get Data Attrs
+            found = false;
+            vector<string> da_vector;
+            for (xml_node *ds_node = ln0_node->first_node("DataSet"); ds_node; ds_node = ds_node->next_sibling("DataSet"))
+            {
+                xml_attr *ds_name = ds_node->first_attribute("name");
+                if (strncmp(ds_name->value(), ds_attr->value(), strlen(ds_attr->value())) == 0)
+                {
+                    found = true;
+                    //LOG(DEBUG, "\tFound dataset %s\n", ds_name->value());
+                    for (xml_node *fcda_node = ds_node->first_node("FCDA"); fcda_node; fcda_node = fcda_node->next_sibling("FCDA"))
+                    {
+                        if (fcda_node == 0)
+                        {
+                            LOG(ERROR, "Cannot find FCDA node\n");
+                            return nullptr;
+                        }
+                        //Ied name
+                        string da_ref = this_ied;
+                        //LD name
+                        xml_attr *entry_attr = fcda_node->first_attribute("ldInst");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find ldInst\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+                        da_ref.append("/");
+                        //LN name
+                        entry_attr = fcda_node->first_attribute("lnClass");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find lnClass\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+                        entry_attr = fcda_node->first_attribute("lnInst");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find lnInst\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+                        da_ref.append(".");
+                        //DO name
+                        entry_attr = fcda_node->first_attribute("doName");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find doName\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+                        da_ref.append(".");
+                        //DA name
+                        entry_attr = fcda_node->first_attribute("daName");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find daName\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+
+                        da_vector.push_back(da_ref);
+                    }
+                }
+            }
+            if (!found)
+            {
+                LOG(ERROR, "\tCannot find dataset definition\n");
+                return nullptr;
+            }
+            data_attrs.push_back(da_vector);
+
+            //Get Multicast addrs
+            found = false;
+            for (xml_node *conn_node = connAP_node->first_node("SMV"); conn_node; conn_node = conn_node->next_sibling("SMV"))
+            {
+                if (strncmp(conn_node->first_attribute("cbName")->value(), svcb_attr->value(), strlen(svcb_attr->value())) == 0)
+                {
+                    for (xml_node *p_node = conn_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
+                    {
+                        xml_attr *type_attr = p_node->first_attribute("type");
+                        if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
+                        {
+                            multicast_ips.push_back(p_node->value());
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (found)
+                    break;
+            }
+            if (!found)
+            {
+                LOG(ERROR, "\tCannot find MulticastIP\n");
+                return nullptr;
+            }
         }
     }
 
@@ -1004,6 +1250,7 @@ CommModule *Parser::config_RSV(string &this_ied)
 
 // Current code only parses if there is 1 logical device
 // TO DO: handle multiple logical device
+//Weizhe
 CommModule *Parser::config_RGOOSE(string &this_ied)
 {
     bool found = false;
@@ -1037,156 +1284,174 @@ CommModule *Parser::config_RGOOSE(string &this_ied)
     xml_node *connAP_node = root_node->first_node("Communication")
                                 ->first_node("SubNetwork")
                                 ->first_node("ConnectedAP");
-    xml_node *ln0_node = ied_node->first_node("AccessPoint")
-                             ->first_node("Server")
-                             ->first_node("LDevice")
-                             ->first_node("LN0");
-
-    //Get Local IP
-    for (xml_node *p_node = connAP_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
+    // xml_node *ln0_node = ied_node->first_node("AccessPoint")
+    //                          ->first_node("Server")
+    //                          ->first_node("LDevice")
+    //                          ->first_node("LN0");
+    //weizhe
+    xml_node *server_node = ied_node->first_node("AccessPoint")
+                             ->first_node("Server");
+                        
+    for (xml_node *ld_node = server_node->first_node("LDevice"); ld_node; ld_node = ld_node->next_sibling("LDevice"))                         
     {
-        xml_attr *type_attr = p_node->first_attribute("type");
-        if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0)
-        {
-            local_ip = string(p_node->value());
-            found = true;
-            break;
-        }
-    }
-    if (!found)
-    {
-        LOG(ERROR, "\tFailed to find local IP\n");
-        return nullptr;
-    }
+        xml_node *ln0_node = ld_node->first_node("LN0");
 
-    //Get GSEControl
-    for (xml_node *gseCTL_node = ln0_node->first_node("GSEControl"); gseCTL_node; gseCTL_node = gseCTL_node->next_sibling("GSEControl"))
-    {
-        //Get GOOSE CB REF
-        xml_attr *gocb_attr = gseCTL_node->first_attribute("Name");
-        if (gocb_attr == 0)
+        if (ln0_node == nullptr)
         {
-            LOG(ERROR, "Failed to get gocb_ref attr\n");
-            return nullptr;
+            LOG(DEBUG, "ln0 node not found for LDdevice\n");
+            continue;
         }
-        gocb_refs.push_back(gocb_attr->value());
 
-        //Get AppID
-        xml_attr *appID_attr = gseCTL_node->first_attribute("appID");
-        if (appID_attr == 0)
+        //Get Local IP
+        for (xml_node *p_node = connAP_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
         {
-            LOG(ERROR, "Failed to get appID attr\n");
-            return nullptr;
-        }
-        app_IDs.push_back(appID_attr->value());
-
-        //Get Dataset associated with CB
-        xml_attr *ds_attr = gseCTL_node->first_attribute("datSet");
-        if (ds_attr == 0)
-        {
-            LOG(ERROR, "Failed to get datSet attr\n");
-            return nullptr;
-        }
-        dataSet_names.push_back(ds_attr->value());
-
-        //Get Data Attrs
-        found = false;
-        vector<string> da_vector;
-        for (xml_node *ds_node = ln0_node->first_node("DataSet"); ds_node; ds_node = ds_node->next_sibling("DataSet"))
-        {
-            xml_attr *ds_name = ds_node->first_attribute("name");
-            if (strncmp(ds_name->value(), ds_attr->value(), strlen(ds_attr->value())) == 0)
+            xml_attr *type_attr = p_node->first_attribute("type");
+            if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0)
             {
+                local_ip = string(p_node->value());
                 found = true;
-                for (xml_node *fcda_node = ds_node->first_node("FCDA"); fcda_node; fcda_node = fcda_node->next_sibling("FCDA"))
-                {
-                    if (fcda_node == 0)
-                    {
-                        LOG(ERROR, "Cannot find FCDA node\n");
-                        return nullptr;
-                    }
-                    //Ied name
-                    string da_ref = this_ied;
-                    //LD name
-                    xml_attr *entry_attr = fcda_node->first_attribute("ldInst");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find ldInst\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-                    da_ref.append("/");
-                    //LN name
-                    entry_attr = fcda_node->first_attribute("lnClass");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find lnClass\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-                    entry_attr = fcda_node->first_attribute("lnInst");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find lnInst\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-                    da_ref.append(".");
-                    //DO name
-                    entry_attr = fcda_node->first_attribute("doName");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find doName\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-                    da_ref.append(".");
-                    //DA name
-                    entry_attr = fcda_node->first_attribute("daName");
-                    if (entry_attr == 0)
-                    {
-                        LOG(ERROR, "Cannot find daName\n");
-                        return nullptr;
-                    }
-                    da_ref.append(entry_attr->value());
-
-                    da_vector.push_back(da_ref);
-                }
-            }
-        }
-        if (!found)
-        {
-            LOG(ERROR, "\tCannot find dataset definition\n");
-            return nullptr;
-        }
-        data_attrs.push_back(da_vector);
-
-        //Get Multicast addrs
-        found = false;
-        for (xml_node *conn_node = connAP_node->first_node("GSE"); conn_node; conn_node = conn_node->next_sibling("GSE"))
-        {
-            if (strncmp(conn_node->first_attribute("cbName")->value(), gocb_attr->value(), strlen(gocb_attr->value())) == 0)
-            {
-                for (xml_node *p_node = conn_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
-                {
-                    xml_attr *type_attr = p_node->first_attribute("type");
-                    if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
-                    {
-                        multicast_ips.push_back(p_node->value());
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            if (found)
                 break;
+            }
         }
         if (!found)
         {
-            LOG(ERROR, "\tCannot find MulticastIP\n");
+            LOG(ERROR, "\tFailed to find local IP\n");
             return nullptr;
         }
-    }
+
+        //Get GSEControl
+        for (xml_node *gseCTL_node = ln0_node->first_node("GSEControl"); gseCTL_node; gseCTL_node = gseCTL_node->next_sibling("GSEControl"))
+        {
+            //Get GOOSE CB REF
+            xml_attr *gocb_attr = gseCTL_node->first_attribute("Name");
+            if (gocb_attr == 0)
+            {
+                LOG(ERROR, "Failed to get gocb_ref attr\n");
+                return nullptr;
+            }
+            gocb_refs.push_back(gocb_attr->value());
+
+            //Get AppID
+            xml_attr *appID_attr = gseCTL_node->first_attribute("appID");
+            if (appID_attr == 0)
+            {
+                LOG(ERROR, "Failed to get appID attr\n");
+                return nullptr;
+            }
+            app_IDs.push_back(appID_attr->value());
+
+            //Get Dataset associated with CB
+            xml_attr *ds_attr = gseCTL_node->first_attribute("datSet");
+            if (ds_attr == 0)
+            {
+                LOG(ERROR, "Failed to get datSet attr\n");
+                return nullptr;
+            }
+            dataSet_names.push_back(ds_attr->value());
+
+            //Get Data Attrs
+            found = false;
+            vector<string> da_vector;
+                
+            for (xml_node *ds_node = ln0_node->first_node("DataSet"); ds_node; ds_node = ds_node->next_sibling("DataSet"))
+            {
+                xml_attr *ds_name = ds_node->first_attribute("name");
+                if (strncmp(ds_name->value(), ds_attr->value(), strlen(ds_attr->value())) == 0)
+                {
+                    printf("DataSet Name %s\n",ds_name->value());
+                    found = true;
+                    for (xml_node *fcda_node = ds_node->first_node("FCDA"); fcda_node; fcda_node = fcda_node->next_sibling("FCDA"))
+                    {
+                        if (fcda_node == 0)
+                        {
+                            LOG(ERROR, "Cannot find FCDA node\n");
+                            return nullptr;
+                        }
+
+                        //Ied name
+                        string da_ref = this_ied;
+                        //LD name
+                        xml_attr *entry_attr = fcda_node->first_attribute("ldInst");
+
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find ldInst\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+                        da_ref.append("/");
+                        //LN name
+                        entry_attr = fcda_node->first_attribute("lnClass");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find lnClass\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+                        entry_attr = fcda_node->first_attribute("lnInst");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find lnInst\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+                        da_ref.append(".");
+                        //DO name
+                        entry_attr = fcda_node->first_attribute("doName");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find doName\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+                        da_ref.append(".");
+                        //DA name
+                        entry_attr = fcda_node->first_attribute("daName");
+                        if (entry_attr == 0)
+                        {
+                            LOG(ERROR, "Cannot find daName\n");
+                            return nullptr;
+                        }
+                        da_ref.append(entry_attr->value());
+
+                        da_vector.push_back(da_ref);
+                    }
+                }
+            }
+            if (!found)
+            {
+                LOG(ERROR, "\tCannot find dataset definition\n");
+                return nullptr;
+            }
+            data_attrs.push_back(da_vector);
+
+            //Get Multicast addrs
+            found = false;
+            for (xml_node *conn_node = connAP_node->first_node("GSE"); conn_node; conn_node = conn_node->next_sibling("GSE"))
+            {
+                if (strncmp(conn_node->first_attribute("cbName")->value(), gocb_attr->value(), strlen(gocb_attr->value())) == 0)
+                {
+                    for (xml_node *p_node = conn_node->first_node("Address")->first_node("P"); p_node; p_node = p_node->next_sibling("P"))
+                    {
+                        xml_attr *type_attr = p_node->first_attribute("type");
+	                    if (strncmp(type_attr->value(), "IP", strlen("IP")) == 0 && (strlen("IP") == strlen(type_attr->value())))
+	                    {
+	                        multicast_ips.push_back(p_node->value());
+	                        found = true;
+	                        break;
+	                    }
+	                }
+	            }
+	            if (found)
+	                break;
+	        }
+            if (!found)
+            {
+                LOG(ERROR, "\tCannot find MulticastIP\n");
+                return nullptr;
+            }
+        }
+    }//END Ldevice Weizhe
 
     doc.clear();
 
@@ -1325,6 +1590,21 @@ CommModule *Parser::config_MMS(string &this_ied, string &cpmapping_filename)
                                          stVal_strings);
         }
         //printf("END LDevice %s\n", ld_name.c_str());
+
+        for (xml_node *ln_node = ld_node->first_node("LN"); ln_node; ln_node = ln_node->next_sibling("LN"))
+        {
+            xml_attr *ln_lnclass_attr = ln_node->first_attribute("lnClass");
+            //CILO
+            string ln_lnclass_attr_name = ln_lnclass_attr->value();
+
+            if (ln_lnclass_attr_name.compare("CILO") == 0)
+            {   
+                CILO_exist = true;
+                cilo.set_list(remote_CB_cyber_list);
+                LOG(DEBUG, "CILO Added\n");
+                break;
+            }
+        }
     }
 
     doc.clear();

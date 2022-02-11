@@ -8,10 +8,13 @@
 #include "ModelMutex.h"
 #include "DatabaseConn.h"
 #include "hal_thread.h"
+#include "CILO.h"
 
 #define MMS_INTERVAL 1000; //millis
 
 extern IedModel iedModel;
+extern bool CILO_exist;
+extern CILO cilo;
 
 using namespace std;
 
@@ -97,6 +100,7 @@ MMSModule::MMSModule(vector<string> &do_strings,
         ctrl_param->push_back(stVal_da);
         ctrl_param->push_back(db_conn);
         ctrl_param->push_back(db_str_dynamic);
+        //ctrl_param->push_back(new vector(vector));
         controlParams.push_back(ctrl_param);
         IedServer_setControlHandler(iedServer, data_object, (ControlHandler)MMSModule::control_handler, controlParams[i]);
         LOG(INFO, "OK\n");
@@ -142,10 +146,26 @@ void MMSModule::main_loop() {
 
 //TO DO: customize control_handler() callback function for each IED
 ControlHandlerResult MMSModule::control_handler(ControlAction action, void *parameter, MmsValue *value, bool test) {
+    
     if (test)
         return CONTROL_RESULT_FAILED;
 
     ClientConnection clientCon = ControlAction_getClientConnection(action);
+
+    if (CILO_exist == false)
+    {
+        printf("CILO NOT FOUND\n");
+    }
+    
+    else if (CILO_exist == true) 
+    {
+        bool result = cilo.check();
+    
+        if (result == false && MmsValue_getBoolean(value))
+        {            
+            return CONTROL_RESULT_FAILED;
+        }
+    }
 
     if (MmsValue_getType(value) == MMS_BOOLEAN) {
         LOG(DEBUG,"MMS: received binary control command...\n");
@@ -162,7 +182,6 @@ ControlHandlerResult MMSModule::control_handler(ControlAction action, void *para
     else {
         return CONTROL_RESULT_FAILED;
     }
-
 
     vector<void*> *ctrl_param = (vector<void*> *)parameter;
     //hardcoded 
@@ -224,6 +243,7 @@ ControlHandlerResult MMSModule::control_handler(ControlAction action, void *para
 
     LOG(DEBUG, "Writing to database: [%s]\n", querystring.c_str())
     try {
+        //updating database
         mysqlpp::Query query = db_conn->conn.query(querystring.c_str());
         query.exec();
     }

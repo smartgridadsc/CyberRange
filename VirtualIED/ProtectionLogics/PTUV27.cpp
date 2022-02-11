@@ -61,6 +61,7 @@ void PTUV27::start()
 	        mysqlpp::Query cb_query = db_conn->conn.query("SELECT " + cb_value + " FROM " + table_name + " WHERE name = '" + column_name + "'");
 	        mysqlpp::StoreQueryResult res = cb_query.store();
 	        row = res[cb_count];
+	        bool cb_open = false;
 	
 	        if (!res)
 	        {
@@ -105,6 +106,8 @@ void PTUV27::start()
 	
 	                    else
 	                    {
+							//weizhe
+	                        //cout << "PTUV27: " << phy_column_name << " is " << row[0] << endl;      
 							if(atof(row[0]) < *trip_limit_val)
 	                        {
 	                            auto time_start = system_clock::now();
@@ -114,6 +117,7 @@ void PTUV27::start()
                                 {
 	                                trip_store_time[loop_count] = time_s.count();
 	                            }
+	                            
 	                            else if (time_s.count() - trip_store_time[loop_count] >= ((*trip_period_val)*pow(10,9)))
 	                            {
 	                                for (auto cb_val : cb_list)

@@ -17,6 +17,7 @@ INCLUDES += -I/usr/include/mysql
 INCLUDES += -I$(IED_HOME)
 INCLUDES += -I$(IED_HOME)/ProtectionLogics
 INCLUDES += -I$(IED_HOME)/CommModules
+INCLUDES += -I$(IED_HOME)/MMSProtection
 INCLUDES += -I/usr/include/nlohmann
 INCLUDES += -I$(RAPIDXML_HOME)
 

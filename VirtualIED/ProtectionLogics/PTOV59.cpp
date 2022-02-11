@@ -28,7 +28,7 @@ void PTOV59::start()
     while (ied_running) 
 	{
         sleep(1);
-        printf("PTOV59: loop\n");
+//        printf("PTOV59: loop\n");
 
 	    auto phy_val = std::begin(phy_list);
 	    auto alarm_limit_val = std::begin(alarm_limit_list);
@@ -105,6 +105,8 @@ void PTOV59::start()
 	
 	                    else
 	                    {
+							//weizhe
+							//cout << "PTOV59: " << phy_column_name << " is " << row[phy_count] << endl;
 	                        if(atof(row[0]) > *trip_limit_val)
 	                        {
 	                            auto time_start = system_clock::now();
@@ -135,6 +137,8 @@ void PTOV59::start()
 											string column_name_in = inner_strings[1];
 											string cb_value_in = inner_strings[2];
 
+											//weizhe
+											cout << "PTOV59: " << row[0] << "|| trip_limit: " << *trip_limit_val << " || time: " << (*trip_period_val)*pow(10,9) << "s" << endl;
 											mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");													
 											mysqlpp::UseQueryResult res = update_query.use();
 											cout << "PTOV59 circuit breaker " << column_name_in << " has opened" << endl;

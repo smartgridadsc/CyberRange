@@ -1,7 +1,7 @@
 #include "PDIF87L.h"
 #include "SharedMemory.h"
 #include <list>
-#include <cmath>  // for abs()
+#include <cmath>
 
 using namespace std;
 
@@ -78,29 +78,26 @@ void PDIF87L::start() {
                         //weizhe
                         cout << "PDIF87L: difference: " << abs(atof(row[phy_count]) - *remote_cur_val) << " is higher than threshold value " << *thres_val/1000 << endl;
 
-                        // for (auto cb_val : cb_list)
-                        // {
-                            vector<string> inner_strings;
-                            istringstream f_in(cb_val);
-                            string s_in;
+                        vector<string> inner_strings;
+                        istringstream f_in(cb_val);
+                        string s_in;
 
-                            while (getline(f_in, s_in, '.'))
+                        while (getline(f_in, s_in, '.'))
+                        {
+                            if (!s_in.empty())
                             {
-                                if (!s_in.empty())
-                                {
-                                    inner_strings.push_back(s_in);       
-                                }
+                                inner_strings.push_back(s_in);       
                             }
-                            string table_name_in = inner_strings[0];
-                            string column_name_in = inner_strings[1];
-                            string cb_value_in = inner_strings[2];
+                        }
+                        string table_name_in = inner_strings[0];
+                        string column_name_in = inner_strings[1];
+                        string cb_value_in = inner_strings[2];
 
-                            mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");                                                
-                            cout << "UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'" << endl;                        
-                            mysqlpp::UseQueryResult res = update_query.use();
-                            cout << "PDIF87L circuit breaker " << column_name_in << " has opened." << endl;
-                            break;
-                        //}
+                        mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");                                                
+                        cout << "UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'" << endl;                        
+                        mysqlpp::UseQueryResult res = update_query.use();
+                        cout << "PDIF87L circuit breaker " << column_name_in << " has opened." << endl;
+                        break;
                     }
                     
                     else
@@ -108,7 +105,6 @@ void PDIF87L::start() {
                         cout << "PDIF87L: difference: " << abs(atof(row[phy_count]) - *remote_cur_val) << " is within the threshold value " << *thres_val/1000 << endl;
                         cout << "PDIF87L is normal" << endl;
                     }
-                    //}
                 }
                 remote_cur_val++;
                 phy_val++;

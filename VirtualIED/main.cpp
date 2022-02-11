@@ -12,6 +12,7 @@
 #include "CommModules/MMS.h"
 #include "ModelUpdater.h"
 #include "SharedMemory.h"
+#include "MMSProtection/CILO.h"
 
 #define BINARY_NAME "./VIRTUAL_IED"
 
@@ -48,7 +49,6 @@ static void startThread_ModelUpdater(ModelUpdater &modelUpdater)
 {
     modelUpdater.start();
 }
-
 
 // prints general usage help
 //TO DO: change input format, from static positions to flag-based (i.e. --db-config=<db-config-filename>)
@@ -102,7 +102,7 @@ int main(int argc, char ** argv)
     LOG(INFO, "------------------ModelUpdater Done-------------------\n\n");
 
     LOG(INFO, "-----------------Configuring logicList----------------\n");
-    list<LogicFunction*> logicList = Parser::parse_protection_logic_config(cpmapping_filename, thresholds_filename);
+    list<LogicFunction*> logicList = Parser::parse_protection_logic_config(cpmapping_filename, thresholds_filename, ied_name, sed_filename);
     LOG(INFO, "--------------------logicList Done--------------------\n\n");
     
     LOG(INFO, "-----------------Configuring commList-----------------\n");
@@ -118,14 +118,12 @@ int main(int argc, char ** argv)
     }
     LOG(INFO, "--------------------MMS server Done---------------------\n\n");
 
-    
-
     //initialize database connection
     LOG(INFO, "-------------Initiating Database connections----------\n");
     modelUpdater.set_db_conn(dbconfig_filename);
     for (LogicFunction *logic : logicList) 
     {
-        //logic->set_db_conn(dbconfig_filename);
+        logic->set_db_conn(dbconfig_filename);
     }
     for (CommModule *comm : commList) 
     {
@@ -142,7 +140,7 @@ int main(int argc, char ** argv)
 
     for (LogicFunction *logic : logicList) 
     {
-        //threads.push_back(thread(startThread_LogicFunction, ref(*logic)));
+        threads.push_back(thread(startThread_LogicFunction, ref(*logic)));
     }
     for (CommModule *comm : commList) 
     {
@@ -152,7 +150,6 @@ int main(int argc, char ** argv)
     signal(SIGINT, sigint_handler);
 
     //loop
-    
     while(ied_running) 
     {
         sleep(1000);
@@ -171,3 +168,5 @@ int main(int argc, char ** argv)
 
     return 0;
 }
+
+
