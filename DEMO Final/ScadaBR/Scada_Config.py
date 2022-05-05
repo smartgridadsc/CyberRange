@@ -168,7 +168,7 @@ if __name__ == "__main__":
 
 
 bat_path = "/opt/tomcat6/apache-tomcat-6.0.53"
-sh_file = bat_path + r"\bin\startup.sh"
+sh_file = bat_path + r"/bin/startup.sh"
 subprocess.call(sh_file)
 
 time.sleep(5)
