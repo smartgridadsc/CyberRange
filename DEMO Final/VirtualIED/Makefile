@@ -9,7 +9,7 @@ include $(DEPENDENCIES)
 
 #################################################
 
-SUBDIRS := CommModules ProtectionLogics
+SUBDIRS := CommModules ProtectionLogics MMSProtection
 
 MODEL_SRC := static_model.c
 MODEL_OBJ := $(patsubst %.c,$(BUILD_DIR)/%.o, $(MODEL_SRC))
