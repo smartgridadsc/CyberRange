@@ -1,14 +1,16 @@
 {
-    "dataSources": {
-        "xid": "DS_051944",
-        "type": "MODBUS_IP",
-        "transportType": "TCP",
-        "updatePeriodType": "MILLISECONDS",
-        "host": "172.16.5.41",
-        "name": "CPLC",
-        "port": 502,
-        "updatePeriods": 500
-    },
+    "dataSources": [
+        {
+            "xid": "DS_051944",
+            "type": "MODBUS_IP",
+            "transportType": "TCP",
+            "updatePeriodType": "MILLISECONDS",
+            "host": "172.16.5.41",
+            "name": "CPLC",
+            "port": 502,
+            "updatePeriods": 500
+        }
+    ],
     "dataPoints": [
         {
             "xid": "DP_00001",

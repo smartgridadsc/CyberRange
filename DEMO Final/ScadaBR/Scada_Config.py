@@ -147,7 +147,7 @@ if __name__ == "__main__":
             obj = xmltodict.parse(xml_string)
             xml_file.close()
 
-        json_string = json.dumps(xmltodict.parse(xml_string), indent=4)
+        json_string = json.dumps(xmltodict.parse(xml_string, force_list={'dataSources','dataPoints'}), indent=4)
         json_data = json.loads(json_string, object_hook=_decode)["root"]
 
         with open("data.json", "w") as json_file:
@@ -167,11 +167,11 @@ if __name__ == "__main__":
         quit()
 
 
-bat_path = "/opt/tomcat6/apache-tomcat-6.0.53"
-sh_file = bat_path + r"/bin/startup.sh"
-subprocess.call(sh_file)
+#bat_path = "/opt/tomcat6/apache-tomcat-6.0.53"
+#sh_file = bat_path + r"/bin/startup.sh"
+#subprocess.call(sh_file)
 
-time.sleep(5)
+#time.sleep(5)
 
-webbrowser.open('http://localhost:9090/ScadaBR/')
+#webbrowser.open('http://localhost:9090/ScadaBR/')
 
