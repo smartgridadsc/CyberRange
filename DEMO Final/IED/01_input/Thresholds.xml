@@ -3,7 +3,7 @@
 	<IED name="MIED1">
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 		<PTOC50 instance="2">
 			<Threshold>120</Threshold>
@@ -55,7 +55,7 @@
 	<IED name="MIED2">
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 		<PTOC50 instance="2">
 			<Threshold>120</Threshold>
@@ -108,7 +108,7 @@
 
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 	</IED>
 
@@ -116,7 +116,7 @@
 
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 		
 		<PTOV59 instance="1">
@@ -145,7 +145,7 @@
 
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 		
 		<PTOV59 instance="1">
@@ -175,7 +175,7 @@
 
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 		
 		<PTOV59 instance="1">
@@ -206,7 +206,7 @@
 
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 		
 		<PTOV59 instance="1">
@@ -236,7 +236,7 @@
 
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 		
 		<PTOV59 instance="1">
@@ -266,7 +266,7 @@
 
 
 		<PTOC50 instance="1">
-			<Threshold>125</Threshold>
+			<Threshold>150</Threshold>
 		</PTOC50>
 		
 		<PTOV59 instance="1">
