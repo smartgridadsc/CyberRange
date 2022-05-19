@@ -32,24 +32,23 @@ function cleanup_build()
 }
 
 #####
-# Function for cleaning up build folder
-# a) empty prep folder contents
+# Function for cleaning up prep folder
+# a) remove prep folder
 #####
 
 function cleanup_prep()
 {
-  if [ ! -z "$(ls -A $CURR_FLDR/$PREP_FLDR)" ]; then
-      rm -rf $CURR_FLDR/$PREP_FLDR/*
+  if [ -d "$CURR_FLDR/$PREP_FLDR" ]; then
+    rm -rf $CURR_FLDR/$PREP_FLDR
   fi
 }
 
 #####
 # Process input files
 # a) check if input folder is valid
-# b) check if prep folder is valid
-# c) check if IED process script exists 
-# d) clean up prep folder
-# e) process CPMapping and Threshold xml and generate individual IED's json files
+# b) check if IED process script exists 
+# c) clean up prep folder
+# d) process CPMapping and Threshold xml and generate individual IED's json files
 #####
 
 if [ ! -d "$CURR_FLDR/$ICD_INPUT_FLDR" ]; then
