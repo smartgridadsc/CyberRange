@@ -41,7 +41,7 @@
 
 <CPMapping>
 	<Physical>
-		line_current.line_current_17.value
+		line_current.line_current_2.value
 	</Physical>
 	<Cyber>
 		MIED1.MEAS.MMXU1.A.phsA.cVal.mag.f
@@ -50,7 +50,7 @@
 
 <CPMapping>
 	<Physical>
-		line_current.line_current_17.value
+		line_current.line_current_2.value
 	</Physical>
 	<Cyber>
 		MIED1.MEAS.MMXU1.A.phsB.cVal.mag.f
@@ -59,7 +59,7 @@
 
 <CPMapping>
 	<Physical>
-		line_current.line_current_17.value
+		line_current.line_current_2.value
 	</Physical>
 	<Cyber>
 		MIED1.MEAS.MMXU1.A.phsC.cVal.mag.f

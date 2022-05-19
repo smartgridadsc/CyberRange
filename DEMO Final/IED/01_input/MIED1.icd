@@ -382,7 +382,7 @@
         <Private name ="cVal">
         	<Private name ="mag">
           		<Private name="f">
-            			<Property Name="sMonitoringVar" Value="line_current_17"/>
+            			<Property Name="sMonitoringVar" Value="line_current_2"/>
           		</Private>
           	</Private>
         </Private>
