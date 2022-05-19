@@ -131,76 +131,15 @@ for i in CPMapping_filelist:
 
     with open(temp_Threshold_folder + ied_file + '_Threshold.xml', 'r') as T_xml_file:
         T_xml_string = T_xml_file.read()
-        obj = xmltodict.parse(T_xml_string)
+        obj = xmltodict.parse(T_xml_string, force_list={'PDIF87L','PTOC50','PTOV59','PTUV27','PTOF'})
         T_xml_file.close()
 
         T_json_string = json.dumps(obj, indent=4)
         T_json_data = json.loads(T_json_string, object_hook=_decode)['IED']
 
-        with open(prep_path + '/IED_Threshold/' + ied_file + '_Threshold.json', 'w') as temp_json_file:
-            json.dump(T_json_data, temp_json_file,indent=4)
-            temp_json_file.close()
-
-        perm_json = []
-        with open (prep_path + '/IED_Threshold/' + ied_file + '_Threshold.json', 'r') as read_json_file:
-            temp_list = read_json_file.readlines()
-            for i in range (0,len(temp_list)):
-
-                substring_PTOC50 = '"PTOC50": {'
-                substring_PTUV27 = '"PTUV27": {'
-                substring_PTOV59 = '"PTOV59": {'
-                substring_PTOF = '"PTOF": {'
-                substring_end_1 = "},"
-                substring_end_2 = "    }"
-
-                if substring_PTOC50 in temp_list[i]:
-                    temp_list[i] = '    "PTOC50": [{\n'
-                    perm_json.append(temp_list[i])
-
-                    if substring_end_1 in temp_list[i+3]:
-                        temp_list[i+3] = '    }],\n'
-
-                    elif substring_end_2 in temp_list[i+3] :
-                        temp_list[i+3] = '    }]\n'
-
-
-                elif substring_PTOV59 in temp_list[i]:
-                    temp_list[i] = '    "PTOV59": [{\n'
-                    perm_json.append(temp_list[i])
-
-                    if substring_end_1 in temp_list[i+10]:
-                        temp_list[i+10] = '    }],\n'
-
-                    elif substring_end_2 in temp_list[i+10]:
-                        temp_list[i+10] = '    }]\n'
-
-                elif substring_PTOF in temp_list[i]:
-                    temp_list[i] = '    "PTOF": [{\n'
-                    perm_json.append(temp_list[i])
-
-                    if substring_end_1 in temp_list[i + 10]:
-                        temp_list[i+10] = '    }],\n'
-
-                    elif substring_end_2 in temp_list[i + 10]:
-                        temp_list[i+10] = '    }]\n'
-
-                elif substring_PTUV27 in temp_list[i]:
-                    temp_list[i] = '    "PTUV27": [{\n'
-                    perm_json.append(temp_list[i])
-
-                    if substring_end_1 in temp_list[i + 10]:
-                        temp_list[i+10] = '    }],\n'
-
-                    elif substring_end_2 in temp_list[i+10]:
-                        temp_list[i+10] = '    }]\n'
-
-                else:
-                    perm_json.append(temp_list[i])
-
-
-        with open(prep_path + '/IED_Threshold/' + ied_file + '_Threshold.json', 'w') as json_file_1:
-            for i in perm_json:
-                json_file_1.write(i)
+        with open(prep_path + '/IED_Threshold/' + ied_file + '_Threshold.json', 'w') as final_json_file:
+            json.dump(T_json_data, final_json_file,indent=4)
+            final_json_file.close()
             print(ied_file + '_Threshold.json file generated')
 
 os.remove(prep_path + '/root_CPMapping.xml')
