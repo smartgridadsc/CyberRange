@@ -13,15 +13,15 @@ def _decode(o):
         return o
 
 ied_list =[]
-CPMapping_XML = "CPMapping.xml"
-Threshold_XML = "Thresholds.xml"
+CPMapping_XML = 'CPMapping.xml'
+Threshold_XML = 'Thresholds.xml'
 folder_path = os.path.dirname(os.path.realpath(__file__))
-input_path = folder_path + "/01_input"
-prep_path = folder_path + "/03_prep"
-CPMapping_file = input_path + "/" + CPMapping_XML
-Threshold_file = input_path + "/" + Threshold_XML
-temp_CP_folder = prep_path + "/temp_CPMapping/"
-temp_Threshold_folder = prep_path + "/temp_Threshold/"
+input_path = folder_path + '/01_input'
+prep_path = folder_path + '/03_prep'
+CPMapping_file = input_path + '/' + CPMapping_XML
+Threshold_file = input_path + '/' + Threshold_XML
+temp_CP_folder = prep_path + '/temp_CPMapping/'
+temp_Threshold_folder = prep_path + '/temp_Threshold/'
 
 T_tree = ET.parse(Threshold_file)
 T_root = T_tree.getroot()
@@ -39,31 +39,31 @@ with open(prep_path + '/root_CPMapping.xml', 'w') as f:
     f.close()
 
 try:
-    os.makedirs(prep_path + "/temp_CPMapping")
+    os.makedirs(prep_path + '/temp_CPMapping')
 except:
-    print("temp_CPMapping Folder existing")
+    print('temp_CPMapping Folder existing')
 
 try:
-    os.makedirs(prep_path + "/temp_Threshold")
+    os.makedirs(prep_path + '/temp_Threshold')
 
 except:
-    print("temp_Threshold Folder existing")
+    print('temp_Threshold Folder existing')
 
 try:
-    os.makedirs(prep_path + "/IED_CPMapping")
+    os.makedirs(prep_path + '/IED_CPMapping')
 
 except:
-    print("IED_CPMapping Folder existing")
+    print('IED_CPMapping Folder existing')
 
 try:
-    os.makedirs(prep_path + "/IED_Threshold")
+    os.makedirs(prep_path + '/IED_Threshold')
 
 except:
-    print("IED_Threshold Folder existing")
+    print('IED_Threshold Folder existing')
 
 for i in ied_list:
 
-    filename = format(i + "_CPMapping.xml")
+    filename = format(i + '_CPMapping.xml')
 
     with open(temp_CP_folder + filename, 'wb') as f:
         f.write(bytes("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", 'utf-8'))
@@ -78,7 +78,7 @@ for i in ied_list:
                     f.write(ET.tostring(elem))
         f.write(bytes("</root>\n", 'utf-8'))
 
-    T_filename = format(i + "_Threshold.xml")
+    T_filename = format(i + '_Threshold.xml')
 
     with open(temp_Threshold_folder + T_filename, 'wb') as g:
         Thres_context = ET.iterparse(Threshold_file, events=('end',))
@@ -95,7 +95,7 @@ Threshold_filelist = os.listdir(temp_Threshold_folder)
 
 for i in CPMapping_filelist:
 
-    ied_file = i.split("_")[0]
+    ied_file = i.split('_')[0]
     with open(temp_CP_folder + i, 'r') as content:
         CP_tree = ET.parse(content)
         CP_root = CP_tree.getroot()
@@ -106,20 +106,20 @@ for i in CPMapping_filelist:
             CP_childroot = CP_child.getroot()
             CP_str = CP_str + str(ET.tostring(CP_childroot, encoding='unicode'))
 
-    with open(temp_CP_folder + ied_file + "_CPMapping.xml" , 'r') as CP_xml_file:
+    with open(temp_CP_folder + ied_file + '_CPMapping.xml' , 'r') as CP_xml_file:
         CP_xml_string = CP_xml_file.read()
         obj = xmltodict.parse(CP_xml_string)
         CP_xml_file.close()
 
         CP_json_string = json.dumps(xmltodict.parse(CP_xml_string), indent=4)
-        CP_json_data = json.loads(CP_json_string, object_hook=_decode)["root"]
+        CP_json_data = json.loads(CP_json_string, object_hook=_decode)['root']
 
-        with open(prep_path + "/IED_CPMapping/" + ied_file + "_CPMapping.json", "w") as json_file:
+        with open(prep_path + '/IED_CPMapping/' + ied_file + '_CPMapping.json', 'w') as json_file:
             save_data = json.dump(CP_json_data, json_file, indent=4)
             json_file.close()
-            print(ied_file + "_CPMapping.json file generated")
+            print(ied_file + '_CPMapping.json file generated')
 
-    with open(temp_Threshold_folder + ied_file + "_Threshold.xml", 'r') as T_content:
+    with open(temp_Threshold_folder + ied_file + '_Threshold.xml', 'r') as T_content:
         T_tree = ET.parse(T_content)
         T_root = T_tree.getroot()
 
@@ -129,20 +129,20 @@ for i in CPMapping_filelist:
             T_childroot = T_child.getroot()
             threshold_str = threshold_str + str(ET.tostring(T_childroot, encoding='unicode'))
 
-    with open(temp_Threshold_folder + ied_file + "_Threshold.xml", 'r') as T_xml_file:
+    with open(temp_Threshold_folder + ied_file + '_Threshold.xml', 'r') as T_xml_file:
         T_xml_string = T_xml_file.read()
         obj = xmltodict.parse(T_xml_string)
         T_xml_file.close()
 
         T_json_string = json.dumps(obj, indent=4)
-        T_json_data = json.loads(T_json_string, object_hook=_decode)["IED"]
+        T_json_data = json.loads(T_json_string, object_hook=_decode)['IED']
 
-        with open(prep_path + "/IED_Threshold/" + ied_file + "_Threshold.json", "w") as temp_json_file:
+        with open(prep_path + '/IED_Threshold/' + ied_file + '_Threshold.json', 'w') as temp_json_file:
             json.dump(T_json_data, temp_json_file,indent=4)
             temp_json_file.close()
 
         perm_json = []
-        with open (prep_path + "/IED_Threshold/" + ied_file + "_Threshold.json", "r") as read_json_file:
+        with open (prep_path + '/IED_Threshold/' + ied_file + '_Threshold.json', 'r') as read_json_file:
             temp_list = read_json_file.readlines()
             for i in range (0,len(temp_list)):
 
@@ -198,10 +198,10 @@ for i in CPMapping_filelist:
                     perm_json.append(temp_list[i])
 
 
-        with open(prep_path + "/IED_Threshold/" + ied_file + "_Threshold.json", "w") as json_file_1:
+        with open(prep_path + '/IED_Threshold/' + ied_file + '_Threshold.json', 'w') as json_file_1:
             for i in perm_json:
                 json_file_1.write(i)
-            print(ied_file + "_Threshold.json file generated")
+            print(ied_file + '_Threshold.json file generated')
 
 os.remove(prep_path + '/root_CPMapping.xml')
 shutil.rmtree(temp_Threshold_folder)
