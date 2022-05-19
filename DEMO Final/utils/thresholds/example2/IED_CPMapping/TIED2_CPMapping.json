@@ -1,0 +1,41 @@
+{
+    "CPMapping": [
+        {
+            "Physical": "line_cb.line_cb_6.value",
+            "Cyber": "TIED2.CTRL.XCBR1.Pos.stVal"
+        },
+        {
+            "Physical": "bus_voltage.bus_voltage_5.value",
+            "Cyber": "TIED2.MEAS.MMXU1.PhV.phsA.cVal.mag.f"
+        },
+        {
+            "Physical": "bus_voltage.bus_voltage_5.value",
+            "Cyber": "TIED2.MEAS.MMXU1.PhV.phsB.cVal.mag.f"
+        },
+        {
+            "Physical": "bus_voltage.bus_voltage_5.value",
+            "Cyber": "TIED2.MEAS.MMXU1.PhV.phsC.cVal.mag.f"
+        },
+        {
+            "Physical": "line_current.line_current_8.value",
+            "Cyber": "TIED2.MEAS.MMXU1.A.phsA.cVal.mag.f"
+        },
+        {
+            "Physical": "line_current.line_current_8.value",
+            "Cyber": "TIED2.MEAS.MMXU1.A.phsB.cVal.mag.f"
+        },
+        {
+            "Physical": "line_current.line_current_8.value",
+            "Cyber": "TIED2.MEAS.MMXU1.A.phsC.cVal.mag.f"
+        },
+        {
+            "Physical": "line_real_power.line_real_power_8.value",
+            "Cyber": "TIED2.MEAS.MMXU1.TotW.mag"
+        },
+        {
+            "Physical": "line_reactive_power.line_reactive_power_8.value",
+            "Cyber": "TIED2.MEAS.MMXU1.TotVAr.mag"
+        }
+    ],
+    "#text": "##########(IEDname = TIED4)##########\n######(Bay = T1 and CB = Q2_1)######"
+}

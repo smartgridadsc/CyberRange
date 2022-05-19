@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SCL version="2007" revision="B" xmlns:sxy="http://www.iec.ch/61850/2003/SCLcoordinates" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd http://www.iec.ch/61850/2003/SCLcoordinates SCL_Coordinates.xsd" xmlns="http://www.iec.ch/61850/2003/SCL">
+  <Header revision="H" version="1" id="95b33d89-b2cb-4eaf-9308-b3d942551120" toolID="Grid Software SCL Matrix" nameStructure="IEDName">
+    <Text>ADSC_SS</Text>
+    <History>
+      <Hitem revision="A" version="1" when="2021-04-19T17:04:25Z" who="Grid Software SCL Matrix" what="SSD Export" />
+      <Hitem revision="B" version="1" when="2022-03-14T11:36:49Z" who="Grid Software SCL Matrix" what="SCD Export" />
+      <Hitem revision="C" version="1" when="2022-03-14T11:38:34Z" who="Grid Software SCL Matrix" what="SCD Export" />
+      <Hitem revision="D" version="1" when="2022-03-14T11:40:10Z" who="Grid Software SCL Matrix" what="SCD Export" />
+      <Hitem revision="E" version="1" when="2022-03-14T11:45:06Z" who="Grid Software SCL Matrix" what="SCD Export" />
+      <Hitem revision="F" version="1" when="2022-03-14T11:48:02Z" who="Grid Software SCL Matrix" what="SCD Export" />
+      <Hitem revision="G" version="1" when="2022-03-14T12:42:19Z" who="Grid Software SCL Matrix" what="SCD Export" />
+      <Hitem revision="H" version="1" when="2022-03-14T12:48:14Z" who="Grid Software SCL Matrix" what="SCD Export" />
+    </History>
+  </Header>
+  <Substation name="ADSC_SS3">
+    <PowerTransformer name="T1" type="PTR" sxy:x="38" sxy:y="40">
+      <TransformerWinding name="W1" desc="W1" type="PTW">
+        <Terminal connectivityNode="ADSC_SS3/66_1/T566/CBR1PTRCN" substationName="ADSC_SS3" voltageLevelName="66_1" bayName="T566" cNodeName="CBR1PTRCN" />
+      </TransformerWinding>
+      <TransformerWinding name="W2" desc="W2" type="PTW">
+        <Terminal connectivityNode="ADSC_SS3/11_1/T511/CBRT1CN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="T511" cNodeName="CBRT1CN" />
+      </TransformerWinding>
+    </PowerTransformer>
+    <PowerTransformer name="T2" type="PTR" sxy:x="63" sxy:y="40">
+      <TransformerWinding name="W1" desc="W1" type="PTW">
+        <Terminal connectivityNode="ADSC_SS3/66_2/T666/PTRCBR1CN" substationName="ADSC_SS3" voltageLevelName="66_2" bayName="T666" cNodeName="PTRCBR1CN" />
+      </TransformerWinding>
+      <TransformerWinding name="W2" desc="W2" type="PTW">
+        <Terminal connectivityNode="ADSC_SS3/11_2/T611/CBRPowerTransformerCN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="T611" cNodeName="CBRPowerTransformerCN" />
+      </TransformerWinding>
+    </PowerTransformer>
+    <VoltageLevel name="11_1" sxy:x="15" sxy:y="48" numPhases="3" nomFreq="50">
+      <Voltage unit="V" multiplier="k">11</Voltage>
+      <Bay name="L32" sxy:x="1" sxy:y="16">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="3" sxy:y="7">
+          <Terminal connectivityNode="ADSC_SS3/11_1/Bus3/CN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="Bus3" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/11_1/L32/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="L32" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConductingEquipment name="OHL" type="IFL" sxy:x="3" sxy:y="18">
+          <Terminal connectivityNode="ADSC_SS3/11_1/L32/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="L32" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBROHLCN" pathName="ADSC_SS3/11_1/L32/CBROHLCN" sxy:x="3" sxy:y="12" />
+      </Bay>
+      <Bay name="Bus3" sxy:x="1" sxy:y="13">
+        <ConnectivityNode name="CN" pathName="ADSC_SS3/11_1/Bus3/CN" />
+      </Bay>
+      <Bay name="L34" sxy:x="22" sxy:y="16">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="3" sxy:y="7">
+          <Terminal connectivityNode="ADSC_SS3/11_1/Bus3/CN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="Bus3" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/11_1/L34/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="L34" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConductingEquipment name="OHL" type="IFL" sxy:x="3" sxy:y="18">
+          <Terminal connectivityNode="ADSC_SS3/11_1/L34/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="L34" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBROHLCN" pathName="ADSC_SS3/11_1/L34/CBROHLCN" sxy:x="3" sxy:y="12" />
+      </Bay>
+      <Bay name="L33" sxy:x="12" sxy:y="16">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="3" sxy:y="7">
+          <Terminal connectivityNode="ADSC_SS3/11_1/Bus3/CN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="Bus3" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/11_1/L33/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="L33" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConductingEquipment name="OHL" type="IFL" sxy:x="3" sxy:y="18">
+          <Terminal connectivityNode="ADSC_SS3/11_1/L33/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="L33" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBROHLCN" pathName="ADSC_SS3/11_1/L33/CBROHLCN" sxy:x="3" sxy:y="12" />
+      </Bay>
+      <Bay name="CB32" sxy:x="32" sxy:y="16">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="2" sxy:y="4" sxy:dir="horizontal">
+          <Terminal connectivityNode="ADSC_SS3/11_1/Bus3/CN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="Bus3" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/11_2/Bus4/CN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="Bus4" cNodeName="CN" />
+        </ConductingEquipment>
+      </Bay>
+      <Bay name="T511" sxy:x="20" sxy:y="0">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="3" sxy:y="5">
+          <Terminal connectivityNode="ADSC_SS3/11_1/T511/CBRT1CN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="T511" cNodeName="CBRT1CN" />
+          <Terminal connectivityNode="ADSC_SS3/11_1/Bus3/CN" substationName="ADSC_SS3" voltageLevelName="11_1" bayName="Bus3" cNodeName="CN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBRT1CN" pathName="ADSC_SS3/11_1/T511/CBRT1CN" sxy:x="3" sxy:y="0" />
+      </Bay>
+    </VoltageLevel>
+    <VoltageLevel name="66_1" sxy:x="15" sxy:y="1" numPhases="3" nomFreq="50">
+      <Voltage unit="V" multiplier="k">66</Voltage>
+
+      <Bay name="CB31" sxy:x="33" sxy:y="20">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="1" sxy:y="3" sxy:dir="horizontal">
+          <Terminal connectivityNode="ADSC_SS3/66_1/Bus1/CN" substationName="ADSC_SS3" voltageLevelName="66_1" bayName="Bus1" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/66_2/Bus2/CN" substationName="ADSC_SS3" voltageLevelName="66_2" bayName="Bus2" cNodeName="CN" />
+        </ConductingEquipment>
+      </Bay>
+      <Bay name="T566" sxy:x="20" sxy:y="20">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="3" sxy:y="5">
+          <Terminal connectivityNode="ADSC_SS3/66_1/Bus1/CN" substationName="ADSC_SS3" voltageLevelName="66_1" bayName="Bus1" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/66_1/T566/CBR1PTRCN" substationName="ADSC_SS3" voltageLevelName="66_1" bayName="T566" cNodeName="CBR1PTRCN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBR1PTRCN" pathName="ADSC_SS3/66_1/T566/CBR1PTRCN" sxy:x="3" sxy:y="6" />
+      </Bay>
+    </VoltageLevel>
+    <VoltageLevel name="66_2" sxy:x="56" sxy:y="1" numPhases="3" nomFreq="50">
+      <Voltage unit="V" multiplier="k">66</Voltage>
+
+      <Bay name="T666" sxy:x="4" sxy:y="20">
+        <ConductingEquipment name="CBR1" type="CBR" sxy:x="3" sxy:y="4">
+          <Terminal connectivityNode="ADSC_SS3/66_2/T666/PTRCBR1CN" substationName="ADSC_SS3" voltageLevelName="66_2" bayName="T666" cNodeName="PTRCBR1CN" />
+          <Terminal connectivityNode="ADSC_SS3/66_2/Bus2/CN" substationName="ADSC_SS3" voltageLevelName="66_2" bayName="Bus2" cNodeName="CN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="PTRCBR1CN" pathName="ADSC_SS3/66_2/T666/PTRCBR1CN" sxy:x="3" sxy:y="5" />
+      </Bay>
+    </VoltageLevel>
+    <VoltageLevel name="11_2" sxy:x="52" sxy:y="48" numPhases="3" nomFreq="50">
+      <Voltage unit="V" multiplier="k">11</Voltage>
+      <Bay name="L35" sxy:x="3" sxy:y="16">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="3" sxy:y="7">
+          <Terminal connectivityNode="ADSC_SS3/11_2/Bus4/CN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="Bus4" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/11_2/L35/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="L35" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConductingEquipment name="OHL" type="IFL" sxy:x="3" sxy:y="18">
+          <Terminal connectivityNode="ADSC_SS3/11_2/L35/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="L35" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBROHLCN" pathName="ADSC_SS3/11_2/L35/CBROHLCN" sxy:x="3" sxy:y="12" />
+      </Bay>
+      <Bay name="Bus4" sxy:x="1" sxy:y="13">
+        <ConnectivityNode name="CN" pathName="ADSC_SS3/11_2/Bus4/CN" />
+      </Bay>
+      <Bay name="L37" sxy:x="25" sxy:y="16">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="3" sxy:y="7">
+          <Terminal connectivityNode="ADSC_SS3/11_2/Bus4/CN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="Bus4" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/11_2/L37/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="L37" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConductingEquipment name="OHL" type="IFL" sxy:x="3" sxy:y="18">
+          <Terminal connectivityNode="ADSC_SS3/11_2/L37/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="L37" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBROHLCN" pathName="ADSC_SS3/11_2/L37/CBROHLCN" sxy:x="3" sxy:y="12" />
+      </Bay>
+      <Bay name="L36" sxy:x="15" sxy:y="16">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="3" sxy:y="7">
+          <Terminal connectivityNode="ADSC_SS3/11_2/Bus4/CN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="Bus4" cNodeName="CN" />
+          <Terminal connectivityNode="ADSC_SS3/11_2/L36/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="L36" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConductingEquipment name="OHL" type="IFL" sxy:x="3" sxy:y="18">
+          <Terminal connectivityNode="ADSC_SS3/11_2/L36/CBROHLCN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="L36" cNodeName="CBROHLCN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBROHLCN" pathName="ADSC_SS3/11_2/L36/CBROHLCN" sxy:x="3" sxy:y="12" />
+      </Bay>
+      <Bay name="T611" sxy:x="9" sxy:y="0">
+        <ConductingEquipment name="CBR" type="CBR" sxy:x="2" sxy:y="4">
+          <Terminal connectivityNode="ADSC_SS3/11_2/T611/CBRPowerTransformerCN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="T611" cNodeName="CBRPowerTransformerCN" />
+          <Terminal connectivityNode="ADSC_SS3/11_2/Bus4/CN" substationName="ADSC_SS3" voltageLevelName="11_2" bayName="Bus4" cNodeName="CN" />
+        </ConductingEquipment>
+        <ConnectivityNode name="CBRPowerTransformerCN" pathName="ADSC_SS3/11_2/T611/CBRPowerTransformerCN" sxy:x="2" sxy:y="0" />
+      </Bay>
+    </VoltageLevel>
+  </Substation>
+  <Communication>
+    <SubNetwork />
+  </Communication>
+</SCL>

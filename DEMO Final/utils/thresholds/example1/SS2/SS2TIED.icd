@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SCL version="2007" revision="B" xmlns:sxy="http://www.iec.ch/61850/2003/SCLcoordinates" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd http://www.iec.ch/61850/2003/SCLcoordinates SCL_Coordinates.xsd" xmlns="http://www.iec.ch/61850/2003/SCL">
+  <Header revision="A" version="1" id="87ce3cb2-3d7f-49a1-b75f-6a72b4edc21e" toolID="Grid Software IED Builder" nameStructure="IEDName">
+    <Text>SS2TIED</Text>
+    <History>
+      <Hitem revision="A" version="1" when="2022-04-12T14:17:01Z" who="Grid Software IED Builder" what="Project SS2TIED created" />
+    </History>
+  </Header>
+  <Communication>
+    <SubNetwork name="NONE" type="8-MMS">
+      <ConnectedAP iedName="SS2TIED" apName="AP1">
+        <Address>
+          <P type="IP" xsi:type="tP_IP">192.168.180.166</P>
+          <P type="IP-SUBNET" xsi:type="tP_IP-SUBNET">255.255.255.0</P>
+          <P type="IP-GATEWAY" xsi:type="tP_IP-GATEWAY">192.168.180.2</P>
+        </Address>
+        <PhysConn type="Connection">
+          <P type="Type">FOC</P>
+          <P type="Plug">LC</P>
+          <P type="Port">1</P>
+        </PhysConn>
+      </ConnectedAP>
+    </SubNetwork>
+  </Communication>
+  <IED name="SS2TIED" manufacturer="Grid Software" originalSclVersion="2007" originalSclRevision="B" owner="87ce3cb2-3d7f-49a1-b75f-6a72b4edc21e">
+    <Services>
+      <DynAssociation />
+      <GetDirectory />
+      <GetDataObjectDefinition />
+      <DataObjectDirectory />
+      <GetDataSetValue />
+      <DataSetDirectory />
+      <ConfDataSet max="10" maxAttributes="100" modify="true" />
+      <ReadWrite />
+      <ConfReportControl max="10" bufConf="false" />
+      <GetCBValues />
+      <ReportSettings cbName="Conf" datSet="Conf" rptID="Conf" optFields="Conf" bufTime="Conf" trgOps="Conf" intgPd="Conf" resvTms="false" owner="false" />
+      <GSESettings cbName="Conf" datSet="Conf" appID="Conf" dataLabel="Conf" />
+      <GOOSE max="100" fixedOffs="false" />
+    </Services>
+    <AccessPoint name="AP1">
+      <Server timeout="30">
+        <Authentication />
+        <LDevice inst="LD0">
+          <LN0 lnClass="LLN0" inst="" lnType="LD0_LLN0" desc="LDO_LLNO">
+            <DOI name="NamPlt">
+              <DAI name="vendor" valImport="false">
+                <Val>Roomi_SCL</Val>
+              </DAI>
+            </DOI>
+          </LN0>
+        </LDevice>
+        <LDevice inst="CTRL">
+          <LN0 lnClass="LLN0" inst="" lnType="CTRL_LLN0">
+            <DataSet desc="" name="TempDS">
+              <FCDA ldInst="CTRL" lnInst="1" lnClass="STMP" doName="Tmp" daName="mag.f" fc="MX" />
+              <FCDA ldInst="CTRL" lnInst="2" lnClass="STMP" doName="Tmp" daName="mag.f" fc="MX" />
+            </DataSet>
+            <ReportControl name="TempCB" bufTime="500" buffered="true" confRev="1" intgPd="1000" indexed="true" datSet="TempDS" desc="">
+              <TrgOps gi="true" dchg="true" qchg="true" dupd="true" period="true" />
+              <OptFields bufOvfl="true" seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" />
+              <RptEnabled max="1" />
+            </ReportControl>
+          </LN0>
+          <LN lnClass="STMP" inst="1" lnType="CTRL_STMP1" />
+          <LN lnClass="STMP" inst="2" lnType="CTRL_STMP2" />
+        </LDevice>
+      </Server>
+    </AccessPoint>
+  </IED>
+  <DataTypeTemplates>
+    <LNodeType id="LLN0_95081552-c8ec-475d-96d6-67634e163e0c" lnClass="LLN0">
+      <DO name="Beh" type="ENS_722dc648-6808-4093-8935-27ce97111a5b" />
+    </LNodeType>
+    <LNodeType id="LLN0_0cd3c0fb-95df-4156-803e-d8b2c20ae9ce" lnClass="LLN0">
+      <DO name="Beh" type="ENS_af5f4371-6b3c-4b43-8ad7-498aa0c28443" />
+    </LNodeType>
+    <LNodeType id="LLN0_3ac534d2-f244-47a5-b698-8e4b0193711d" lnClass="LLN0">
+      <DO name="Beh" type="ENS_7f501d11-2f8b-49b6-9a99-c8470c8d6503" />
+    </LNodeType>
+    <LNodeType id="LD0_LLN0" lnClass="LLN0">
+      <DO name="NamPlt" type="LPL_7e47e4cc-f25c-49a7-973a-63be9d32fb0b" />
+      <DO name="Beh" type="ENS_e98b90e3-e5f6-4572-9b86-0db57aa0dc41" />
+      <DO name="Health" type="ENS_e4404cd5-b49b-4264-afac-59eb064bb822" />
+      <DO name="Mod" type="ENC_3c87c1b9-f229-4ab4-9050-6c0f04a4d66e" />
+    </LNodeType>
+    <LNodeType id="CTRL_LLN0" lnClass="LLN0">
+      <DO name="Beh" type="ENS_627aea8a-eed9-43dd-9a83-ab72065ad05d" />
+    </LNodeType>
+    <LNodeType id="CTRL_STMP1" lnClass="STMP">
+      <DO name="Beh" type="ENS_2fbb699b-cc28-4ee7-9dc3-43790acd6d65" />
+      <DO name="Tmp" type="MV_77904a91-08fb-4640-9422-8e76996136bb" />
+    </LNodeType>
+    <LNodeType id="CTRL_STMP2" lnClass="STMP">
+      <DO name="Beh" type="ENS_436fb8d6-d008-4475-86d2-6450e58042d1" />
+      <DO name="Tmp" type="MV_ff0151af-507e-4e15-9cff-8b2408bec8e7" />
+    </LNodeType>
+    <DOType id="ENS_722dc648-6808-4093-8935-27ce97111a5b" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_af5f4371-6b3c-4b43-8ad7-498aa0c28443" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_7f501d11-2f8b-49b6-9a99-c8470c8d6503" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_e98b90e3-e5f6-4572-9b86-0db57aa0dc41" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_e4404cd5-b49b-4264-afac-59eb064bb822" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="HealthKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENC_3c87c1b9-f229-4ab4-9050-6c0f04a4d66e" cdc="ENC">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+      <DA name="ctlModel" bType="Enum" type="CtlModelKind" fc="CF" />
+    </DOType>
+    <DOType id="LPL_7e47e4cc-f25c-49a7-973a-63be9d32fb0b" cdc="LPL">
+      <DA name="vendor" bType="VisString255" fc="DC" />
+      <DA name="swRev" bType="VisString255" fc="DC" />
+    </DOType>
+    <DOType id="ENS_627aea8a-eed9-43dd-9a83-ab72065ad05d" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_2fbb699b-cc28-4ee7-9dc3-43790acd6d65" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="MV_77904a91-08fb-4640-9422-8e76996136bb" cdc="MV">
+      <DA name="mag" bType="Struct" type="AnalogueValue_2d0743c2-1973-45c7-ae39-6a7b33030dbc" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="ENS_436fb8d6-d008-4475-86d2-6450e58042d1" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="MV_ff0151af-507e-4e15-9cff-8b2408bec8e7" cdc="MV">
+      <DA name="mag" bType="Struct" type="AnalogueValue_3f790293-10a9-4d83-abed-172e997e2620" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DAType id="AnalogueValue_2d0743c2-1973-45c7-ae39-6a7b33030dbc">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="AnalogueValue_3f790293-10a9-4d83-abed-172e997e2620">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <EnumType id="BehaviourModeKind">
+      <EnumVal ord="1">on</EnumVal>
+      <EnumVal ord="2">blocked</EnumVal>
+      <EnumVal ord="3">test</EnumVal>
+      <EnumVal ord="4">test/blocked</EnumVal>
+      <EnumVal ord="5">off</EnumVal>
+    </EnumType>
+    <EnumType id="HealthKind">
+      <EnumVal ord="1">Ok</EnumVal>
+      <EnumVal ord="2">Warning</EnumVal>
+      <EnumVal ord="3">Alarm</EnumVal>
+    </EnumType>
+    <EnumType id="CtlModelKind">
+      <EnumVal ord="1">status-only</EnumVal>
+      <EnumVal ord="2">direct-with-normal-security</EnumVal>
+      <EnumVal ord="3">sbo-with-normal-security</EnumVal>
+      <EnumVal ord="4">direct-with-enhanced-security</EnumVal>
+      <EnumVal ord="5">sbo-with-enhanced-security</EnumVal>
+    </EnumType>
+    <EnumType id="FaultDirectionKind">
+      <EnumVal ord="1">unknown</EnumVal>
+      <EnumVal ord="2">forward</EnumVal>
+      <EnumVal ord="3">backward</EnumVal>
+      <EnumVal ord="4">both</EnumVal>
+    </EnumType>
+  </DataTypeTemplates>
+</SCL>
