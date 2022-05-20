@@ -1,5 +1,5 @@
 username = "admin"
-password = "Admin123#"
+password = "*******"
 database = "pandapower_db"
 hostIP = "localhost"
 port = "3306"
