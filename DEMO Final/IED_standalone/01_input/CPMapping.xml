@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+##########(IEDname = TIED1)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_5.value
+	</Physical>
+	<Cyber>
+		TIED1.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_7.value
+	</Physical>
+	<Cyber>
+		TIED1.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_7.value
+	</Physical>
+	<Cyber>
+		TIED1.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_7.value
+	</Physical>
+	<Cyber>
+		TIED1.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = S1IED1)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_7.value
+	</Physical>
+	<Cyber>
+		S1IED1.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_9.value
+	</Physical>
+	<Cyber>
+		S1IED1.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_9.value
+	</Physical>
+	<Cyber>
+		S1IED1.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_9.value
+	</Physical>
+	<Cyber>
+		S1IED1.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>

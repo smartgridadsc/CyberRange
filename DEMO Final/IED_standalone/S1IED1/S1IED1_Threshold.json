@@ -1,0 +1,41 @@
+{
+    "@name": "S1IED1",
+    "PDIF87L": [
+        {
+            "@instance": "1",
+            "Threshold": "100"
+        }
+    ],
+    "PTOC50": [
+        {
+            "@instance": "1",
+            "Threshold": "150"
+        }
+    ],
+    "PTOV59": [
+        {
+            "@instance": "1",
+            "AlarmThreshold": {
+                "Limit_p.u.": "1.1",
+                "Period_s": "10"
+            },
+            "TripThreshold": {
+                "Limit_p.u.": "1.2",
+                "Period_s": "2"
+            }
+        }
+    ],
+    "PTUV27": [
+        {
+            "@instance": "1",
+            "AlarmThreshold": {
+                "Limit_p.u.": "0.8",
+                "Period_s": "10"
+            },
+            "TripThreshold": {
+                "Limit_p.u.": "0.7",
+                "Period_s": "2"
+            }
+        }
+    ]
+}
