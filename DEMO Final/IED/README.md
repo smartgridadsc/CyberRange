@@ -21,3 +21,4 @@ Note:
 - For a clean build, remove the IED folders (if any) and the contents inside before running the build.
 - xmllint and .libs are the dependencies required by the scripts for XML parsing.
 - The files ied_getip.sh and ied_start.sh are used during the Mininet startup.
+- The file ied_set_iedjson.sh is a utility to create individual CPMapping and Threshold json files without building VIRTUAL_IED binaries.
