@@ -102,7 +102,7 @@ def startNetwork(topo, scdFile, configFile, remote=False):
             print(topo.hostList[i] + ' - ' + ied_ip + ' has no matching IP in ICD file')
             continue
         iedName = iedDict[ied_ip]
-        iedCmd = 'xterm -e ' + iedStartScript + ' ' + iedName + ' &'
+        iedCmd = 'xterm -T "' + topo.hostList[i] + '" -e ' + iedStartScript + ' ' + iedName + ' &'
         print("Starting " + str(ied_ip) + " with \"" + iedCmd + "\" on " + topo.hostList[i])
         ied.cmd(iedCmd)
         ied.cmd('sleep 0.5s')
