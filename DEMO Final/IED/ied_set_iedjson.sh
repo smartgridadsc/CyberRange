@@ -104,7 +104,7 @@ do
     continue
   fi
   # if there is a user-specified list and current IED exists in this list
-  if [[ ${#all_User_IED_Names[@]} -gt 0 && " ${all_User_IED_Names[*]} " =~ " ${IED_NAME} " ]]; then
+  if [[ ${#all_User_IED_Names[@]} -eq 0 || (${#all_User_IED_Names[@]} -gt 0 && " ${all_User_IED_Names[*]} " =~ " ${IED_NAME} ") ]]; then
     all_IED_Names+=($IED_NAME)
     all_IED_IPs+=($IED_IP)
   fi
