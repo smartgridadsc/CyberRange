@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 IED_SCRIPT=${BASH_SOURCE[0]}
 IED_SCRIPT_DIR=$(cd $(dirname "$IED_SCRIPT") && pwd)
