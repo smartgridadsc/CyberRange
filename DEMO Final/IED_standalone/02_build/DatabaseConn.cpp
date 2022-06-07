@@ -8,6 +8,16 @@
 
 using namespace std;
 
+bool isempty(const char *s)
+{
+  while (*s) {
+    if (!isspace(*s))
+      return false;
+    s++;
+  }
+  return true;
+}
+
 DatabaseConn::DatabaseConn(string config_filename) {
 
     vector<string> db_file;
@@ -19,14 +29,15 @@ DatabaseConn::DatabaseConn(string config_filename) {
         string item;
         while (getline(linestream, item, '"'))
         {
-            db_file.push_back(item);
+            if ( !isempty(item.c_str()) )
+                db_file.push_back(item);
         }
     }
     username = db_file[1];
-    password = db_file[4];
-    db_name = db_file[7];
-    hostname = db_file[10];
-    port_num = db_file[13];
+    password = db_file[3];
+    db_name = db_file[5];
+    hostname = db_file[7];
+    port_num = db_file[9];
 
     connect();
 }
