@@ -1,6 +1,6 @@
 ## SCD Merge
 
-This utility merges mulitple single-substation SCD files into one multi-substations SCD file.
+This utility merges multiple single-substation SCD files into one multi-substations SCD file.
 
 To use:
 1) Place single-substation SCD files in scd_input_files folder
