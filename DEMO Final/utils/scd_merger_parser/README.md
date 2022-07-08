@@ -17,3 +17,7 @@ To run:
 python3 parse.py
 
 Edit parse.py to point to the SCD and JSON files of your choice.
+
+## Acknowledgement
+
+This work is supported by the National Research Foundation, Singapore, Singapore University of Technology and Design under its National Satellite of Excellence in Design Science and Technology for Secure Critical Infrastructure Grant (NSoE_DeST-SCI2019-0005).

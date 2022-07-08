@@ -22,3 +22,7 @@ Note:
 - xmllint and .libs are the dependencies required by the scripts for XML parsing.
 - The files ied_getip.sh and ied_start.sh are used during the Mininet startup.
 - The file ied_set_iedjson.sh is a utility to create individual CPMapping and Threshold json files without building VIRTUAL_IED binaries.
+
+## Acknowledgement
+
+This work is supported by the National Research Foundation, Singapore, Singapore University of Technology and Design under its National Satellite of Excellence in Design Science and Technology for Secure Critical Infrastructure Grant (NSoE_DeST-SCI2019-0005).

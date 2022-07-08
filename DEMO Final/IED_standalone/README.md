@@ -22,3 +22,7 @@ The IPs are defined in the ICD and SED files so the correct mininet nodes must b
 Alternate IPs to use (requires amending ICD and SED files):
 - TIED1  on 172.16.3.41 (h2)
 - S1IED1 on 172.16.2.41 (h13)
+
+## Acknowledgement
+
+This work is supported by the National Research Foundation, Singapore, Singapore University of Technology and Design under its National Satellite of Excellence in Design Science and Technology for Secure Critical Infrastructure Grant (NSoE_DeST-SCI2019-0005).

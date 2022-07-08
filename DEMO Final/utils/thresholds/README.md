@@ -31,3 +31,7 @@ Generated files will be placed in working_folder:
 Note: 
 - Edit Thresholds_template.xml to modify the threshold values if required
 - Todo - allow multiple templates for different IEDs
+
+## Acknowledgement
+
+This work is supported by the National Research Foundation, Singapore, Singapore University of Technology and Design under its National Satellite of Excellence in Design Science and Technology for Secure Critical Infrastructure Grant (NSoE_DeST-SCI2019-0005).
