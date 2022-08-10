@@ -104,7 +104,6 @@ void PTOV59::start()
 	
 	                    else
 	                    {
-							//weizhe
 	                        if(atof(row[0]) > *trip_limit_val)
 	                        {
 	                            auto time_start = system_clock::now();
@@ -135,7 +134,6 @@ void PTOV59::start()
 											string column_name_in = inner_strings[1];
 											string cb_value_in = inner_strings[2];
 
-											//weizhe
 											cout << "PTOV59: " << row[0] << "|| trip_limit: " << *trip_limit_val << " || time: " << (*trip_period_val)*pow(10,9) << "s" << endl;
 											mysqlpp::Query update_query = db_conn->conn.query("UPDATE " +  table_name_in + " SET " + cb_value_in + " = 0 WHERE name = '" + column_name_in + "'");													
 											mysqlpp::UseQueryResult res = update_query.use();

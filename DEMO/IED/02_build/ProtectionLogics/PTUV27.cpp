@@ -106,7 +106,6 @@ void PTUV27::start()
 	
 	                    else
 	                    {
-							//weizhe
 							if(atof(row[0]) < *trip_limit_val)
 	                        {
 	                            auto time_start = system_clock::now();
@@ -135,7 +134,6 @@ void PTUV27::start()
 	                                    string table_name = strings[0];
 	                            	    string column_name = strings[1];
 	                                    string cb_value = strings[2];
-										//weizhe
 										cout << "PTUV27: " << phy_column_name << " is " << row[phy_count] << endl;
 	                                    mysqlpp::Query update_cb = db_conn->conn.query("UPDATE " +  table_name + " SET " + cb_value + " = 0 WHERE name = '" + column_name + "'");
 	                                    mysqlpp::UseQueryResult res = update_cb.use();

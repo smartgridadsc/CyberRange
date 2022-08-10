@@ -444,7 +444,6 @@ list<LogicFunction *> Parser::parse_protection_logic_config(std::string &cpmappi
     }
     
 
-    //weizhe
     string filename = CONFIG_DIR + this_ied + ".icd";
     rapidxml::file<> xmlFile(filename.c_str());
     rapidxml::xml_document<> doc;
@@ -602,7 +601,6 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
     xml_node *comm_node = root_node->first_node("Communication");
 
     unordered_map<string, xml_node *> connAP_map;
-    //weizhe
 	for (xml_node *subnet_node = comm_node->first_node("SubNetwork"); subnet_node; subnet_node = subnet_node->next_sibling("SubNetwork"))
     {
         for (xml_node *connAP_node = subnet_node->first_node("ConnectedAP"); connAP_node; connAP_node = connAP_node->next_sibling("ConnectedAP"))
@@ -639,7 +637,6 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
         if (this_ied.compare(ied_name) == 0)
             continue;
 
-        //weizhe
         xml_node *ap_node = ied_node->first_node("AccessPoint");
 
         for (xml_node *ld_node = ap_node->first_node("LDevice"); ld_node; ld_node = ld_node->next_sibling("LDevice"))
@@ -1234,7 +1231,6 @@ CommModule *Parser::config_RGOOSE(string &this_ied)
                                 ->first_node("SubNetwork")
                                 ->first_node("ConnectedAP");
                                 
-    //weizhe
     xml_node *server_node = ied_node->first_node("AccessPoint")
                              ->first_node("Server");
                         

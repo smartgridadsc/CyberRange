@@ -88,7 +88,6 @@ void PTOC50::start() {
                             {
                                 if(atof(row[phy_count]) > (*thres_val/1000))
                                 {
-                                    //weizhe
                                     cout << "PTOC50: " << phy_column_name << " 's current " << row[phy_count] << " is higher than threshold value " << *thres_val/1000 << endl;
                                     for (auto cb_val : cb_list)
                                     {

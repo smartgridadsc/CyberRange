@@ -21,7 +21,6 @@ class Parser
 {
 public:
     //For Protections
-    //weizhe
     static std::list<LogicFunction *> parse_protection_logic_config(std::string &cpmapping_filename, std::string &thresholds_filename, std::string &ied_name, std::string &sed_filename);
     //For CommModules
     static std::list<CommModule *> parse_comm_config(std::string &sed_filename, std::string &ied_name);

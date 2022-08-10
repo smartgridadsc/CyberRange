@@ -39,7 +39,6 @@ void PTRC::start() {
         auto cb_val = std::begin(cb_list);
         for (auto remote_cb_val : remote_cb_val_list)
         {               
-            //weizhe
 			if (remote_cb_val == 1)
             {
                 cout << "PTRC remote circuit breaker is closed" << endl;

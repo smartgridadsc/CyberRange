@@ -74,7 +74,6 @@ void PDIF87L::start() {
                 {                
                     if(abs(atof(row[phy_count]) - *remote_cur_val) > *thres_val/1000)
                     {
-                        //weizhe
                         cout << "PDIF87L: difference: " << abs(atof(row[phy_count]) - *remote_cur_val) << " is higher than threshold value " << *thres_val/1000 << endl;
 
                         vector<string> inner_strings;

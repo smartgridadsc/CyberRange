@@ -348,7 +348,7 @@ void R_GOOSEModule::form_rgoose_pdu(GooseCtlBlk_t &gse_blk, vector<unsigned char
     {
     //for (bool val : gse_blk.da_view) {
         /* GOOSE data set encoded based on the MMS adapted ASN.1/BER rule */
-        if (MmsValue_getType(val) == MMS_BOOLEAN) //weizhe
+        if (MmsValue_getType(val) == MMS_BOOLEAN)
         {
             allData_Value.push_back(0x83); // Tag = 0x83 -> Data type: Boolean
             allData_Value.push_back(0x01); // Length = 0x01

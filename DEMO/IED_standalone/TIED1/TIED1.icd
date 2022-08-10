@@ -161,9 +161,7 @@
             </ReportControl>
           </LN0>
           <LN lnClass="PDIF" inst="1" lnType="PROT.PDIF" />
-          <!-- weizhe -->
           <LN lnClass="PTRC" inst="1" lnType="PROT.PTRC" />
-          <!-- weizhe -->
         </LDevice>
       </Server>
     </AccessPoint>
@@ -201,7 +199,6 @@
       <DO name="EnaCls" type="SPS_aa002350-4efd-44ce-8ba6-1edaa36d60c9" />
       <DO name="Mod" type="ENC_346ff466-41b7-41e0-80c2-0e8b24a4ae1f" />
     </LNodeType>
-    <!-- weizhe -->
     <LNodeType id="PROT.PTRC" lnClass="PTRC">
       <DO name="NamPlt" type="LPL_8b9aea6a-a2e4-4292-b070-c362af875b2d" />
       <DO name="Tr" type="ACT_9a1ea581-042e-4436-8d2d-ff5b01c5b48d" />
@@ -212,7 +209,6 @@
       <DO name="OpCntRs" type="INC_2a50a5f9-e5f4-4a35-9501-a77b9c4b7b41" />
       <DO name="Mod" type="ENC_c822b22a-9ffe-48e0-a705-1ec5614ee972" />
     </LNodeType>
-    <!-- weizhe -->
     <LNodeType id="CTRL.CSWI" lnClass="CSWI">
       <DO name="NamPlt" type="LPL_2c91117e-c99e-4ec5-94ec-e5a3bc92251e" />
       <DO name="Beh" type="ENS_66ad1e05-8fa8-4db3-bb7d-4823117d9dde" />
@@ -241,7 +237,6 @@
       <DO name="Beh" type="ENS_37a38333-655c-4a3c-826b-f0108fe91a88" />
       <DO name="SPCSO1" type="SPC_ad94ae49-8d47-40c1-b37a-fe449a2a5e35" />
     </LNodeType>
-    <!-- weizhe -->
     <DOType id="LPL_8b9aea6a-a2e4-4292-b070-c362af875b2d" cdc="LPL">
       <DA name="vendor" bType="VisString255" fc="DC" />
       <DA name="swRev" bType="VisString255" fc="DC" />
@@ -288,8 +283,6 @@
       <DA name="t" bType="Timestamp" fc="ST" />
       <DA name="ctlModel" bType="Enum" type="CtlModelKind" fc="CF" />
     </DOType>
-    <!-- weizhe -->
-    
     <DOType id="ENS_0d5a2f89-adfe-447e-a8d7-57024b333197" cdc="ENS">
       <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
       <DA name="q" bType="Quality" fc="ST" />

@@ -582,7 +582,6 @@ void UDPReceiver::handleGOOSE(GOOSE_Subscription &goose_sub,
 
     // At this point, all checks completed
     // Write to shared mem
-    // wenshei
 
     unsigned int allData_len = current_allData.size();
     unsigned int da_idx = 0;
