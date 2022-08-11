@@ -8,7 +8,8 @@ Input files required from user:
 
 To use:  
 1) Update ssd_path and extra_config_path in Constants.py to point to the SSD file and the extra configuration file
-2) Run: python3 Simulator.py
+2) Update database credentials in DBTransmitter.py (2 instances)
+3) Run: python3 Simulator.py
 
 ## Acknowledgement
 
