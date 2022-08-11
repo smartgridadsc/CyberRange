@@ -1,0 +1,7 @@
+R-GOOSE:
+- only for bool datatypes in datasets
+
+R-SV:
+- only for bool/float datatypes in datasets
+
+UDPRecv:

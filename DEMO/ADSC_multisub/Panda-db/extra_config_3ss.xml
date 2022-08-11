@@ -1,0 +1,593 @@
+<conductconfig>
+    <load>
+        <conduct>
+            <location>11_1/L2</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.06</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/L3</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.07</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/L4</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="2"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.06</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L5</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L6</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L7</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="2"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <!--    SS2    -->
+        <conduct>
+            <location>11_1/L22</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/L23</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/L24</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="2"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L25</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.005</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L26</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L27</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="2"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <!--    SS3    -->
+        <conduct>
+            <location>11_1/L32</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/L33</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/L34</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="2"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L35</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.005</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L36</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="1"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/L37</location>
+            <p unit="W" multiplier="M" valuefixed="true">
+                <data sequence="1" value="2"/>
+            </p>
+            <cablelength unit="m" multiplier="K">0.05</cablelength>
+            <cabletype>4Cx70</cabletype>
+        </conduct>
+    </load>
+
+    <circuitbreaker>
+                <!-- SS1  -->
+        <conduct>
+            <location>Feeder1</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>Feeder2</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L0</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L1</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T166</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T111</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>CB11</location>
+            <inoperation>
+                <data sequence="1" value="false"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T266</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T211</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L8</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L9</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L2</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L3</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L4</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>CB12</location>
+            <inoperation>
+                <data sequence="1" value="false"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L5</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L6</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L7</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+            <!-- SS2  -->
+        <conduct>
+            <location>T366</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T311</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T466</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T411</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>CB21</location>
+            <inoperation>
+                <data sequence="1" value="false"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L22</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L23</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L24</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>CB22</location>
+            <inoperation>
+                <data sequence="1" value="false"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L25</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L26</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L27</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+                    <!-- SS3  -->
+        <conduct>
+            <location>T566</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T511</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T666</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>T611</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>CB31</location>
+            <inoperation>
+                <data sequence="1" value="false"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L32</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L33</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L34</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>CB32</location>
+            <inoperation>
+                <data sequence="1" value="false"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L35</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L36</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+        <conduct>
+            <location>L37</location>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+        </conduct>
+    </circuitbreaker>
+    <transformer>
+        <conduct>
+            <location>66_1/T166</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx25</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/T111</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx25</cabletype>
+        </conduct>
+        <conduct>
+            <location>66_2/T266</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx25</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/T211</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx25</cabletype>
+        </conduct>
+        <!--        SS2-->
+        <conduct>
+            <location>66_1/T366</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/T311</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+        <conduct>
+            <location>66_2/T466</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/T411</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+        <!--        SS3-->
+        <conduct>
+            <location>66_1/T566</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_1/T511</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+        <conduct>
+            <location>66_2/T666</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+        <conduct>
+            <location>11_2/T611</location>
+            <s unit="VA" multiplier="M">0.1</s>
+            <hv unit="V" multiplier="K">66</hv>
+            <lv unit="V" multiplier="K">11</lv>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+    </transformer>
+    <generator>
+        <conduct sgen="true">
+            <location>66_1/Feeder1</location>
+            <p unit="W" multiplier="M">
+                <data sequence="1" value="1"/>
+            </p>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <voltage>1</voltage>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+        <conduct sgen="true">
+            <location>66_2/Feeder2</location>
+            <p unit="W" multiplier="M">
+                <data sequence="1" value="1"/>
+            </p>
+            <inoperation>
+                <data sequence="1" value="true"/>
+            </inoperation>
+            <voltage>1</voltage>
+            <cablelength unit="m" multiplier="K">0.02</cablelength>
+            <cabletype>4Cx10</cabletype>
+        </conduct>
+    </generator>
+    <cable>
+        <conduct>
+            <name>4Cx70</name>
+            <resistance unit="ohm" per="km">0.343</resistance>
+            <reactance unit="ohm" per="km">0.077</reactance>
+            <capacitance unit="F" multiplier="micro" per="km">0.53</capacitance>
+            <maxcurrent unit="A">212</maxcurrent>
+        </conduct>
+        <conduct>
+            <name>4Cx10</name>
+            <resistance unit="ohm" per="km">2.34</resistance>
+            <reactance unit="ohm" per="km">0.0837</reactance>
+            <capacitance unit="F" multiplier="micro" per="km">0.31</capacitance>
+            <maxcurrent unit="A">74</maxcurrent>
+        </conduct>
+        <conduct>
+            <name>4Cx25</name>
+            <resistance unit="ohm" per="km">0.931</resistance>
+            <reactance unit="ohm" per="km">0.08</reactance>
+            <capacitance unit="F" multiplier="micro" per="km">0.41</capacitance>
+            <maxcurrent unit="A">122</maxcurrent>
+        </conduct>
+    </cable>
+</conductconfig>

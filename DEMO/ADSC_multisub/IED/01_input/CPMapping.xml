@@ -1,0 +1,3547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+##########(IEDname = Feeder1IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_5.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_26.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_26.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_26.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_8.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_8.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_8.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_8.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_8.value
+	</Physical>
+	<Cyber>
+		Feeder1IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T166IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_9.value
+	</Physical>
+	<Cyber>
+		T166IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_7.value
+	</Physical>
+	<Cyber>
+		T166IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_7.value
+	</Physical>
+	<Cyber>
+		T166IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_7.value
+	</Physical>
+	<Cyber>
+		T166IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_12.value
+	</Physical>
+	<Cyber>
+		T166IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_12.value
+	</Physical>
+	<Cyber>
+		T166IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_12.value
+	</Physical>
+	<Cyber>
+		T166IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_12.value
+	</Physical>
+	<Cyber>
+		T166IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_12.value
+	</Physical>
+	<Cyber>
+		T166IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T111IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_4.value
+	</Physical>
+	<Cyber>
+		T111IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_4.value
+	</Physical>
+	<Cyber>
+		T111IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_4.value
+	</Physical>
+	<Cyber>
+		T111IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_4.value
+	</Physical>
+	<Cyber>
+		T111IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_7.value
+	</Physical>
+	<Cyber>
+		T111IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_7.value
+	</Physical>
+	<Cyber>
+		T111IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_7.value
+	</Physical>
+	<Cyber>
+		T111IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_7.value
+	</Physical>
+	<Cyber>
+		T111IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_7.value
+	</Physical>
+	<Cyber>
+		T111IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L2IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_0.value
+	</Physical>
+	<Cyber>
+		L2IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_0.value
+	</Physical>
+	<Cyber>
+		L2IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_0.value
+	</Physical>
+	<Cyber>
+		L2IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_0.value
+	</Physical>
+	<Cyber>
+		L2IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_1.value
+	</Physical>
+	<Cyber>
+		L2IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_1.value
+	</Physical>
+	<Cyber>
+		L2IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_1.value
+	</Physical>
+	<Cyber>
+		L2IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_1.value
+	</Physical>
+	<Cyber>
+		L2IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_1.value
+	</Physical>
+	<Cyber>
+		L2IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L3IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_2.value
+	</Physical>
+	<Cyber>
+		L3IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_3.value
+	</Physical>
+	<Cyber>
+		L3IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_3.value
+	</Physical>
+	<Cyber>
+		L3IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_3.value
+	</Physical>
+	<Cyber>
+		L3IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_5.value
+	</Physical>
+	<Cyber>
+		L3IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_5.value
+	</Physical>
+	<Cyber>
+		L3IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_5.value
+	</Physical>
+	<Cyber>
+		L3IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_5.value
+	</Physical>
+	<Cyber>
+		L3IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_5.value
+	</Physical>
+	<Cyber>
+		L3IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L4IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_1.value
+	</Physical>
+	<Cyber>
+		L4IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_2.value
+	</Physical>
+	<Cyber>
+		L4IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_2.value
+	</Physical>
+	<Cyber>
+		L4IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_2.value
+	</Physical>
+	<Cyber>
+		L4IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_3.value
+	</Physical>
+	<Cyber>
+		L4IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_3.value
+	</Physical>
+	<Cyber>
+		L4IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_3.value
+	</Physical>
+	<Cyber>
+		L4IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_3.value
+	</Physical>
+	<Cyber>
+		L4IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_3.value
+	</Physical>
+	<Cyber>
+		L4IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = Feeder2IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_10.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_27.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_27.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_27.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_13.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_13.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_13.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_13.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_13.value
+	</Physical>
+	<Cyber>
+		Feeder2IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T266IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_13.value
+	</Physical>
+	<Cyber>
+		T266IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_10.value
+	</Physical>
+	<Cyber>
+		T266IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_10.value
+	</Physical>
+	<Cyber>
+		T266IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_10.value
+	</Physical>
+	<Cyber>
+		T266IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_16.value
+	</Physical>
+	<Cyber>
+		T266IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_16.value
+	</Physical>
+	<Cyber>
+		T266IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_16.value
+	</Physical>
+	<Cyber>
+		T266IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_16.value
+	</Physical>
+	<Cyber>
+		T266IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_16.value
+	</Physical>
+	<Cyber>
+		T266IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T211IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_17.value
+	</Physical>
+	<Cyber>
+		T211IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_15.value
+	</Physical>
+	<Cyber>
+		T211IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_15.value
+	</Physical>
+	<Cyber>
+		T211IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_15.value
+	</Physical>
+	<Cyber>
+		T211IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_23.value
+	</Physical>
+	<Cyber>
+		T211IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_23.value
+	</Physical>
+	<Cyber>
+		T211IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_23.value
+	</Physical>
+	<Cyber>
+		T211IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_23.value
+	</Physical>
+	<Cyber>
+		T211IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_23.value
+	</Physical>
+	<Cyber>
+		T211IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L5IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_14.value
+	</Physical>
+	<Cyber>
+		L5IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_11.value
+	</Physical>
+	<Cyber>
+		L5IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_11.value
+	</Physical>
+	<Cyber>
+		L5IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_11.value
+	</Physical>
+	<Cyber>
+		L5IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_18.value
+	</Physical>
+	<Cyber>
+		L5IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_18.value
+	</Physical>
+	<Cyber>
+		L5IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_18.value
+	</Physical>
+	<Cyber>
+		L5IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_18.value
+	</Physical>
+	<Cyber>
+		L5IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_18.value
+	</Physical>
+	<Cyber>
+		L5IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L6IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_16.value
+	</Physical>
+	<Cyber>
+		L6IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_14.value
+	</Physical>
+	<Cyber>
+		L6IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_14.value
+	</Physical>
+	<Cyber>
+		L6IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_14.value
+	</Physical>
+	<Cyber>
+		L6IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_22.value
+	</Physical>
+	<Cyber>
+		L6IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_22.value
+	</Physical>
+	<Cyber>
+		L6IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_22.value
+	</Physical>
+	<Cyber>
+		L6IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_22.value
+	</Physical>
+	<Cyber>
+		L6IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_22.value
+	</Physical>
+	<Cyber>
+		L6IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L7IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_15.value
+	</Physical>
+	<Cyber>
+		L7IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_13.value
+	</Physical>
+	<Cyber>
+		L7IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_13.value
+	</Physical>
+	<Cyber>
+		L7IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_13.value
+	</Physical>
+	<Cyber>
+		L7IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_20.value
+	</Physical>
+	<Cyber>
+		L7IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_20.value
+	</Physical>
+	<Cyber>
+		L7IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_20.value
+	</Physical>
+	<Cyber>
+		L7IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_20.value
+	</Physical>
+	<Cyber>
+		L7IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_20.value
+	</Physical>
+	<Cyber>
+		L7IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = CB11IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_8.value
+	</Physical>
+	<Cyber>
+		CB11IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		CB11IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		CB11IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		CB11IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_11.value
+	</Physical>
+	<Cyber>
+		CB11IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_11.value
+	</Physical>
+	<Cyber>
+		CB11IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_11.value
+	</Physical>
+	<Cyber>
+		CB11IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_11.value
+	</Physical>
+	<Cyber>
+		CB11IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_11.value
+	</Physical>
+	<Cyber>
+		CB11IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = CB12IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_3.value
+	</Physical>
+	<Cyber>
+		CB12IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_1.value
+	</Physical>
+	<Cyber>
+		CB12IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_1.value
+	</Physical>
+	<Cyber>
+		CB12IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_1.value
+	</Physical>
+	<Cyber>
+		CB12IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_6.value
+	</Physical>
+	<Cyber>
+		CB12IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_6.value
+	</Physical>
+	<Cyber>
+		CB12IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_6.value
+	</Physical>
+	<Cyber>
+		CB12IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_6.value
+	</Physical>
+	<Cyber>
+		CB12IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_6.value
+	</Physical>
+	<Cyber>
+		CB12IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = SS1TIED)##########
+
+<CPMapping>	
+	<Physical>
+		transformer_temp.transformer_temp_0.value
+	</Physical>
+	<Cyber>
+		SS1TIED.CTRL.STMP1.Tmp.mag.f 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		transformer_temp.transformer_temp_1.value
+	</Physical>
+	<Cyber>
+		SS1TIED.CTRL.STMP2.Tmp.mag.f 
+    </Cyber>
+</CPMapping>
+ 
+##########(IEDname = L1IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_7.value
+	</Physical>
+	<Cyber>
+		L1IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		L1IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		L1IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		L1IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_10.value
+	</Physical>
+	<Cyber>
+		L1IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_10.value
+	</Physical>
+	<Cyber>
+		L1IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_10.value
+	</Physical>
+	<Cyber>
+		L1IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_10.value
+	</Physical>
+	<Cyber>
+		L1IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_10.value
+	</Physical>
+	<Cyber>
+		L1IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L8IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_11.value
+	</Physical>
+	<Cyber>
+		L8IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_9.value
+	</Physical>
+	<Cyber>
+		L8IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_9.value
+	</Physical>
+	<Cyber>
+		L8IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_9.value
+	</Physical>
+	<Cyber>
+		L8IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_14.value
+	</Physical>
+	<Cyber>
+		L8IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_14.value
+	</Physical>
+	<Cyber>
+		L8IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_14.value
+	</Physical>
+	<Cyber>
+		L8IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_14.value
+	</Physical>
+	<Cyber>
+		L8IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_14.value
+	</Physical>
+	<Cyber>
+		L8IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+ 
+##########(IEDname = T366IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_24.value
+	</Physical>
+	<Cyber>
+		T366IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_33.value
+	</Physical>
+	<Cyber>
+		T366IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_33.value
+	</Physical>
+	<Cyber>
+		T366IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_33.value
+	</Physical>
+	<Cyber>
+		T366IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_35.value
+	</Physical>
+	<Cyber>
+		T366IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_35.value
+	</Physical>
+	<Cyber>
+		T366IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_35.value
+	</Physical>
+	<Cyber>
+		T366IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_35.value
+	</Physical>
+	<Cyber>
+		T366IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_35.value
+	</Physical>
+	<Cyber>
+		T366IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T311IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_22.value
+	</Physical>
+	<Cyber>
+		T311IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_32.value
+	</Physical>
+	<Cyber>
+		T311IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_32.value
+	</Physical>
+	<Cyber>
+		T311IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_32.value
+	</Physical>
+	<Cyber>
+		T311IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_33.value
+	</Physical>
+	<Cyber>
+		T311IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_33.value
+	</Physical>
+	<Cyber>
+		T311IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_33.value
+	</Physical>
+	<Cyber>
+		T311IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_33.value
+	</Physical>
+	<Cyber>
+		T311IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_33.value
+	</Physical>
+	<Cyber>
+		T311IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L22IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_18.value
+	</Physical>
+	<Cyber>
+		L22IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_28.value
+	</Physical>
+	<Cyber>
+		L22IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_28.value
+	</Physical>
+	<Cyber>
+		L22IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_28.value
+	</Physical>
+	<Cyber>
+		L22IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_27.value
+	</Physical>
+	<Cyber>
+		L22IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_27.value
+	</Physical>
+	<Cyber>
+		L22IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_27.value
+	</Physical>
+	<Cyber>
+		L22IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_27.value
+	</Physical>
+	<Cyber>
+		L22IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_27.value
+	</Physical>
+	<Cyber>
+		L22IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L23IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_20.value
+	</Physical>
+	<Cyber>
+		L23IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_31.value
+	</Physical>
+	<Cyber>
+		L23IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_31.value
+	</Physical>
+	<Cyber>
+		L23IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_31.value
+	</Physical>
+	<Cyber>
+		L23IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_31.value
+	</Physical>
+	<Cyber>
+		L23IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_31.value
+	</Physical>
+	<Cyber>
+		L23IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_31.value
+	</Physical>
+	<Cyber>
+		L23IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_31.value
+	</Physical>
+	<Cyber>
+		L23IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_31.value
+	</Physical>
+	<Cyber>
+		L23IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L24IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_19.value
+	</Physical>
+	<Cyber>
+		L24IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_30.value
+	</Physical>
+	<Cyber>
+		L24IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_30.value
+	</Physical>
+	<Cyber>
+		L24IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_30.value
+	</Physical>
+	<Cyber>
+		L24IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_29.value
+	</Physical>
+	<Cyber>
+		L24IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_29.value
+	</Physical>
+	<Cyber>
+		L24IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_29.value
+	</Physical>
+	<Cyber>
+		L24IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_29.value
+	</Physical>
+	<Cyber>
+		L24IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_29.value
+	</Physical>
+	<Cyber>
+		L24IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T466IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_25.value
+	</Physical>
+	<Cyber>
+		T466IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_34.value
+	</Physical>
+	<Cyber>
+		T466IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_34.value
+	</Physical>
+	<Cyber>
+		T466IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_34.value
+	</Physical>
+	<Cyber>
+		T466IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_36.value
+	</Physical>
+	<Cyber>
+		T466IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_36.value
+	</Physical>
+	<Cyber>
+		T466IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_36.value
+	</Physical>
+	<Cyber>
+		T466IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_36.value
+	</Physical>
+	<Cyber>
+		T466IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_36.value
+	</Physical>
+	<Cyber>
+		T466IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T411IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_29.value
+	</Physical>
+	<Cyber>
+		T411IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_39.value
+	</Physical>
+	<Cyber>
+		T411IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_39.value
+	</Physical>
+	<Cyber>
+		T411IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_39.value
+	</Physical>
+	<Cyber>
+		T411IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_43.value
+	</Physical>
+	<Cyber>
+		T411IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_43.value
+	</Physical>
+	<Cyber>
+		T411IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_43.value
+	</Physical>
+	<Cyber>
+		T411IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_43.value
+	</Physical>
+	<Cyber>
+		T411IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_43.value
+	</Physical>
+	<Cyber>
+		T411IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L25IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_26.value
+	</Physical>
+	<Cyber>
+		L25IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_35.value
+	</Physical>
+	<Cyber>
+		L25IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_35.value
+	</Physical>
+	<Cyber>
+		L25IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_35.value
+	</Physical>
+	<Cyber>
+		L25IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_38.value
+	</Physical>
+	<Cyber>
+		L25IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_38.value
+	</Physical>
+	<Cyber>
+		L25IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_38.value
+	</Physical>
+	<Cyber>
+		L25IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_38.value
+	</Physical>
+	<Cyber>
+		L25IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_38.value
+	</Physical>
+	<Cyber>
+		L25IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L26IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_28.value
+	</Physical>
+	<Cyber>
+		L26IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_38.value
+	</Physical>
+	<Cyber>
+		L26IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_38.value
+	</Physical>
+	<Cyber>
+		L26IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_38.value
+	</Physical>
+	<Cyber>
+		L26IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_42.value
+	</Physical>
+	<Cyber>
+		L26IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_42.value
+	</Physical>
+	<Cyber>
+		L26IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_42.value
+	</Physical>
+	<Cyber>
+		L26IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_42.value
+	</Physical>
+	<Cyber>
+		L26IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_42.value
+	</Physical>
+	<Cyber>
+		L26IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L27IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_27.value
+	</Physical>
+	<Cyber>
+		L27IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_40.value
+	</Physical>
+	<Cyber>
+		L27IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_40.value
+	</Physical>
+	<Cyber>
+		L27IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_40.value
+	</Physical>
+	<Cyber>
+		L27IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_44.value
+	</Physical>
+	<Cyber>
+		L27IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_44.value
+	</Physical>
+	<Cyber>
+		L27IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_44.value
+	</Physical>
+	<Cyber>
+		L27IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_44.value
+	</Physical>
+	<Cyber>
+		L27IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_44.value
+	</Physical>
+	<Cyber>
+		L27IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = CB21IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_23.value
+	</Physical>
+	<Cyber>
+		CB21IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_20.value
+	</Physical>
+	<Cyber>
+		CB21IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_20.value
+	</Physical>
+	<Cyber>
+		CB21IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_20.value
+	</Physical>
+	<Cyber>
+		CB21IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_34.value
+	</Physical>
+	<Cyber>
+		CB21IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_34.value
+	</Physical>
+	<Cyber>
+		CB21IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_34.value
+	</Physical>
+	<Cyber>
+		CB21IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_34.value
+	</Physical>
+	<Cyber>
+		CB21IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_34.value
+	</Physical>
+	<Cyber>
+		CB21IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = CB22IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_21.value
+	</Physical>
+	<Cyber>
+		CB22IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_29.value
+	</Physical>
+	<Cyber>
+		CB22IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_29.value
+	</Physical>
+	<Cyber>
+		CB22IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_29.value
+	</Physical>
+	<Cyber>
+		CB22IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_32.value
+	</Physical>
+	<Cyber>
+		CB22IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_32.value
+	</Physical>
+	<Cyber>
+		CB22IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_32.value
+	</Physical>
+	<Cyber>
+		CB22IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_32.value
+	</Physical>
+	<Cyber>
+		CB22IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_32.value
+	</Physical>
+	<Cyber>
+		CB22IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = SS2TIED)##########
+
+<CPMapping>	
+	<Physical>
+		transformer_temp.transformer_temp_2.value
+	</Physical>
+	<Cyber>
+		SS2TIED.CTRL.STMP1.Tmp.mag.f 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		transformer_temp.transformer_temp_3.value
+	</Physical>
+	<Cyber>
+		SS2TIED.CTRL.STMP2.Tmp.mag.f 
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L0IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_6.value
+	</Physical>
+	<Cyber>
+		L0IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		L0IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		L0IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_6.value
+	</Physical>
+	<Cyber>
+		L0IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_9.value
+	</Physical>
+	<Cyber>
+		L0IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_9.value
+	</Physical>
+	<Cyber>
+		L0IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_9.value
+	</Physical>
+	<Cyber>
+		L0IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_9.value
+	</Physical>
+	<Cyber>
+		L0IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_9.value
+	</Physical>
+	<Cyber>
+		L0IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L9IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_12.value
+	</Physical>
+	<Cyber>
+		L9IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_9.value
+	</Physical>
+	<Cyber>
+		L9IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_9.value
+	</Physical>
+	<Cyber>
+		L9IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_9.value
+	</Physical>
+	<Cyber>
+		L9IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_15.value
+	</Physical>
+	<Cyber>
+		L9IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_15.value
+	</Physical>
+	<Cyber>
+		L9IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_15.value
+	</Physical>
+	<Cyber>
+		L9IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_15.value
+	</Physical>
+	<Cyber>
+		L9IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_15.value
+	</Physical>
+	<Cyber>
+		L9IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+ 
+##########(IEDname = T566IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_36.value
+	</Physical>
+	<Cyber>
+		T566IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_51.value
+	</Physical>
+	<Cyber>
+		T566IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_51.value
+	</Physical>
+	<Cyber>
+		T566IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_51.value
+	</Physical>
+	<Cyber>
+		T566IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_53.value
+	</Physical>
+	<Cyber>
+		T566IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_53.value
+	</Physical>
+	<Cyber>
+		T566IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_53.value
+	</Physical>
+	<Cyber>
+		T566IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_53.value
+	</Physical>
+	<Cyber>
+		T566IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_53.value
+	</Physical>
+	<Cyber>
+		T566IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T511IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_34.value
+	</Physical>
+	<Cyber>
+		T511IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_50.value
+	</Physical>
+	<Cyber>
+		T511IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_50.value
+	</Physical>
+	<Cyber>
+		T511IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_50.value
+	</Physical>
+	<Cyber>
+		T511IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_51.value
+	</Physical>
+	<Cyber>
+		T511IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_51.value
+	</Physical>
+	<Cyber>
+		T511IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_51.value
+	</Physical>
+	<Cyber>
+		T511IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_51.value
+	</Physical>
+	<Cyber>
+		T511IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_51.value
+	</Physical>
+	<Cyber>
+		T511IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L32IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_30.value
+	</Physical>
+	<Cyber>
+		L32IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_46.value
+	</Physical>
+	<Cyber>
+		L32IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_46.value
+	</Physical>
+	<Cyber>
+		L32IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_46.value
+	</Physical>
+	<Cyber>
+		L32IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_45.value
+	</Physical>
+	<Cyber>
+		L32IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_45.value
+	</Physical>
+	<Cyber>
+		L32IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_45.value
+	</Physical>
+	<Cyber>
+		L32IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_45.value
+	</Physical>
+	<Cyber>
+		L32IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_45.value
+	</Physical>
+	<Cyber>
+		L32IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L33IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_32.value
+	</Physical>
+	<Cyber>
+		L33IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_49.value
+	</Physical>
+	<Cyber>
+		L33IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_49.value
+	</Physical>
+	<Cyber>
+		L33IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_49.value
+	</Physical>
+	<Cyber>
+		L33IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_49.value
+	</Physical>
+	<Cyber>
+		L33IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_49.value
+	</Physical>
+	<Cyber>
+		L33IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_49.value
+	</Physical>
+	<Cyber>
+		L33IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_49.value
+	</Physical>
+	<Cyber>
+		L33IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_49.value
+	</Physical>
+	<Cyber>
+		L33IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L34IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_31.value
+	</Physical>
+	<Cyber>
+		L34IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_48.value
+	</Physical>
+	<Cyber>
+		L34IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_48.value
+	</Physical>
+	<Cyber>
+		L34IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_48.value
+	</Physical>
+	<Cyber>
+		L34IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_47.value
+	</Physical>
+	<Cyber>
+		L34IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_47.value
+	</Physical>
+	<Cyber>
+		L34IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_47.value
+	</Physical>
+	<Cyber>
+		L34IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_47.value
+	</Physical>
+	<Cyber>
+		L34IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_47.value
+	</Physical>
+	<Cyber>
+		L34IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T666IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_37.value
+	</Physical>
+	<Cyber>
+		T666IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_52.value
+	</Physical>
+	<Cyber>
+		T666IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_52.value
+	</Physical>
+	<Cyber>
+		T666IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_52.value
+	</Physical>
+	<Cyber>
+		T666IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_54.value
+	</Physical>
+	<Cyber>
+		T666IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_54.value
+	</Physical>
+	<Cyber>
+		T666IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_54.value
+	</Physical>
+	<Cyber>
+		T666IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_54.value
+	</Physical>
+	<Cyber>
+		T666IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_54.value
+	</Physical>
+	<Cyber>
+		T666IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = T611IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_41.value
+	</Physical>
+	<Cyber>
+		T611IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_57.value
+	</Physical>
+	<Cyber>
+		T611IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_57.value
+	</Physical>
+	<Cyber>
+		T611IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_57.value
+	</Physical>
+	<Cyber>
+		T611IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_61.value
+	</Physical>
+	<Cyber>
+		T611IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_61.value
+	</Physical>
+	<Cyber>
+		T611IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_61.value
+	</Physical>
+	<Cyber>
+		T611IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_61.value
+	</Physical>
+	<Cyber>
+		T611IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_61.value
+	</Physical>
+	<Cyber>
+		T611IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L35IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_38.value
+	</Physical>
+	<Cyber>
+		L35IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_53.value
+	</Physical>
+	<Cyber>
+		L35IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_53.value
+	</Physical>
+	<Cyber>
+		L35IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_53.value
+	</Physical>
+	<Cyber>
+		L35IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_56.value
+	</Physical>
+	<Cyber>
+		L35IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_56.value
+	</Physical>
+	<Cyber>
+		L35IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_56.value
+	</Physical>
+	<Cyber>
+		L35IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_56.value
+	</Physical>
+	<Cyber>
+		L35IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_56.value
+	</Physical>
+	<Cyber>
+		L35IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L36IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_40.value
+	</Physical>
+	<Cyber>
+		L36IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_56.value
+	</Physical>
+	<Cyber>
+		L36IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_56.value
+	</Physical>
+	<Cyber>
+		L36IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_56.value
+	</Physical>
+	<Cyber>
+		L36IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_60.value
+	</Physical>
+	<Cyber>
+		L36IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_60.value
+	</Physical>
+	<Cyber>
+		L36IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_60.value
+	</Physical>
+	<Cyber>
+		L36IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_60.value
+	</Physical>
+	<Cyber>
+		L36IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_60.value
+	</Physical>
+	<Cyber>
+		L36IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = L37IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_39.value
+	</Physical>
+	<Cyber>
+		L37IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_55.value
+	</Physical>
+	<Cyber>
+		L37IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_55.value
+	</Physical>
+	<Cyber>
+		L37IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_55.value
+	</Physical>
+	<Cyber>
+		L37IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_58.value
+	</Physical>
+	<Cyber>
+		L37IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_58.value
+	</Physical>
+	<Cyber>
+		L37IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_58.value
+	</Physical>
+	<Cyber>
+		L37IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_58.value
+	</Physical>
+	<Cyber>
+		L37IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_58.value
+	</Physical>
+	<Cyber>
+		L37IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = CB31IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_35.value
+	</Physical>
+	<Cyber>
+		CB31IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_19.value
+	</Physical>
+	<Cyber>
+		CB31IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_19.value
+	</Physical>
+	<Cyber>
+		CB31IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_19.value
+	</Physical>
+	<Cyber>
+		CB31IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_52.value
+	</Physical>
+	<Cyber>
+		CB31IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_52.value
+	</Physical>
+	<Cyber>
+		CB31IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_52.value
+	</Physical>
+	<Cyber>
+		CB31IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_52.value
+	</Physical>
+	<Cyber>
+		CB31IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_52.value
+	</Physical>
+	<Cyber>
+		CB31IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = CB32IED)##########
+
+<CPMapping>	
+	<Physical>
+		line_cb.line_cb_33.value
+	</Physical>
+	<Cyber>
+		CB32IED.CTRL.XCBR1.Pos.stVal 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+  	<Physical>
+		bus_voltage.bus_voltage_47.value
+	</Physical>
+	<Cyber>
+		CB32IED.MEAS.MMXU1.PhV.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		bus_voltage.bus_voltage_47.value
+	</Physical>
+	<Cyber>
+		CB32IED.MEAS.MMXU1.PhV.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+	
+<CPMapping>
+	<Physical>
+		bus_voltage.bus_voltage_47.value
+	</Physical>
+	<Cyber>
+		CB32IED.MEAS.MMXU1.PhV.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_50.value
+	</Physical>
+	<Cyber>
+		CB32IED.MEAS.MMXU1.A.phsA.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_50.value
+	</Physical>
+	<Cyber>
+		CB32IED.MEAS.MMXU1.A.phsB.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_current.line_current_50.value
+	</Physical>
+	<Cyber>
+		CB32IED.MEAS.MMXU1.A.phsC.cVal.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_real_power.line_real_power_50.value
+	</Physical>
+	<Cyber>
+		CB32IED.MEAS.MMXU1.TotW.mag.f
+    </Cyber>
+</CPMapping>
+
+<CPMapping>
+	<Physical>
+		line_reactive_power.line_reactive_power_50.value
+	</Physical>
+	<Cyber>
+		CB32IED.MEAS.MMXU1.TotVAr.mag.f
+    </Cyber>
+</CPMapping>
+
+##########(IEDname = SS3TIED)##########
+
+<CPMapping>	
+	<Physical>
+		transformer_temp.transformer_temp_4.value
+	</Physical>
+	<Cyber>
+		SS3TIED.CTRL.STMP1.Tmp.mag.f 
+    </Cyber>
+</CPMapping>
+
+<CPMapping>	
+	<Physical>
+		transformer_temp.transformer_temp_5.value
+	</Physical>
+	<Cyber>
+		SS3TIED.CTRL.STMP2.Tmp.mag.f 
+    </Cyber>
+</CPMapping>
