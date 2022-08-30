@@ -5,7 +5,7 @@ import time
 import logging
 
 import Constants
-import mysql.connector
+import pymysql.cursors
 from Network import Network
 from Logger import Logger
 
@@ -22,7 +22,7 @@ class DBTransmitter:
         READ_STATUS = True
 
         try:
-            db = mysql.connector.connect(host="localhost", user="admin", password="********", database="pandapower_adsc_ms_db")
+            db = pymysql.connect(host="localhost", user="admin", password="********", database="pandapower_adsc_ms_db")
 
             for d in datapoint_config:
                 # Read data from PLC
@@ -45,7 +45,7 @@ class DBTransmitter:
                 PLC_DATA[index] = DATAPOINT_DATA
 
             db.close()
-        except mysql.connector.Error as err:
+        except pymysql.Error as err:
             print(f"Exception in read_db_data(), MySQL connector error: {err}")
 
         logger.log("INFO", f"DB Read finished, Disconnecting...")
@@ -58,7 +58,7 @@ class DBTransmitter:
     # Return the write_status
     def write_db_data(self, datapoint_config, PLC_DATA):
         try:
-            db = mysql.connector.connect(host="localhost", user="admin", password="********", database="pandapower_adsc_ms_db")
+            db = pymysql.connect(host="localhost", user="admin", password="********", database="pandapower_adsc_ms_db")
 
             for d in datapoint_config:
                 # Write data from PLC
@@ -81,7 +81,7 @@ class DBTransmitter:
                 db.commit()
 
             db.close()
-        except mysql.connector.Error as err:
+        except pymysql.Error as err:
             print(f"Exception in write_db_data(), MySQL connector error: {err}")
 
         logger.log("INFO", f"Write Success, I Will Disconnect")
