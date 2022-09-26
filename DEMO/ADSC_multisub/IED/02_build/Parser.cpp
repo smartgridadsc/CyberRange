@@ -670,7 +670,7 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
                 LOG(DEBUG, "ln0 node not found for %s\n", name_attr->value());
                 continue;
             }
-            LOG(DEBUG, "Parsing available GOOSE_CTL_BLOCKS WeiZhe\n");
+            LOG(DEBUG, "Parsing available GOOSE_CTL_BLOCKS\n");
 
             for (xml_node *gsectl_node = ln0_node->first_node("GSEControl"); gsectl_node; gsectl_node = gsectl_node->next_sibling("GSEControl"))
             {
@@ -1016,7 +1016,6 @@ CommModule *Parser::config_UDPRecv(string &sed_filename, string &this_ied)
     return (CommModule *)udprecv;
 }
 
-//Weizhe
 CommModule *Parser::config_RSV(string &this_ied)
 {
     bool found = false;
@@ -1218,7 +1217,6 @@ CommModule *Parser::config_RSV(string &this_ied)
     return (CommModule *)rsv;
 }
 
-//Weizhe
 CommModule *Parser::config_RGOOSE(string &this_ied)
 {
     bool found = false;
@@ -1415,7 +1413,7 @@ CommModule *Parser::config_RGOOSE(string &this_ied)
                 return nullptr;
             }
         }
-    }//END Ldevice Weizhe
+    }//END Ldevice
 
     doc.clear();
 

@@ -109,7 +109,7 @@ class Simulator():
         # Print and check
         #print(f"**************NET AFTER ROUND {round_count}**************")
         #net_data = self.network.print_net()
-        net_data = self.network.print_net(round_count) #WeiZhe the one printing the rounds
+        net_data = self.network.print_net(round_count)
         #for k, v in net_data.items():
             #print(f"*** {k} ***")
             #print(v)
