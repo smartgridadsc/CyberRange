@@ -1,8 +1,8 @@
-## Protection Functions between 2 Substations
+## Demo files for Protection Functions between 2 Substations
 
-This folder contains a sample set of protection functions using multicast communication between S1IED1 (simulating substation 1) and TIED1 (simulating substation 2) with SED file standalone.sed.
+This folder contains a sample set of files demonstrating the protection functions using multicast communication between S1IED1 (simulating substation 1) and TIED1 (simulating substation 2) with SED file standalone.sed. 
 
-To test, run both VIRTUAL_IEDs in separate nodes (e.g. VM, mininet, etc.).
+To test using these sample files, copy or move the folders and files in this folder to the IED_standalone folder containing the scripts and source files, then run both VIRTUAL_IEDs in separate nodes (e.g. VM, mininet, etc.). 
 
 The following is an example running on mininet.
 
@@ -22,6 +22,7 @@ The IPs are defined in the ICD and SED files so the correct mininet nodes must b
 Alternate IPs to use (requires amending ICD and SED files):
 - TIED1  on 172.16.3.41 (h2)
 - S1IED1 on 172.16.2.41 (h13)
+
 
 ## Acknowledgement
 

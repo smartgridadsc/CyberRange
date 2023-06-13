@@ -3,7 +3,7 @@
 This folder is for starting up a Mininet cyber range network for pandapower. It will also start virtual IEDs in their respective Mininet nodes.  
 
 Input file required from user:
-- SCD file in JSON format
+- SCD file in JSON format named scd.json
 
 To run:  
 - sudo python3 run.py
