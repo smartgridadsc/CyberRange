@@ -286,7 +286,7 @@ if __name__ == '__main__':
     extra_config_path = "extra_config.xml"
 
     extra_config = ConfigParser(extra_config_path).gen_json()
-    extra_config_list = parse_time_series(extra_config)
+    extra_config_list = GenNetwork.parse_time_series(extra_config)
     net_list = []  # store Pandapower networks
 
     #generate Pandapower networks
