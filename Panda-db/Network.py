@@ -364,7 +364,7 @@ class Network():
         # +--------------------------
         # | Temperature
         # +--------------------------
-        #loop condition is changed (daisuke)
+        #loop condition is changed
         #for _ in network_topology["temp_sensor_transformer_mapping"].keys():
         for i in range(0,self.num_trafo):
             self.transformer_temperature.append(Constants.ROOM_TEMPERATURE)
@@ -523,7 +523,7 @@ class Network():
                     self.net_list[index].switch["closed"][i] = self.actuators[i]
 
             #pp.runpp(net=self.net_list[index], init="results")
-            # changed to enable continuous simulation. (Daisuke)
+            # changed to enable continuous simulation.
             pp.runpp(net=self.net_list[index],init="flat")
             #pp.runpp(net=self.net)
             #pp.runpp(net=self.net_list[1], init="results")
