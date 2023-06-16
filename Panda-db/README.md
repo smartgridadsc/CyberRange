@@ -1,12 +1,16 @@
 ## Pandapower Simulation
 
-This folder is for running the Pandapower simulation dynamically on top of the cyber layer, together with the Mininet, VIRTUAL IEDs, the database, OpenPLC61850 and ScadaBR.
+This folder is for running the Pandapower simulation.
 
 Input files required from user:
 1) SSD file, e.g. EPIC_single_substation.ssd
 2) Extra configuration file, e.g. extra_config.xml
 
-To use:  
+To run it standalone without the cyber layer or any dependency on Mininet, VIRTUAL IEDs and database:  
+1) Update ssd_path and extra_config_path in process_ssd.py to point to the SSD file and the extra configuration file
+2) Run: python3 process_ssd.py
+
+To run it dynamically on top of the cyber layer:  
 1) Update ssd_path and extra_config_path in Constants.py to point to the SSD file and the extra configuration file
 2) Update database credentials in DBTransmitter.py (2 instances)
 3) Run: python3 Simulator.py
