@@ -21,6 +21,7 @@
 import pandapower as pp
 import xml.etree.ElementTree as ET
 import pandapower.plotting as ppplot
+import pandas as pd
 from extra_config_parser import ConfigParser
 
 std_types = ["N2XS(FL)2Y 1x300 RM/35 64/110 kV", "NA2XS2Y 1x240 RM/25 6/10 kV", "NAYY 4x150 SE"]
@@ -282,6 +283,10 @@ class GenNetwork:
 
 
 if __name__ == '__main__':
+    # Full printout
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.max_rows', None)
+
     ssd_path = "EPIC_single_substation.ssd"
     extra_config_path = "extra_config.xml"
 

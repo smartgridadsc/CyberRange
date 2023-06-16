@@ -21,6 +21,7 @@
 import pandapower as pp
 import xml.etree.ElementTree as ET
 import pandapower.plotting as ppplot
+import pandas as pd
 from extra_config_parser_3ss import ConfigParser
 
 std_types = ["N2XS(FL)2Y 1x300 RM/35 64/110 kV", "NA2XS2Y 1x240 RM/25 6/10 kV", "NAYY 4x150 SE"]
@@ -267,6 +268,10 @@ class GenNetwork:
         return result
 
 if __name__ == '__main__':
+    # Full printout
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.max_rows', None)
+ 
     ssd_path = "ADSC_3SS.ssd"
     extra_config_path = "extra_config_3ss.xml"
 
@@ -279,11 +284,11 @@ if __name__ == '__main__':
         net_list.append(GenNetwork(ssd_path, i).net)
 
     for net in net_list:
-         print("NEW SEQUENCE")
-         ppplot.simple_plot(net=net, plot_loads=True, plot_line_switches=True)
-         pp.runpp(net=net)
-         print(net)
-         print(net.line)
-         print("******\n", net.res_bus)
-         print("******\n", net.res_line)
+        print("NEW SEQUENCE")
+        ppplot.simple_plot(net=net, plot_loads=True, plot_line_switches=True)
+        pp.runpp(net=net)
+        print(net)
+        print(net.line)
+        print("******\n", net.res_bus)
+        print("******\n", net.res_line)
 

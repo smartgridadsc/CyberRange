@@ -30,6 +30,8 @@ import copy
 #from pandapower.plotting.plotly import simple_plotly as plot
 #import pandapower as pp
 
+import pandas as pd
+
 import Constants
 from Network import Network
 from DBTransmitter import DBTransmitter
@@ -140,6 +142,10 @@ class Simulator():
         logger.log("INFO", f"------ Round {round_count} Finished ------")
 
 if __name__ == "__main__":
+    # Full printout
+    #pd.set_option('display.max_columns', None)
+    #pd.set_option('display.max_rows', None)
+
     logger.log("INFO", "Start Simulator...")
 
     # Initialization
