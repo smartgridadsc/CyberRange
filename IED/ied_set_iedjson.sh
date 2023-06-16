@@ -3,7 +3,7 @@
 #
 #  ied_set_iedjson.sh
 #
-#  Copyright 2022 ADSC
+#  Copyright 2023 ADSC
 #
 #  This file is part of SGCR.
 #
