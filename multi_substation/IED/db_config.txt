@@ -1,0 +1,5 @@
+username = "admin"
+password = "*******"
+database = "pandapower_adsc_ms_db"
+hostIP = "localhost"
+port = "3306"
