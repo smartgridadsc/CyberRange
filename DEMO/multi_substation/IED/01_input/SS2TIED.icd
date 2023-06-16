@@ -45,7 +45,7 @@
           <LN0 lnClass="LLN0" inst="" lnType="LD0_LLN0" desc="LDO_LLNO">
             <DOI name="NamPlt">
               <DAI name="vendor" valImport="false">
-                <Val>Roomi_SCL</Val>
+                <Val>EXAMPLE_SCL</Val>
               </DAI>
             </DOI>
           </LN0>

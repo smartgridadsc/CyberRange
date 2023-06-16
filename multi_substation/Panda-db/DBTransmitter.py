@@ -42,7 +42,7 @@ class DBTransmitter:
         READ_STATUS = True
 
         try:
-            db = pymysql.connect(host="localhost", user="admin", password="********", database="pandapower_adsc_ms_db")
+            db = pymysql.connect(host="localhost", user="********", password="********", database="pandapower_adsc_ms_db")
 
             for d in datapoint_config:
                 # Read data from PLC
@@ -78,7 +78,7 @@ class DBTransmitter:
     # Return the write_status
     def write_db_data(self, datapoint_config, PLC_DATA):
         try:
-            db = pymysql.connect(host="localhost", user="admin", password="********", database="pandapower_adsc_ms_db")
+            db = pymysql.connect(host="localhost", user="********", password="********", database="pandapower_adsc_ms_db")
 
             for d in datapoint_config:
                 # Write data from PLC
