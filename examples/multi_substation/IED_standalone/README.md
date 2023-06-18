@@ -13,11 +13,11 @@ The following is an example running on mininet.
    a) cd ~/CyberRange/single_substation/Mininet && sudo python3 run.py
 
 2) Pick 172.16.2.11 (h9) and 172.16.4.11 (h8)  
-   a) mininet> xterm h9
+   a) mininet> xterm h9  
    b) mininet> xterm h8
 
 3) Run TIED1 in h9 and S1IED1 in h8  
-   a) h9: ./ied_start.sh TIED1  standalone.sed
+   a) h9: ./ied_start.sh TIED1  standalone.sed  
    b) h8: ./ied_start.sh S1IED1 standalone.sed
 
 The IPs are defined in the ICD and SED files so the correct mininet nodes must be used.
