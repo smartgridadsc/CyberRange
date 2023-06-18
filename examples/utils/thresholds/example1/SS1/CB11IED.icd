@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SCL version="2007" revision="B" xmlns:sxy="http://www.iec.ch/61850/2003/SCLcoordinates" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd http://www.iec.ch/61850/2003/SCLcoordinates SCL_Coordinates.xsd" xmlns="http://www.iec.ch/61850/2003/SCL">
+  <Header revision="A" version="1" id="fdca90f9-5630-4c42-adda-331be16eeb91" toolID="Grid Software IED Builder" nameStructure="IEDName">
+    <Text>CB11IED</Text>
+    <History>
+      <Hitem revision="A" version="1" when="2021-09-21T14:51:15Z" who="Grid Software IED Builder" what="Project CB11IED created" />
+    </History>
+  </Header>
+  <Communication>
+    <SubNetwork name="NONE" type="8-MMS">
+      <ConnectedAP iedName="CB11IED" apName="P1">
+        <Address>
+          <P type="IP" xsi:type="tP_IP">192.168.170.174</P>
+          <P type="IP-SUBNET" xsi:type="tP_IP-SUBNET">255.255.255.0</P>
+          <P type="IP-GATEWAY" xsi:type="tP_IP-GATEWAY">192.168.170.2</P>
+          <P type="OSI-AP-Title" xsi:type="tP_OSI-AP-Title">1119991</P>
+          <P type="OSI-AE-Qualifier" xsi:type="tP_OSI-AE-Qualifier">12</P>
+          <P type="OSI-TSEL" xsi:type="tP_OSI-TSEL">0001</P>
+          <P type="OSI-SSEL" xsi:type="tP_OSI-SSEL">0001</P>
+          <P type="OSI-PSEL" xsi:type="tP_OSI-PSEL">00000001</P>
+        </Address>
+      </ConnectedAP>
+    </SubNetwork>
+  </Communication>
+  <IED name="CB11IED" manufacturer="Grid Software" originalSclVersion="2007" originalSclRevision="B">
+    <Services>
+      <SettingGroups>
+        <ConfSG resvTms="false" />
+      </SettingGroups>
+      <DynAssociation max="0" />
+      <GetDirectory />
+      <GetDataObjectDefinition />
+      <DataObjectDirectory />
+      <GetDataSetValue />
+      <SetDataSetValue />
+      <DataSetDirectory />
+      <ConfDataSet max="10" maxAttributes="100" modify="true" />
+      <DynDataSet max="42" maxAttributes="42" />
+      <ReadWrite />
+      <ConfReportControl max="10" bufConf="false" />
+      <GetCBValues />
+      <ReportSettings cbName="Conf" datSet="Dyn" rptID="Dyn" optFields="Dyn" bufTime="Dyn" trgOps="Dyn" intgPd="Dyn" resvTms="true" owner="true" />
+      <GOOSE max="1" />
+      <GSSE max="1" />
+      <FileHandling mms="true" ftp="false" ftps="false" />
+      <ConfLNs fixPrefix="false" fixLnInst="false" />
+    </Services>
+    <AccessPoint name="P1">
+      <Server timeout="30">
+        <Authentication />
+        <LDevice inst="LD0">
+          <LN0 lnClass="LLN0" inst="" lnType="LD0.LLN0" />
+          <LN lnClass="LPHD" inst="1" lnType="LD0.LPHD" />
+        </LDevice>
+        <LDevice inst="MEAS">
+          <LN0 lnClass="LLN0" inst="" lnType="MEAS.LLN0" />
+          <LN lnClass="MMXU" inst="1" lnType="MEAS.MMXU1" />
+        </LDevice>
+        <LDevice inst="CTRL">
+          <LN0 lnClass="LLN0" inst="" lnType="CTRL.LLN0" />
+          <LN lnClass="XCBR" inst="1" lnType="CTRL.XCBR1">
+            <DOI name="Pos">
+              <DAI valImport="true" name="stVal">
+                <Val>on</Val>
+              </DAI>
+              <DAI valImport="true" name="ctlModel">
+                <Val>direct-with-normal-security</Val>
+              </DAI>
+            </DOI>
+          </LN>
+        </LDevice>
+        <LDevice inst="PROT">
+          <LN0 lnClass="LLN0" inst="" lnType="PROT.LLN0">
+            <DataSet name="MDS" desc="">
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="TotW" daName="mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="TotVAr" daName="mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="TotVA" daName="mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="TotPF" daName="mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="Hz" daName="mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="PPV.phsAB" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="PPV.phsBC" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="PPV.phsCA" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="PhV.phsA" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="PhV.phsB" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="PhV.phsC" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="A.phsA" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="A.phsB" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="A.phsC" daName="cVal.mag.f" fc="MX" />
+              <FCDA ldInst="MEAS" lnInst="1" lnClass="MMXU" doName="A.neut" daName="cVal.mag.f" fc="MX" />
+            </DataSet>
+            <DataSet name="CDS" desc="">
+              <FCDA ldInst="CTRL" lnInst="1" lnClass="XCBR" doName="Pos" daName="stVal" fc="ST" />
+            </DataSet>
+            <DataSet name="PDS" desc="">
+              <FCDA ldInst="PROT" lnInst="1" lnClass="PTOV" doName="Op" fc="ST" />
+              <FCDA ldInst="PROT" lnInst="1" lnClass="PTOC" doName="Op" fc="ST" />
+            </DataSet>
+            <ReportControl name="MCB" bufTime="50" buffered="false" confRev="1" intgPd="1000" indexed="true" datSet="MDS" desc="">
+              <TrgOps gi="true" dchg="true" qchg="true" dupd="true" period="true" />
+              <OptFields bufOvfl="true" seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" />
+              <RptEnabled max="5" />
+            </ReportControl>
+            <ReportControl name="CCB" bufTime="50" buffered="false" confRev="1" intgPd="1000" indexed="true" datSet="CDS" desc="">
+              <TrgOps gi="true" dchg="true" qchg="true" dupd="true" period="true" />
+              <OptFields bufOvfl="true" seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" />
+              <RptEnabled max="5" />
+            </ReportControl>
+            <ReportControl name="PCB" bufTime="50" buffered="false" confRev="1" intgPd="1000" indexed="true" datSet="PDS" desc="">
+              <TrgOps gi="true" dchg="true" qchg="true" dupd="true" period="true" />
+              <OptFields bufOvfl="true" seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" dataRef="true" entryID="true" configRef="true" />
+              <RptEnabled max="5" />
+            </ReportControl>
+          </LN0>
+          <LN lnClass="PTOV" inst="1" lnType="PROT.PTOV1" />
+          <LN lnClass="PTOC" inst="1" lnType="PROT.PTOC1" />
+        </LDevice>
+      </Server>
+    </AccessPoint>
+  </IED>
+  <DataTypeTemplates>
+    <LNodeType id="LD0.LLN0" lnClass="LLN0">
+      <DO name="Beh" type="ENS_ad5b245f-e11f-4bbf-aaee-88745b142bcb" />
+    </LNodeType>
+    <LNodeType id="MEAS.LLN0" lnClass="LLN0">
+      <DO name="Beh" type="ENS_f4486011-492f-44c5-b34e-d98ef57368dd" />
+    </LNodeType>
+    <LNodeType id="MEAS.MMXU1" lnClass="MMXU">
+      <DO name="TotW" type="MV_8c6e2493-50bc-4634-9929-39eee20f7740" />
+      <DO name="Beh" type="ENS_100f8ea3-50a9-4b4e-83e4-cb35cd0bc632" />
+      <DO name="TotVAr" type="MV_f6eaa884-d398-4a19-aa28-b7d48eb5290d" />
+      <DO name="TotVA" type="MV_64a65280-fdc0-4113-ac1d-a04d35c28c93" />
+      <DO name="TotPF" type="MV_892744f3-5743-4098-8ac4-b506d66d4b05" />
+      <DO name="Hz" type="MV_305d4675-b515-4540-ba06-be8d856eac7d" />
+      <DO name="PPV" type="DEL_2d7eb145-fc2e-4d0f-ad81-bb9ff115ab2a" />
+      <DO name="PhV" type="WYE_55c81819-1202-40d1-af19-4fbeab705103" />
+      <DO name="A" type="WYE_07398044-80b9-4412-8b84-e89c87846e06" />
+    </LNodeType>
+    <LNodeType id="CTRL.LLN0" lnClass="LLN0">
+      <DO name="Beh" type="ENS_fd54008b-1b7e-4cc4-8eb3-ae56652df620" />
+    </LNodeType>
+    <LNodeType id="CTRL.XCBR1" lnClass="XCBR">
+      <DO name="Beh" type="ENS_1394c8a2-dc37-4c3a-8c06-32c6b39b2d5a" />
+      <DO name="Loc" type="SPS_acda07a5-8009-4d02-9b11-56f09d077077" />
+      <DO name="OpCnt" type="INS_229e9aa4-14bf-4c83-bb28-93a9b45873b7" />
+      <DO name="Pos" type="DPC_14e052be-0e1f-4e8d-933e-cdac803c2c9e" />
+      <DO name="BlkOpn" type="SPC_ca93fc86-dc5d-463e-b305-ebca2b843546" />
+      <DO name="BlkCls" type="SPC_5f35861c-866c-4357-866a-153b39311c63" />
+    </LNodeType>
+    <LNodeType id="PROT.LLN0" lnClass="LLN0">
+      <DO name="Beh" type="ENS_8e91d766-5563-48c8-a1fe-88bacabdef67" />
+    </LNodeType>
+    <LNodeType id="PROT.PTOV1" lnClass="PTOV">
+      <DO name="Str" type="ACD_d0065460-927b-4632-98cc-298ac023355f" />
+      <DO name="Beh" type="ENS_ad431532-da0f-44e0-8787-f0e6c882943e" />
+      <DO name="Op" type="ACT_1f99ceb3-d237-4235-8172-ea818d553e21" />
+    </LNodeType>
+    <LNodeType id="PROT.PTOC1" lnClass="PTOC">
+      <DO name="Str" type="ACD_a1970ec6-5f08-4870-9680-81b5f37e2ef8" />
+      <DO name="Beh" type="ENS_55be1a9a-a345-40e5-891a-2abd4310d844" />
+      <DO name="Op" type="ACT_5165f2d1-7b28-44d7-974f-1fc79249fb7d" />
+    </LNodeType>
+    <LNodeType id="LD0.LPHD" lnClass="LPHD">
+      <DO name="PhyNam" type="DPL_1c11e902-15a4-464f-8089-7b9d4da792a9" />
+      <DO name="PhyHealth" type="ENS_3af5572c-f374-49c5-adc7-b208fe371141" />
+      <DO name="Proxy" type="SPS_b57c1915-a2bd-4409-b9fc-9c4e85cd3644" />
+      <DO name="PwrUp" type="SPS_d34818a3-8dc1-426e-b5cb-1cc7e2cf863b" />
+      <DO name="PwrDn" type="SPS_604fbec9-0e22-4a4a-8ebd-03cffae90e7a" />
+      <DO name="PwrSupAlm" type="SPS_10229666-40c9-4665-9dae-853cbb689f95" />
+    </LNodeType>
+    <DOType id="ENS_ad5b245f-e11f-4bbf-aaee-88745b142bcb" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_f4486011-492f-44c5-b34e-d98ef57368dd" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="WYE_07398044-80b9-4412-8b84-e89c87846e06" cdc="WYE">
+      <SDO name="phsA" type="CMV_da791049-1219-4131-8446-ded77334b434" />
+      <SDO name="phsB" type="CMV_b1244b75-d0c5-44f0-95b2-46b031bc3eb5" />
+      <SDO name="phsC" type="CMV_1c103c7d-42ea-4e0d-91b4-73fd2c116bfb" />
+      <SDO name="neut" type="CMV_738862bd-f3d1-47f5-96a3-1334b0cd4f5a" />
+    </DOType>
+    <DOType id="ENS_100f8ea3-50a9-4b4e-83e4-cb35cd0bc632" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="MV_305d4675-b515-4540-ba06-be8d856eac7d" cdc="MV">
+      <DA name="mag" bType="Struct" type="AnalogueValue_0ae89e86-c1d9-4a57-80e8-b5a91b9ee0fc" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="WYE_55c81819-1202-40d1-af19-4fbeab705103" cdc="WYE">
+      <SDO name="phsA" type="CMV_8076f253-2f1b-4a00-a38e-b26d23fc8be7" />
+      <SDO name="phsB" type="CMV_4e5144eb-cd00-45f6-8284-8ee86fe00789" />
+      <SDO name="phsC" type="CMV_cd64b33b-b9d4-4f90-8654-d69571050d84" />
+    </DOType>
+    <DOType id="DEL_2d7eb145-fc2e-4d0f-ad81-bb9ff115ab2a" cdc="DEL">
+      <SDO name="phsAB" type="CMV_6e6a4b88-8866-4ed8-83eb-80875ec0b9e4" />
+      <SDO name="phsBC" type="CMV_58afee89-3400-4190-9129-9b220397468d" />
+      <SDO name="phsCA" type="CMV_bef7b518-b5d8-48cb-86c8-6417697f5c84" />
+    </DOType>
+    <DOType id="MV_892744f3-5743-4098-8ac4-b506d66d4b05" cdc="MV">
+      <DA name="mag" bType="Struct" type="AnalogueValue_7715780c-780e-440b-93ec-5774a3595ede" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="MV_64a65280-fdc0-4113-ac1d-a04d35c28c93" cdc="MV">
+      <DA name="mag" bType="Struct" type="AnalogueValue_b7e9a1f9-47f9-4028-b7e6-e0fe5999783d" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="MV_f6eaa884-d398-4a19-aa28-b7d48eb5290d" cdc="MV">
+      <DA name="mag" bType="Struct" type="AnalogueValue_bc83e86d-96b9-441d-9c6e-ede254c10ba3" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="MV_8c6e2493-50bc-4634-9929-39eee20f7740" cdc="MV">
+      <DA name="mag" bType="Struct" type="AnalogueValue_3f77ddf6-143f-48bb-9624-6783dc7693aa" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_6e6a4b88-8866-4ed8-83eb-80875ec0b9e4" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_f3e13eac-f1da-4272-a61f-424744beb9d6" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_8076f253-2f1b-4a00-a38e-b26d23fc8be7" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_b183fb6f-9741-4c06-8896-6404c4b3c8bb" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_da791049-1219-4131-8446-ded77334b434" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_08f6d2e0-4958-4385-be6f-acc8ff1ae45a" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_58afee89-3400-4190-9129-9b220397468d" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_1aa9867c-a1dd-4ff5-909a-9384abce8596" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_bef7b518-b5d8-48cb-86c8-6417697f5c84" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_28130cbc-1f03-4f4e-bdb0-f7add7f8e590" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_4e5144eb-cd00-45f6-8284-8ee86fe00789" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_203ea41e-f0b4-4eb5-9abf-56082f49d3aa" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_cd64b33b-b9d4-4f90-8654-d69571050d84" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_345f33e9-2159-400f-8844-2a13e7fbe505" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_b1244b75-d0c5-44f0-95b2-46b031bc3eb5" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_822d0293-48e8-4de5-985f-88ae1b3599e2" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_1c103c7d-42ea-4e0d-91b4-73fd2c116bfb" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_01ec0cbf-36c3-4ec3-8605-2bc461c83199" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="CMV_738862bd-f3d1-47f5-96a3-1334b0cd4f5a" cdc="CMV">
+      <DA name="cVal" bType="Struct" type="Vector_f646c13d-a68e-4da0-af3a-3bfc32457a3a" fc="MX" />
+      <DA name="q" bType="Quality" fc="MX" />
+      <DA name="t" bType="Timestamp" fc="MX" />
+    </DOType>
+    <DOType id="ENS_fd54008b-1b7e-4cc4-8eb3-ae56652df620" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_1394c8a2-dc37-4c3a-8c06-32c6b39b2d5a" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="SPC_5f35861c-866c-4357-866a-153b39311c63" cdc="SPC">
+      <DA name="ctlModel" bType="Enum" type="CtlModelKind" fc="CF" />
+    </DOType>
+    <DOType id="SPC_ca93fc86-dc5d-463e-b305-ebca2b843546" cdc="SPC">
+      <DA name="ctlModel" bType="Enum" type="CtlModelKind" fc="CF" />
+    </DOType>
+    <DOType id="SPS_acda07a5-8009-4d02-9b11-56f09d077077" cdc="SPS">
+      <DA name="stVal" bType="BOOLEAN" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="INS_229e9aa4-14bf-4c83-bb28-93a9b45873b7" cdc="INS">
+      <DA name="stVal" bType="INT32" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="DPC_14e052be-0e1f-4e8d-933e-cdac803c2c9e" cdc="DPC">
+      <DA name="stVal" bType="Dbpos" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+      <DA name="ctlModel" bType="Enum" type="CtlModelKind" fc="CF" />
+      <DA name="Oper" bType="Struct" type="OperBOOLEAN" fc="CO" />
+    </DOType>
+    <DOType id="ENS_8e91d766-5563-48c8-a1fe-88bacabdef67" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_ad431532-da0f-44e0-8787-f0e6c882943e" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ACT_1f99ceb3-d237-4235-8172-ea818d553e21" cdc="ACT">
+      <DA name="general" bType="BOOLEAN" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ACD_d0065460-927b-4632-98cc-298ac023355f" cdc="ACD">
+      <DA name="general" bType="BOOLEAN" fc="ST" />
+      <DA name="dirGeneral" bType="Enum" type="FaultDirectionKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_55be1a9a-a345-40e5-891a-2abd4310d844" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="BehaviourModeKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ACT_5165f2d1-7b28-44d7-974f-1fc79249fb7d" cdc="ACT">
+      <DA name="general" bType="BOOLEAN" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ACD_a1970ec6-5f08-4870-9680-81b5f37e2ef8" cdc="ACD">
+      <DA name="general" bType="BOOLEAN" fc="ST" />
+      <DA name="dirGeneral" bType="Enum" type="FaultDirectionKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="ENS_3af5572c-f374-49c5-adc7-b208fe371141" cdc="ENS">
+      <DA name="stVal" bType="Enum" type="HealthKind" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="DPL_1c11e902-15a4-464f-8089-7b9d4da792a9" cdc="DPL">
+      <DA name="vendor" bType="VisString255" fc="DC" />
+    </DOType>
+    <DOType id="SPS_b57c1915-a2bd-4409-b9fc-9c4e85cd3644" cdc="SPS">
+      <DA name="stVal" bType="BOOLEAN" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="SPS_604fbec9-0e22-4a4a-8ebd-03cffae90e7a" cdc="SPS">
+      <DA name="stVal" bType="BOOLEAN" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="SPS_10229666-40c9-4665-9dae-853cbb689f95" cdc="SPS">
+      <DA name="stVal" bType="BOOLEAN" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DOType id="SPS_d34818a3-8dc1-426e-b5cb-1cc7e2cf863b" cdc="SPS">
+      <DA name="stVal" bType="BOOLEAN" fc="ST" />
+      <DA name="q" bType="Quality" fc="ST" />
+      <DA name="t" bType="Timestamp" fc="ST" />
+    </DOType>
+    <DAType id="AnalogueValue_0ae89e86-c1d9-4a57-80e8-b5a91b9ee0fc">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="AnalogueValue_7715780c-780e-440b-93ec-5774a3595ede">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="AnalogueValue_b7e9a1f9-47f9-4028-b7e6-e0fe5999783d">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="AnalogueValue_bc83e86d-96b9-441d-9c6e-ede254c10ba3">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="AnalogueValue_3f77ddf6-143f-48bb-9624-6783dc7693aa">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_f3e13eac-f1da-4272-a61f-424744beb9d6">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_647ef555-3eb1-4d75-a4e1-33109fed19c6" />
+    </DAType>
+    <DAType id="AnalogueValue_647ef555-3eb1-4d75-a4e1-33109fed19c6">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_b183fb6f-9741-4c06-8896-6404c4b3c8bb">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_2f1a68b6-b2ff-4d0f-8da4-03b46882cb52" />
+    </DAType>
+    <DAType id="AnalogueValue_2f1a68b6-b2ff-4d0f-8da4-03b46882cb52">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_08f6d2e0-4958-4385-be6f-acc8ff1ae45a">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_e225e306-64b6-4323-971e-686ebdd6089d" />
+    </DAType>
+    <DAType id="AnalogueValue_e225e306-64b6-4323-971e-686ebdd6089d">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_1aa9867c-a1dd-4ff5-909a-9384abce8596">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_15e2010b-e3a7-4ca4-9427-adf0675b9260" />
+    </DAType>
+    <DAType id="AnalogueValue_15e2010b-e3a7-4ca4-9427-adf0675b9260">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_28130cbc-1f03-4f4e-bdb0-f7add7f8e590">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_cbd12117-914b-45b6-ab72-1f59442a5236" />
+    </DAType>
+    <DAType id="AnalogueValue_cbd12117-914b-45b6-ab72-1f59442a5236">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_203ea41e-f0b4-4eb5-9abf-56082f49d3aa">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_70ae6ced-592b-4346-a56b-b35ab57812a8" />
+    </DAType>
+    <DAType id="AnalogueValue_70ae6ced-592b-4346-a56b-b35ab57812a8">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_345f33e9-2159-400f-8844-2a13e7fbe505">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_96ff7a60-30d3-445c-883c-5c6f5296aef3" />
+    </DAType>
+    <DAType id="AnalogueValue_96ff7a60-30d3-445c-883c-5c6f5296aef3">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_822d0293-48e8-4de5-985f-88ae1b3599e2">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_89f8f6cc-d615-4e01-b70f-dd88f3c56097" />
+    </DAType>
+    <DAType id="AnalogueValue_89f8f6cc-d615-4e01-b70f-dd88f3c56097">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_01ec0cbf-36c3-4ec3-8605-2bc461c83199">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_924f43fc-170b-4d10-96ed-4274dc439156" />
+    </DAType>
+    <DAType id="AnalogueValue_924f43fc-170b-4d10-96ed-4274dc439156">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="Vector_f646c13d-a68e-4da0-af3a-3bfc32457a3a">
+      <BDA name="mag" bType="Struct" type="AnalogueValue_6fb44968-3968-4c03-89b7-7505a4eb415c" />
+    </DAType>
+    <DAType id="AnalogueValue_6fb44968-3968-4c03-89b7-7505a4eb415c">
+      <BDA name="f" bType="FLOAT32" />
+    </DAType>
+    <DAType id="OperBOOLEAN">
+      <BDA name="ctlVal" bType="BOOLEAN" />
+      <BDA name="origin" bType="Struct" type="Originator_06e01c7c-e1be-4df0-b1f4-bb8d51459540" />
+      <BDA name="ctlNum" bType="INT8U" />
+      <BDA name="T" bType="Timestamp" />
+      <BDA name="Test" bType="BOOLEAN" />
+      <BDA name="Check" bType="Check" />
+    </DAType>
+    <DAType id="Originator_06e01c7c-e1be-4df0-b1f4-bb8d51459540">
+      <BDA name="orCat" bType="Enum" type="OriginatorCategoryKind" />
+      <BDA name="orIdent" bType="Octet64" />
+    </DAType>
+    <EnumType id="BehaviourModeKind">
+      <EnumVal ord="1">on</EnumVal>
+      <EnumVal ord="2">blocked</EnumVal>
+      <EnumVal ord="3">test</EnumVal>
+      <EnumVal ord="4">test/blocked</EnumVal>
+      <EnumVal ord="5">off</EnumVal>
+    </EnumType>
+    <EnumType id="CtlModelKind">
+      <EnumVal ord="0">status-only</EnumVal>
+      <EnumVal ord="1">direct-with-normal-security</EnumVal>
+      <EnumVal ord="2">sbo-with-normal-security</EnumVal>
+      <EnumVal ord="3">direct-with-enhanced-security</EnumVal>
+      <EnumVal ord="4">sbo-with-enhanced-security</EnumVal>
+    </EnumType>
+    <EnumType id="FaultDirectionKind">
+      <EnumVal ord="1">unknown</EnumVal>
+      <EnumVal ord="2">forward</EnumVal>
+      <EnumVal ord="3">backward</EnumVal>
+      <EnumVal ord="4">both</EnumVal>
+    </EnumType>
+    <EnumType id="HealthKind">
+      <EnumVal ord="1">Ok</EnumVal>
+      <EnumVal ord="2">Warning</EnumVal>
+      <EnumVal ord="3">Alarm</EnumVal>
+    </EnumType>
+    <EnumType id="OriginatorCategoryKind">
+      <EnumVal ord="1">not-supported</EnumVal>
+      <EnumVal ord="2">bay-control</EnumVal>
+      <EnumVal ord="3">station-control</EnumVal>
+      <EnumVal ord="4">remote-control</EnumVal>
+      <EnumVal ord="5">automatic-bay</EnumVal>
+      <EnumVal ord="6">automatic-station</EnumVal>
+      <EnumVal ord="7">automatic-remote</EnumVal>
+      <EnumVal ord="8">maintenance</EnumVal>
+      <EnumVal ord="9">process</EnumVal>
+    </EnumType>
+  </DataTypeTemplates>
+</SCL>

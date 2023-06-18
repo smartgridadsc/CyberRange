@@ -1,0 +1,705 @@
+[
+    {
+        "type": "subnetwork",
+        "SubNet": {
+            "subnetwork_type": "8-MMS",
+            "bitrate": "100Mb/s"
+        }
+    },
+    {
+        "iedName": "IEDServer00",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.150",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "1",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer01",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.151",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "2",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer02",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.152",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "3",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer03",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.153",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "4",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer04",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.154",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "5",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer05",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.155",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "6",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer06",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.156",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "7",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer07",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.157",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "8",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer08",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.158",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "9",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer09",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.159",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "10",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer10",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.160",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "11",
+                "to_switch": "SW1"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer11",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.161",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "1",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer12",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.162",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "2",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer13",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.163",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "3",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer14",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.164",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "4",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer15",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.165",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "5",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer16",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.166",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "6",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "IEDServer17",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.167",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "7",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "RIEDServer00",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.168",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "8",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "TIEDServer00",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.169",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "9",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "FIEDServer00",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.170",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "10",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "LIEDServer00",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.171",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "11",
+                "to_switch": "SW2"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "PLC",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.172",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "1",
+                "to_switch": "SW3"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "HMI",
+        "type": "ied",
+        "in_subnetwork": "SubNet",
+        "IP": "192.168.170.173",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "192.168.170.2",
+        "MAC-Address": null,
+        "manufacturer": "",
+        "physConn": [
+            {
+                "from_port": "1",
+                "to_port": "2",
+                "to_switch": "SW3"
+            }
+        ],
+        "GSE": []
+    },
+    {
+        "iedName": "SW1",
+        "type": "switch",
+        "in_subnetwork": "SubNet",
+        "IP": "0.0.0.0",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "0.0.0.0",
+        "MAC-Address": null,
+        "manufacturer": "Grid Software",
+        "physConn": [
+            {
+                "Port": "1",
+                "Cable": "C0"
+            },
+            {
+                "Port": "2",
+                "Cable": "C1"
+            },
+            {
+                "Port": "3",
+                "Cable": "C2"
+            },
+            {
+                "Port": "4",
+                "Cable": "C3"
+            },
+            {
+                "Port": "5",
+                "Cable": "C4"
+            },
+            {
+                "Port": "6",
+                "Cable": "C5"
+            },
+            {
+                "Port": "7",
+                "Cable": "C6"
+            },
+            {
+                "Port": "8",
+                "Cable": "C7"
+            },
+            {
+                "Port": "9",
+                "Cable": "C8"
+            },
+            {
+                "Port": "10",
+                "Cable": "C9"
+            },
+            {
+                "Port": "11",
+                "Cable": "C10"
+            },
+            {
+                "Port": "12",
+                "Cable": "CS12"
+            },
+            {
+                "Port": "13",
+                "Cable": "CS13"
+            },
+            {
+                "Port": "14"
+            },
+            {
+                "Port": "15"
+            },
+            {
+                "Port": "16"
+            },
+            {
+                "Port": "17"
+            },
+            {
+                "Port": "18"
+            },
+            {
+                "Port": "19"
+            },
+            {
+                "Port": "20"
+            },
+            {
+                "Port": "21"
+            },
+            {
+                "Port": "22"
+            }
+        ]
+    },
+    {
+        "iedName": "SW2",
+        "type": "switch",
+        "in_subnetwork": "SubNet",
+        "IP": "0.0.0.0",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "0.0.0.0",
+        "MAC-Address": null,
+        "manufacturer": "Grid Software",
+        "physConn": [
+            {
+                "Port": "1",
+                "Cable": "C11"
+            },
+            {
+                "Port": "2",
+                "Cable": "C12"
+            },
+            {
+                "Port": "3",
+                "Cable": "C13"
+            },
+            {
+                "Port": "4",
+                "Cable": "C14"
+            },
+            {
+                "Port": "5",
+                "Cable": "C15"
+            },
+            {
+                "Port": "6",
+                "Cable": "C16"
+            },
+            {
+                "Port": "7",
+                "Cable": "C17"
+            },
+            {
+                "Port": "8",
+                "Cable": "C18"
+            },
+            {
+                "Port": "9",
+                "Cable": "C19"
+            },
+            {
+                "Port": "10",
+                "Cable": "C20"
+            },
+            {
+                "Port": "11",
+                "Cable": "C21"
+            },
+            {
+                "Port": "12",
+                "Cable": "CS23"
+            },
+            {
+                "Port": "13",
+                "Cable": "CS12"
+            },
+            {
+                "Port": "14"
+            },
+            {
+                "Port": "15"
+            },
+            {
+                "Port": "16"
+            },
+            {
+                "Port": "17"
+            },
+            {
+                "Port": "18"
+            },
+            {
+                "Port": "19"
+            },
+            {
+                "Port": "20"
+            },
+            {
+                "Port": "21"
+            },
+            {
+                "Port": "22"
+            }
+        ]
+    },
+    {
+        "iedName": "SW3",
+        "type": "switch",
+        "in_subnetwork": "SubNet",
+        "IP": "0.0.0.0",
+        "IP-SUBNET": "255.255.255.0",
+        "IP-GATEWAY": "0.0.0.0",
+        "MAC-Address": null,
+        "manufacturer": "Grid Software",
+        "physConn": [
+            {
+                "Port": "1",
+                "Cable": "CP"
+            },
+            {
+                "Port": "2",
+                "Cable": "CH"
+            },
+            {
+                "Port": "3"
+            },
+            {
+                "Port": "4"
+            },
+            {
+                "Port": "5"
+            },
+            {
+                "Port": "6"
+            },
+            {
+                "Port": "7"
+            },
+            {
+                "Port": "8"
+            },
+            {
+                "Port": "9"
+            },
+            {
+                "Port": "10"
+            },
+            {
+                "Port": "11"
+            },
+            {
+                "Port": "12",
+                "Cable": "CS13"
+            },
+            {
+                "Port": "13",
+                "Cable": "CS23"
+            },
+            {
+                "Port": "14"
+            },
+            {
+                "Port": "15"
+            },
+            {
+                "Port": "16"
+            },
+            {
+                "Port": "17"
+            },
+            {
+                "Port": "18"
+            },
+            {
+                "Port": "19"
+            },
+            {
+                "Port": "20"
+            },
+            {
+                "Port": "21"
+            },
+            {
+                "Port": "22"
+            }
+        ]
+    }
+]

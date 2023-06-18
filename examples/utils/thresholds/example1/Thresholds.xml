@@ -1,0 +1,2433 @@
+<?xml version='1.0' encoding='utf8'?>
+<Thresholds name="Protection">
+	<IED name="L1IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L8IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L9IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L0IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T611IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L33IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L36IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="SS3TIED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L32IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L35IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="CB31IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T666IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T511IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L37IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="CB32IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L34IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T566IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L23IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L22IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L25IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="SS2TIED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L24IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T466IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L27IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T411IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T311IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L26IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="CB21IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T366IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="CB22IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L2IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T111IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="CB12IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T211IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="Feeder1IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L5IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L6IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T266IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="Feeder2IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L7IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="CB11IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="SS1TIED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="T166IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L3IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+	<IED name="L4IED">
+		<PDIF87L instance="1">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PDIF87L instance="2">
+			<Threshold>100</Threshold>
+		</PDIF87L>
+		<PTOC50 instance="1">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOC50 instance="2">
+			<Threshold>150</Threshold>
+		</PTOC50>
+		<PTOV59 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTOV59 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>1.1</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>1.2</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTOV59>
+		<PTUV27 instance="1">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>10</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>2</Period_s>
+			</TripThreshold>
+		</PTUV27>
+		<PTUV27 instance="2">
+			<AlarmThreshold>
+				<Limit_p.u.>0.8</Limit_p.u.>
+				<Period_s>4</Period_s>
+			</AlarmThreshold>
+			<TripThreshold>
+				<Limit_p.u.>0.7</Limit_p.u.>
+				<Period_s>6</Period_s>
+			</TripThreshold>
+		</PTUV27>
+	</IED>
+</Thresholds>
