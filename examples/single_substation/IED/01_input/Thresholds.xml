@@ -117,26 +117,6 @@
 		<PTOC50 instance="1">
 			<Threshold>150</Threshold>
 		</PTOC50>
-		<PTOV59 instance="1">
-			<AlarmThreshold>
-				<Limit_p.u.>1.1</Limit_p.u.>
-				<Period_s>10</Period_s>
-			</AlarmThreshold>
-			<TripThreshold>
-				<Limit_p.u.>1.2</Limit_p.u.>
-				<Period_s>2</Period_s>
-			</TripThreshold>
-		</PTOV59>
-		<PTUV27 instance="1">
-			<AlarmThreshold>
-				<Limit_p.u.>0.8</Limit_p.u.>
-				<Period_s>10</Period_s>
-			</AlarmThreshold>
-			<TripThreshold>
-				<Limit_p.u.>0.7</Limit_p.u.>
-				<Period_s>2</Period_s>
-			</TripThreshold>
-		</PTUV27>
 	</IED>
 	<IED name="TIED2">
 		<PDIF87L instance="1">
