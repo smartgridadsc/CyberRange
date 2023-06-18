@@ -1,13 +1,16 @@
-## Demo files for Protection Functions between 2 Substations
+## Example files for Protection Functions between 2 Substations
 
 This folder contains a sample set of files demonstrating the protection functions using multicast communication between S1IED1 (simulating substation 1) and TIED1 (simulating substation 2) with SED file standalone.sed. 
 
-To test using these sample files, copy or move the folders and files in this folder to the IED_standalone folder containing the scripts and source files, then run both VIRTUAL_IEDs in separate nodes (e.g. VM, mininet, etc.). 
+To test using these files, copy below folders and their files to the corresponding code folder CyberRange/multi_substation/IED_standalone, then run both VIRTUAL_IEDs in separate nodes (e.g. VM, mininet, etc.). 
+1) 01_input
+2) S1IED1
+3) TIED1
 
 The following is an example running on mininet.
 
 1) Start a mininet with single substation model
-   a) ~/examples/single_substation/Mininet && sudo python3 run.py
+   a) cd ~/CyberRange/single_substation/Mininet && sudo python3 run.py
 
 2) Pick 172.16.2.11 (h9) and 172.16.4.11 (h8)
    a) mininet> xterm h9
