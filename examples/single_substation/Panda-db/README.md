@@ -6,8 +6,8 @@ This folder contains the example input files required for running the Pandapower
 
 To use these files, place them in the corresponding code folder CyberRange/single_substation/Panda-db and follow the instruction in CyberRange/single_substation/Panda-db/README.md.  
 
-For the setup, execute below SQL file once in the database to create the schema:
-- pandapower_db_structure.sql
+For the setup, execute below SQL file once in the database to create the schema and initial data:
+- pandapower_db_initialization.sql
 
 ## Acknowledgement
 
